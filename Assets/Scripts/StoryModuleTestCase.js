@@ -1,4 +1,9 @@
-{
+/*
+json을 js파일로 변환한 뒤 아래와 같이 하면 주석을 달아도 문제가 되지 않는다.
+
+*/
+
+module.exports = {
     "MainStory001_start" : { 
     // 스토리를 구분할 있는 고유 id이다. 
     // 기능1) LoadStory(id); 등을 통해 해당 id 를 불러오면 이하의 title 정보와 data 를 로드한다.
@@ -29,7 +34,7 @@
 	        {"NpcNameText" : "blank", "text" : "여성은 숲속으로 사라졌다.\n뒤를 따라가보자."}
         ]
    }
-}
+},
 
 {
     "MainStory002_selection" : { 
