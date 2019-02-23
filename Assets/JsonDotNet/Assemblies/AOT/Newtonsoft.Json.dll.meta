@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: d40e85137bc74864a47f42ceddfec228
+guid: 6a3c684705042f345975d924f6983e36
+timeCreated: 1466788352
+licenseType: Store
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -7,14 +9,14 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Android:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
     Any:
       enabled: 0
       settings: {}
     Editor:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
@@ -35,12 +37,16 @@ PluginImporter:
       enabled: 0
       settings:
         CPU: AnyCPU
-    WP8:
-      enabled: 0
+    SamsungTV:
+      enabled: 1
       settings:
-        CPU: AnyCPU
-        DontProcess: False
-        PlaceholderPath: 
+        STV_MODEL: STANDARD_13
+    Tizen:
+      enabled: 1
+      settings: {}
+    WebGL:
+      enabled: 1
+      settings: {}
     Win:
       enabled: 0
       settings:
@@ -50,17 +56,21 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     WindowsStoreApps:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: 
+        PlaceholderPath: Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll
         SDK: AnySDK
+        ScriptingBackend: Il2Cpp
     iOS:
-      enabled: 0
+      enabled: 1
       settings:
         CompileFlags: 
         FrameworkDependencies: 
+    tvOS:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
