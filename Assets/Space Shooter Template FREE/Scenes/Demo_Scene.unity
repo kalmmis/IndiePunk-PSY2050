@@ -161,6 +161,11 @@ PrefabInstance:
       propertyPath: weaponPower
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114642073701102404, guid: 8e33fda0c220936498f5288af83d7450,
+        type: 3}
+      propertyPath: fireRate
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 212419850576164182, guid: 8e33fda0c220936498f5288af83d7450,
         type: 3}
       propertyPath: m_WasSpriteAssigned
