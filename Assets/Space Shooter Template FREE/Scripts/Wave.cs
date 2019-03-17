@@ -57,12 +57,24 @@ public class Wave : MonoBehaviour {
 
     IEnumerator CreateEnemyWave() //depending on chosed parameters generating enemies and defining their parameters
     {
+        System.Random rand = new System.Random();
+        Transform[] pathPositions = new Transform[pathPoints.Length];
+        int coin = (int)rand.Next(11);
+        float glich = (float)rand.NextDouble() * 15;
+        if (coin > 5) glich *= -1.0f;
+
+        for(int j = 0; j < pathPoints.Length; j++){
+            Transform temp = pathPoints[j];
+            temp.position.Set(temp.position.x + glich, temp.position.y, temp.position.z);
+            pathPositions[j] = temp;
+        }
+
         for (int i = 0; i < count; i++) 
         {
             GameObject newEnemy;
             newEnemy = Instantiate(enemy, enemy.transform.position, Quaternion.identity);
             FollowThePath followComponent = newEnemy.GetComponent<FollowThePath>(); 
-            followComponent.path = pathPoints;         
+            followComponent.path = pathPositions;         
             followComponent.speed = speed;        
             followComponent.rotationByPath = rotationByPath;
             followComponent.loop = Loop;
@@ -91,9 +103,16 @@ public class Wave : MonoBehaviour {
     void DrawPath(Transform[] path) //drawing the path in the Editor
     {
         Vector3[] pathPositions = new Vector3[path.Length];
+        System.Random rand = new System.Random();
+        int coin = (int)rand.Next(11);
+        float glich = (float)rand.NextDouble() * 10;
+        if (coin > 5) glich *= -1.0f;
+        
         for (int i = 0; i < path.Length; i++)
         {
-            pathPositions[i] = path[i].position;
+            Vector3 temp = path[i].position;
+            temp.x += glich;
+            pathPositions[i] = temp;
         }
         Vector3[] newPathPositions = CreatePoints(pathPositions);
         Vector3 previosPositions = Interpolate(newPathPositions, 0);

@@ -13,12 +13,23 @@ public class EnemyWaves
     public GameObject wave;
 }
 
+[System.Serializable]
+public class EnemyWave_Indi
+{
+    [Tooltip("time for wave generation from the moment the game started")]
+    public float interval;
+
+    [Tooltip("Enemy wave's prefab")]
+    public GameObject wave;
+}
+
 #endregion
 
 public class LevelController : MonoBehaviour {
 
     //Serializable classes implements
-    public EnemyWaves[] enemyWaves; 
+    public EnemyWaves[] enemyWaves;
+    public EnemyWave_Indi enemyWaves_indi;
 
     public GameObject powerUp;
     public float timeForNewPowerup;
@@ -33,10 +44,11 @@ public class LevelController : MonoBehaviour {
     {
         mainCamera = Camera.main;
         //for each element in 'enemyWaves' array creating coroutine which generates the wave
-        for (int i = 0; i<enemyWaves.Length; i++) 
+        //for (int i = 0; i<20; i++) 
         {
-            StartCoroutine(CreateEnemyWave(enemyWaves[i].timeToStart, enemyWaves[i].wave));
+            
         }
+        StartCoroutine(CreateEnemyWave_indi(enemyWaves_indi.interval, enemyWaves_indi.wave));
         StartCoroutine(PowerupBonusCreation());
         StartCoroutine(PlanetsCreation());
     }
@@ -48,6 +60,20 @@ public class LevelController : MonoBehaviour {
             yield return new WaitForSeconds(delay);
         if (Player.instance != null)
             Instantiate(Wave);
+    }
+
+    IEnumerator CreateEnemyWave_indi(float interval, GameObject Wave)
+    {
+        int i = 0;
+        while (i < 3)
+        {
+            yield return new WaitForSeconds(interval);
+            if (Player.instance != null)
+            {
+                Instantiate(Wave);
+            }
+            i++;
+        }
     }
 
     //endless coroutine generating 'levelUp' bonuses. 
