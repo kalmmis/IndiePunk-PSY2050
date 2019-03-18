@@ -103,15 +103,15 @@ public class Wave : MonoBehaviour {
     void DrawPath(Transform[] path) //drawing the path in the Editor
     {
         Vector3[] pathPositions = new Vector3[path.Length];
-        System.Random rand = new System.Random();
-        int coin = (int)rand.Next(11);
-        float glich = (float)rand.NextDouble() * 10;
-        if (coin > 5) glich *= -1.0f;
+        //System.Random rand = new System.Random();
+        //int coin = (int)rand.Next(11);
+        //float glich = (float)rand.NextDouble() * 10;
+        //if (coin > 5) glich *= -1.0f;
         
         for (int i = 0; i < path.Length; i++)
         {
             Vector3 temp = path[i].position;
-            temp.x += glich;
+            //temp.x += glich;
             pathPositions[i] = temp;
         }
         Vector3[] newPathPositions = CreatePoints(pathPositions);

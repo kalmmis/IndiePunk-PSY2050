@@ -70,6 +70,19 @@ public class LevelController : MonoBehaviour {
             yield return new WaitForSeconds(interval);
             if (Player.instance != null)
             {
+                System.Random rand = new System.Random();
+                int coin = (int)rand.Next(11);
+                float glich = (float)rand.NextDouble() * 15;
+                if (coin > 5) glich *= -1.0f;
+
+                Transform[] arr = Wave.GetComponent<Wave>().pathPoints;
+                int len = arr.Length;
+                for( int j = 0; j < len; j++)
+                {
+                    Debug.Log("1"+arr[j].position.x+" "+ arr[j].position.y + " " + arr[j].position.z);
+                    arr[j].position.Set(arr[j].position.x + 10, arr[j].position.y, arr[j].position.z);
+                    Debug.Log("2" + arr[j].position.x + " " + arr[j].position.y + " " + arr[j].position.z);
+                }
                 Instantiate(Wave);
             }
             i++;

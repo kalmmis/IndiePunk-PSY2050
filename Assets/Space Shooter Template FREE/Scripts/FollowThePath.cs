@@ -21,10 +21,26 @@ public class FollowThePath : MonoBehaviour {
     {
         currentPathPercent = 0;
         pathPositions = new Vector3[path.Length];       //transform path points to vector3
-        for (int i = 0; i < pathPositions.Length; i++)
+        //for (int i = 0; i < pathPositions.Length; i++)
+        //{
+        //    pathPositions[i] = path[i].position;
+        //}
+
+
+        System.Random rand = new System.Random();
+        int coin = (int)rand.Next(11);
+        float glich = (float)rand.NextDouble() * 10;
+        if (coin > 5) glich *= -1.0f;
+
+        for (int i = 0; i < path.Length; i++)
         {
-            pathPositions[i] = path[i].position;
+            Vector3 temp = path[i].position;
+            temp.Set(temp.x + glich , temp.y, temp.z);
+            pathPositions[i] = temp;
         }
+
+
+
         transform.position = NewPositionByPath(pathPositions, 0); //sending the enemy to the path starting point
         if (!rotationByPath)
             transform.rotation = Quaternion.identity;
