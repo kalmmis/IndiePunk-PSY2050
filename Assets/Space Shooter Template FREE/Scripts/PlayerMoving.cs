@@ -45,7 +45,20 @@ public class PlayerMoving : MonoBehaviour {
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
+                mousePosition.Set(mousePosition.x, transform.position.y, mousePosition.z);
                 transform.position = Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                Vector3 newPosition = new Vector3();
+                newPosition.Set(transform.position.x - 0.3f, transform.position.y, transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, newPosition, 30 * Time.deltaTime);
+            }
+            else if(Input.GetKey(KeyCode.D))
+            {
+                Vector3 newPosition = new Vector3();
+                newPosition.Set(transform.position.x + 0.3f, transform.position.y, transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, newPosition, 30 * Time.deltaTime);
             }
 #endif
 
