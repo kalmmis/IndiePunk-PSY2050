@@ -30,7 +30,7 @@ public class LevelController : MonoBehaviour {
     //Serializable classes implements
     public EnemyWaves[] enemyWaves;
     public EnemyWave_Indi enemyWaves_indi;
-
+    public int indeWavesCount;
     public GameObject powerUp;
     public float timeForNewPowerup;
     public GameObject[] planets;
@@ -65,7 +65,7 @@ public class LevelController : MonoBehaviour {
     IEnumerator CreateEnemyWave_indi(float interval, GameObject Wave)
     {
         int i = 0;
-        while (i < 3)
+        while (i < indeWavesCount)
         {
             yield return new WaitForSeconds(interval);
             if (Player.instance != null)
@@ -79,9 +79,7 @@ public class LevelController : MonoBehaviour {
                 int len = arr.Length;
                 for( int j = 0; j < len; j++)
                 {
-                    Debug.Log("1"+arr[j].position.x+" "+ arr[j].position.y + " " + arr[j].position.z);
                     arr[j].position.Set(arr[j].position.x + 10, arr[j].position.y, arr[j].position.z);
-                    Debug.Log("2" + arr[j].position.x + " " + arr[j].position.y + " " + arr[j].position.z);
                 }
                 Instantiate(Wave);
             }
