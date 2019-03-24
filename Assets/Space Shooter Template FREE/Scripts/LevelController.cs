@@ -78,10 +78,11 @@ public class LevelController : MonoBehaviour {
                     arr[j].position.Set(arr[j].position.x + 10, arr[j].position.y, arr[j].position.z);
                 }
                 Instantiate(Wave);
+
             }
             i++;
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(interval);
         Instantiate(bossWave);
     }
 

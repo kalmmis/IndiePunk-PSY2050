@@ -32,6 +32,7 @@ public class Enemy_Boss : MonoBehaviour
     void ActivateShooting()
     {
         Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+        Invoke("ActivateShooting", 3);
     }
 
     //method of getting damage for the 'Enemy'
