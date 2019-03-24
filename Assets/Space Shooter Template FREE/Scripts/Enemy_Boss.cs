@@ -25,7 +25,7 @@ public class Enemy_Boss : MonoBehaviour
 
     private void Start()
     {
-        //Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        Invoke("ActivateShooting",3);
     }
 
     //coroutine making a shot

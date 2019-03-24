@@ -60,7 +60,7 @@ public class Wave : MonoBehaviour {
         System.Random rand = new System.Random();
         Transform[] pathPositions = new Transform[pathPoints.Length];
         int coin = (int)rand.Next(11);
-        float glich = (float)rand.NextDouble() * 15;
+        float glich = (float)rand.NextDouble() * 10;
         if (coin > 5) glich *= -1.0f;
 
         for(int j = 0; j < pathPoints.Length; j++){

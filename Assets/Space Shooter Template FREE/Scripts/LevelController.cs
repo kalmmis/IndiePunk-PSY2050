@@ -31,6 +31,7 @@ public class LevelController : MonoBehaviour {
     public EnemyWaves[] enemyWaves;
     public EnemyWave_Indi enemyWaves_indi;
     public int indeWavesCount;
+    public Boss_Wave bossWave;
     public GameObject powerUp;
     public float timeForNewPowerup;
     public GameObject[] planets;
@@ -43,11 +44,6 @@ public class LevelController : MonoBehaviour {
     private void Start()
     {
         mainCamera = Camera.main;
-        //for each element in 'enemyWaves' array creating coroutine which generates the wave
-        //for (int i = 0; i<20; i++) 
-        {
-            
-        }
         StartCoroutine(CreateEnemyWave_indi(enemyWaves_indi.interval, enemyWaves_indi.wave));
         StartCoroutine(PowerupBonusCreation());
         StartCoroutine(PlanetsCreation());
@@ -85,6 +81,8 @@ public class LevelController : MonoBehaviour {
             }
             i++;
         }
+        yield return new WaitForSeconds(5);
+        Instantiate(bossWave);
     }
 
     //endless coroutine generating 'levelUp' bonuses. 
