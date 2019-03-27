@@ -31,7 +31,8 @@ public class Enemy_Boss : MonoBehaviour
     //coroutine making a shot
     void ActivateShooting()
     {
-        Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+        Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -25));
+        Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 25));
         Invoke("ActivateShooting", 3);
     }
 
