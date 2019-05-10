@@ -164,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 114642073701102404, guid: 8e33fda0c220936498f5288af83d7450,
         type: 3}
       propertyPath: fireRate
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212419850576164182, guid: 8e33fda0c220936498f5288af83d7450,
         type: 3}
@@ -411,6 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
+      propertyPath: enemyList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
       propertyPath: enemyWaves.Array.data[1].timeToStart
       value: 52
       objectReference: {fileID: 0}
@@ -606,6 +611,17 @@ PrefabInstance:
       propertyPath: bossWave
       value: 
       objectReference: {fileID: 7470592523385145452, guid: a71203d30df5af44cacff9b40be0fb90,
+        type: 3}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: enemyList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1373690366928948, guid: fdaaab53a8b4c0143b19d2a2e4007e44,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cf4a33fc66cde4abc060ccfeadeb5a, type: 3}
