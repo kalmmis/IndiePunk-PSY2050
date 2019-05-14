@@ -79,7 +79,8 @@ public class LevelController : MonoBehaviour {
                 if (fd[i - 1].Equals("")) continue;
                 float xPosition = float.Parse(fd[i-1]);
                 string type = fd[i];
-                Instantiate(enemyList[0], new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
+                GameObject enemy = Instantiate(enemyList[0], new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
+                FollowThePath followComponent = enemy.GetComponent<FollowThePath>();
             }
         }
     }

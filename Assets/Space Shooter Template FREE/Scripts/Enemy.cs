@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour {
     [Tooltip("Health points in integer")]
     public int health;
 
-    [Tooltip("Enemy's projectile prefab")]
-    public GameObject Projectile;
+    //[Tooltip("Enemy's projectile prefab")]
+    //public GameObject Projectile;
 
     [Tooltip("VFX prefab generating after destruction")]
     public GameObject destructionVFX;
@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour {
     
     [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
+    [Tooltip("Enemy's pattern prefab")]
+    public List<GameObject> patternList = new List<GameObject>();
     #endregion
 
     private void Start()
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour {
     {
         if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
         {                         
-            Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
+            //Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
         }
     }
 
@@ -51,10 +53,10 @@ public class Enemy : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            if (Projectile.GetComponent<Projectile>() != null)
-                Player.instance.GetDamage(Projectile.GetComponent<Projectile>().damage);
-            else
-                Player.instance.GetDamage(1);
+            //if (Projectile.GetComponent<Projectile>() != null)
+            //    Player.instance.GetDamage(Projectile.GetComponent<Projectile>().damage);
+            //else
+            //    Player.instance.GetDamage(1);
         }
     }
 
