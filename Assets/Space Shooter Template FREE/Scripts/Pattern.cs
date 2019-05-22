@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pattern : MonoBehaviour
 {
+    Projectile p;
+    public float duration;
     // projectile
     // moving
     // duration

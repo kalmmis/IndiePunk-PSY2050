@@ -21,22 +21,30 @@ public class Enemy : MonoBehaviour {
     [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     [Tooltip("Enemy's pattern prefab")]
-    public List<GameObject> patternList = new List<GameObject>();
+    public List<Pattern> patternList = new List<Pattern>();
     #endregion
 
     private void Start()
     {
-        Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        //Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        
     }
-
-    //coroutine making a shot
-    void ActivateShooting() 
+    IEnumerable GetPattern(List<Pattern> patternList)
     {
-        if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
-        {                         
-            //Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
+        foreach (Pattern p in patternList)
+        {
+            yield return new WaitForSeconds(p.duration);
         }
+
     }
+    //coroutine making a shot
+    //void ActivateShooting() 
+    //{
+    //    if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
+    //    {                         
+    //        //Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
+    //    }
+    //}
 
     //method of getting damage for the 'Enemy'
     public void GetDamage(int damage) 
