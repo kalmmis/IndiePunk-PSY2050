@@ -93,6 +93,9 @@ public class PlayerShooting : MonoBehaviour {
 
     void CreateLazerShot(GameObject lazer, Vector3 pos, Vector3 rot) //translating 'pooled' lazer shot to the defined position in the defined rotation
     {
-        Instantiate(lazer, pos, Quaternion.Euler(rot));
+        Instantiate(lazer, pos, Quaternion.Euler(rot)).GetComponent<DirectMoving>().moveFunc = (Transform t) =>
+        {
+            t.Translate(Vector3.up * fireRate * Time.deltaTime);
+        };
     }
 }

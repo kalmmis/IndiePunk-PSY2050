@@ -22,29 +22,39 @@ public class Enemy : MonoBehaviour {
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     [Tooltip("Enemy's pattern prefab")]
     public List<Pattern> patternList = new List<Pattern>();
-    #endregion
+    Pattern pattern;
 
+    #endregion
     private void Start()
     {
-        //Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
-        
+        StartCoroutine(GetPattern());
+        StartCoroutine(ActivateShooting());
     }
-    IEnumerable GetPattern(List<Pattern> patternList)
+    IEnumerator GetPattern()
     {
         foreach (Pattern p in patternList)
         {
+            pattern = p;
             yield return new WaitForSeconds(p.duration);
         }
+        
+    }
 
+    private void Update()
+    {
+        /// Debug.Log(pattern != null);
+        if(pattern != null) { 
+            pattern.Moving(this, 3f);
+        }
     }
     //coroutine making a shot
-    //void ActivateShooting() 
-    //{
-    //    if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
-    //    {                         
-    //        //Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
-    //    }
-    //}
+    IEnumerator ActivateShooting()
+    {
+        while (true) {
+            yield return new WaitForSeconds(pattern.shotTime);
+            pattern.Attack(gameObject);
+        }
+    }
 
     //method of getting damage for the 'Enemy'
     public void GetDamage(int damage) 
@@ -61,10 +71,10 @@ public class Enemy : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            //if (Projectile.GetComponent<Projectile>() != null)
-            //    Player.instance.GetDamage(Projectile.GetComponent<Projectile>().damage);
-            //else
-            //    Player.instance.GetDamage(1);
+            if (pattern.p.GetComponent<Projectile>() != null) 
+              Player.instance.GetDamage(pattern.p.GetComponent<Projectile>().damage);
+            else 
+              Player.instance.GetDamage(1);
         }
     }
 

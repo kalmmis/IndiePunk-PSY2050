@@ -41,9 +41,10 @@ public class LevelController : MonoBehaviour {
     public float planetsSpeed;
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
+    public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
 
     Camera mainCamera;
-    readonly string level1String = "0.5,,,,,,,,,432,DA||1,48,CA,,,,,,,,||0.1,,,,,,,,,432,BX||0.1,,,,,,,,,432,BX||0.1,,,,,,,,,432,BX||0.1,48,BX,,,,,,,,||0.1,48,BX,,,,,,,,||1,48,BX,,,,,,,,||1,,,144,AB,,,336,AB,,||1,48,AA,,,240,AA,,,432,AA||0.1,,,,,,,,,432,AX||0.1,,,,,,,,,432,AX||0.1,,,,,,,,,432,AX||0.1,48,AX,,,,,,,,||0.1,48,AX,,,,,,,,||1,48,AX,,,,,,,,||0.5,48,AA,144,AA,240,AA,336,AA,432,AA";
+    readonly string level1String = "0.5,,,,,,,,,432,ADA||1,48,ACA,,,,,,,,||0.1,,,,,,,,,432,ABX||0.1,,,,,,,,,432,ABX||0.1,,,,,,,,,432,ABX||0.1,48,ABX,,,,,,,,||0.1,48,ABX,,,,,,,,||1,48,ABX,,,,,,,,||1,,,144,AAB,,,336,AAB,,||1,48,AAA,,,240,AAA,,,432,AAA||0.1,,,,,,,,,432,AAX||0.1,,,,,,,,,432,AAX||0.1,,,,,,,,,432,AAX||0.1,48,AAX,,,,,,,,||0.1,48,AAX,,,,,,,,||1,48,AAX,,,,,,,,||0.5,48,AAA,144,AAA,240,AAA,336,AAA,432,AAA";
 
     private void Start()
     {
@@ -64,62 +65,32 @@ public class LevelController : MonoBehaviour {
         IEnumerable<string> rowsEnum = rows.Cast<string>();
         IEnumerable<string[]> rowArrays = rowsEnum.Select(row => row.Split(','));
         string[][] rowsDual = rowArrays.ToArray<string[]>();
-        float y = 0;
+        float y = 24;
         for (int j = rowsDual.Length - 1; j > -1; j--)
         {
-
             string[] fd = rowsDual[j];
             if (fd[0].Equals("")) fd[0] = "1";
-            float yV = float.Parse(fd[0]);
+            float duration = float.Parse(fd[0]);
             
-            y += yV;
-            yield return new WaitForSeconds(yV);
-            //for (int i = 1; i < fd.Length; i += 2) {
+            yield return new WaitForSeconds(duration+2);
             for (int i = fd.Length - 1; i > 0 ; i -= 2) {
                 if (fd[i - 1].Equals("")) continue;
                 float xPosition = float.Parse(fd[i-1]);
                 string type = fd[i];
+                Debug.Log(type);
                 GameObject enemy = Instantiate(enemyList[0], new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
-                FollowThePath followComponent = enemy.GetComponent<FollowThePath>();
+                List<Pattern> pl = enemy.GetComponent<Enemy>().patternList;
+                Pattern newOne = new Pattern();
+                newOne.duration = 3;
+                newOne.attackType = "B";
+                newOne.movingType = "B";
+                newOne.shotTime = 1;
+                newOne.p = Resources.Load<GameObject>("Enemy_Short_Lazer").GetComponent<Projectile>();
+                Debug.Log(newOne.p);
+                pl.Add(newOne);
             }
         }
     }
-    //Create a new wave after a delay
-    //IEnumerator CreateEnemyWave(float delay, GameObject Wave) 
-    //{
-    //    if (delay != 0)
-    //        yield return new WaitForSeconds(delay);
-    //    if (Player.instance != null)
-    //        Instantiate(Wave);
-    //}
-
-    //IEnumerator CreateEnemyWave_indi(float interval, GameObject Wave)
-    //{
-    //    int i = 0;
-    //    while (i < indeWavesCount)
-    //    {
-    //        yield return new WaitForSeconds(interval);
-    //        if (Player.instance != null)
-    //        {
-    //            System.Random rand = new System.Random();
-    //            int coin = (int)rand.Next(11);
-    //            float glich = (float)rand.NextDouble() * 15;
-    //            if (coin > 5) glich *= -1.0f;
-
-    //            Transform[] arr = Wave.GetComponent<Wave>().pathPoints;
-    //            int len = arr.Length;
-    //            for( int j = 0; j < len; j++)
-    //            {
-    //                arr[j].position.Set(arr[j].position.x + 10, arr[j].position.y, arr[j].position.z);
-    //            }
-    //            Instantiate(Wave);
-
-    //        }
-    //        i++;
-    //    }
-    //    yield return new WaitForSeconds(interval);
-    //    Instantiate(bossWave);
-    //}
 
     //endless coroutine generating 'levelUp' bonuses. 
     IEnumerator PowerupBonusCreation() 
