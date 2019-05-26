@@ -28,7 +28,6 @@ public class EnemyWave_Indi
 #endregion
 
 public class LevelController : MonoBehaviour {
-
     //Serializable classes implements
     public EnemyWaves[] enemyWaves;
     public EnemyWave_Indi enemyWaves_indi;
@@ -37,6 +36,9 @@ public class LevelController : MonoBehaviour {
     public GameObject powerUp;
     public float timeForNewPowerup;
     public GameObject[] planets;
+    public Player player;
+    public int playerLife;
+    public float invincibleTime;
     public float timeBetweenPlanets;
     public float planetsSpeed;
     List<GameObject> planetsList = new List<GameObject>();
@@ -49,10 +51,19 @@ public class LevelController : MonoBehaviour {
     private void Start()
     {
         mainCamera = Camera.main;
+        StartPlayer();
         StartLevel();
-        //StartCoroutine(CreateEnemyWave_indi(enemyWaves_indi.interval, enemyWaves_indi.wave));
-        //StartCoroutine(PowerupBonusCreation());
-        //StartCoroutine(PlanetsCreation());
+    }
+    public void StartPlayer()
+    {
+        StartCoroutine(InitPlayer(1f));
+    }
+    public IEnumerator InitPlayer(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        Player p = Instantiate(player, new Vector3(0,-5), Quaternion.identity);
+        p.isInvincible = true;
+        StartCoroutine(p.RemoveInvincible(invincibleTime));
     }
     public void StartLevel()
     {
@@ -60,7 +71,7 @@ public class LevelController : MonoBehaviour {
     }
     IEnumerator StringParser(string str)
     {
-        char[] splitter = { '\n'};
+        char[] splitter = { '\n' };
         string[] rows = str.Split(splitter);
         Debug.Log(rows[0]);
         IEnumerable<string> rowsEnum = rows.Cast<string>();
@@ -132,4 +143,7 @@ public class LevelController : MonoBehaviour {
     //        yield return new WaitForSeconds(timeBetweenPlanets);
     //    }
     //}
+    /*
+             
+*/
 }

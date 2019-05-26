@@ -28,10 +28,10 @@ public class PlayerShooting : MonoBehaviour {
     public int weaponPower = 1; 
 
     public Guns guns;
-    bool shootingIsActive = true; 
+    bool ShootingIsActive = true; 
     [HideInInspector] public int maxweaponPower = 4; 
     public static PlayerShooting instance;
-
+    Player playerScript;
     private void Awake()
     {
         if (instance == null)
@@ -43,11 +43,12 @@ public class PlayerShooting : MonoBehaviour {
         guns.leftGunVFX = guns.leftGun.GetComponent<ParticleSystem>();
         guns.rightGunVFX = guns.rightGun.GetComponent<ParticleSystem>();
         guns.centralGunVFX = guns.centralGun.GetComponent<ParticleSystem>();
+        playerScript = gameObject.GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (shootingIsActive)
+        if (ShootingIsActive && playerScript.isAttackMode)
         {
             if (Time.time > nextFire)
             {

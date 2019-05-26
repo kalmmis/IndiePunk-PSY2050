@@ -10,7 +10,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;
-
+    public bool isInvincible;
+    public bool isAttackMode;
     public static Player instance; 
 
     private void Awake()
@@ -22,7 +23,8 @@ public class Player : MonoBehaviour
     //method for damage proceccing by 'Player'
     public void GetDamage(int damage)   
     {
-        Destruction();
+        if(!isInvincible)
+            Destruction();
     }    
 
     //'Player's' destruction procedure
@@ -30,6 +32,21 @@ public class Player : MonoBehaviour
     {
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
         Destroy(gameObject);
+        LevelController lc = GameObject.FindObjectOfType<LevelController>();
+        if (lc.playerLife > 0)
+        {
+            lc.playerLife--;
+            lc.StartPlayer();
+        }
+        else
+        {
+            Debug.Log("Game Over");
+        }
+    }
+    public IEnumerator RemoveInvincible(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        isInvincible = false;
     }
 }
 

@@ -22,7 +22,7 @@ public class PlayerMoving : MonoBehaviour {
     bool controlIsActive = true; 
 
     public static PlayerMoving instance; //unique instance of the script for easy access to the script
-
+    Player playerScript;
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +32,7 @@ public class PlayerMoving : MonoBehaviour {
     private void Start()
     {
         mainCamera = Camera.main;
+        playerScript = gameObject.GetComponent<Player>();
         ResizeBorders();                //setting 'Player's' moving borders deending on Viewport's size
     }
 
@@ -45,10 +46,16 @@ public class PlayerMoving : MonoBehaviour {
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
-                mousePosition.Set(mousePosition.x, transform.position.y, mousePosition.z);
-                transform.position = Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
+                if(playerScript.isAttackMode) mousePosition.y = transform.position.y;
+                mousePosition.Set(mousePosition.x, mousePosition.y, mousePosition.z);
+                transform.position = mousePosition;//Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
+                playerScript.isAttackMode = true;
             }
-            else if (Input.GetKey(KeyCode.A))
+            if (Input.GetMouseButtonUp(0))
+            {
+                playerScript.isAttackMode = false;
+            }
+           /* else if (Input.GetKey(KeyCode.A))
             {
                 Vector3 newPosition = new Vector3();
                 newPosition.Set(transform.position.x - 0.3f, transform.position.y, transform.position.z);
@@ -59,7 +66,7 @@ public class PlayerMoving : MonoBehaviour {
                 Vector3 newPosition = new Vector3();
                 newPosition.Set(transform.position.x + 0.3f, transform.position.y, transform.position.z);
                 transform.position = Vector3.MoveTowards(transform.position, newPosition, 30 * Time.deltaTime);
-            }
+            }*/
 #endif
 
 #if UNITY_IOS || UNITY_ANDROID //if current platform is mobile, 
