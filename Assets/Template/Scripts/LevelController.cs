@@ -44,7 +44,7 @@ public class LevelController : MonoBehaviour {
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
 
     Camera mainCamera;
-    readonly string level1String = "0.5,,,,,,,,,432,ADA||1,48,ACA,,,,,,,,||0.1,,,,,,,,,432,ABX||0.1,,,,,,,,,432,ABX||0.1,,,,,,,,,432,ABX||0.1,48,ABX,,,,,,,,||0.1,48,ABX,,,,,,,,||1,48,ABX,,,,,,,,||1,,,144,AAB,,,336,AAB,,||1,48,AAA,,,240,AAA,,,432,AAA||0.1,,,,,,,,,432,AAX||0.1,,,,,,,,,432,AAX||0.1,,,,,,,,,432,AAX||0.1,48,AAX,,,,,,,,||0.1,48,AAX,,,,,,,,||1,48,AAX,,,,,,,,||0.5,48,AAA,144,AAA,240,AAA,336,AAA,432,AAA";
+    
 
     private void Start()
     {
@@ -56,12 +56,13 @@ public class LevelController : MonoBehaviour {
     }
     public void StartLevel()
     {
-        StartCoroutine(StringParser(level1String));
+        StartCoroutine(StringParser(ExcelParser.GetLevel(1)));
     }
     IEnumerator StringParser(string str)
     {
-        char[] splitter = { '|', '|'};
-        string[] rows = level1String.Split(splitter);
+        char[] splitter = { '\n'};
+        string[] rows = str.Split(splitter);
+        Debug.Log(rows[0]);
         IEnumerable<string> rowsEnum = rows.Cast<string>();
         IEnumerable<string[]> rowArrays = rowsEnum.Select(row => row.Split(','));
         string[][] rowsDual = rowArrays.ToArray<string[]>();
@@ -78,15 +79,10 @@ public class LevelController : MonoBehaviour {
                 float xPosition = float.Parse(fd[i-1]);
                 string type = fd[i];
                 Debug.Log(type);
-                GameObject enemy = Instantiate(enemyList[0], new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
+                GameObject enemyRscr = Resources.Load<GameObject>("Enemies/" + type.Substring(0, 1));
+                GameObject enemy = Instantiate(enemyRscr, new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
                 List<Pattern> pl = enemy.GetComponent<Enemy>().patternList;
-                Pattern newOne = new Pattern();
-                newOne.duration = 3;
-                newOne.attackType = "B";
-                newOne.movingType = "B";
-                newOne.shotTime = 1;
-                newOne.p = Resources.Load<GameObject>("Enemy_Short_Lazer").GetComponent<Projectile>();
-                Debug.Log(newOne.p);
+                Pattern newOne = new Pattern(type.Substring(0, 1), type.Substring(1, 1), type.Substring(2, 1), type.Substring(4, 3));
                 pl.Add(newOne);
             }
         }

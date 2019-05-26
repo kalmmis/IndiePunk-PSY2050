@@ -15,6 +15,7 @@ TagManager:
   - PlayerRay
   - Rocket
   - EnemyBoss
+  - Boundary
   layers:
   - Default
   - TransparentFX

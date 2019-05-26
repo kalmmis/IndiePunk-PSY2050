@@ -20,8 +20,8 @@ public class Boundary : MonoBehaviour {
     void ResizeCollider() 
     {        
         Vector2 viewportSize = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)) * 2;
-        viewportSize.x *= 1.5f;
-        viewportSize.y *= 1.5f;
+        viewportSize.x *= 1f;
+        viewportSize.y *= 0.7f;
         boundareCollider.size = viewportSize;
     }
 
@@ -33,7 +33,9 @@ public class Boundary : MonoBehaviour {
             Destroy(collision.gameObject);
         }
         else if (collision.tag == "Bonus") 
-            Destroy(collision.gameObject); 
+            Destroy(collision.gameObject);
+        else if (collision.tag == "Enemy")
+            Destroy(collision.gameObject);
     }
 
 }

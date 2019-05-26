@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour {
     IEnumerator ActivateShooting()
     {
         while (true) {
-            yield return new WaitForSeconds(pattern.shotTime);
+            yield return new WaitForSeconds(pattern.shotTime/60);
             pattern.Attack(gameObject);
         }
     }
@@ -75,6 +75,12 @@ public class Enemy : MonoBehaviour {
               Player.instance.GetDamage(pattern.p.GetComponent<Projectile>().damage);
             else 
               Player.instance.GetDamage(1);
+        }
+        if (collision.tag == "Boundary")
+        {
+            //if (pattern.p.GetComponent<Projectile>() != null)
+            //    Player.instance.GetDamage(pattern.p.GetComponent<Projectile>().damage);
+            //else
         }
     }
 
