@@ -57,6 +57,7 @@ public class Pattern : ScriptableObject
     {
         Projectile newP;
         Projectile newP2;
+        Projectile newP3;
         Player target;
         switch (attackType)
         {
@@ -114,6 +115,7 @@ public class Pattern : ScriptableObject
                 target = GameObject.FindObjectOfType<Player>();
                 if (target == null) { Destroy(target); return; };
                 v = new Vector3(0, 0, 0);
+               
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     if (target != null && v.Equals(new Vector3(0, 0, 0)))
@@ -132,30 +134,56 @@ public class Pattern : ScriptableObject
                         v = new Vector3(x1, y1);
                     }
                     t.Translate(v * 5f * Time.deltaTime);                 };
+               
+                Vector3 v2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
-                    Transform targetTransform = target.GetComponent<Transform>();
-                    float x = targetTransform.position.x - t.position.x;
-                    float y = targetTransform.position.y - t.position.y;
-                    d = (float)Math.Sqrt(0.5d);
-                    bool isXneg = x < 0;
-                    bool isYneg = y < 0;
-                    float a = y / x;
-                    float x1 = (float)Math.Sqrt(Math.Abs(1 / (a * a + 1)))+d;
-                    float y1 = (float)Math.Sqrt(Math.Abs(a * a / (a * a + 1)));
-                    x1 = isXneg && x1 > 0 ? -x1 : x1;
-                    y1 = isYneg && y1 > 0 ? -y1 : y1;
-                    v = new Vector3(x1, y1);
-                    //d = (float)Math.Sqrt(0.5d);
-                    //Vector3 v2 = new Vector3(-d, 0, 0);
-                    //v = v + v2;
-                    t.Translate(v * 5f * Time.deltaTime);
+                    if (target != null && v2.Equals(new Vector3(0, 0, 0)))
+                    {
+                        Transform targetTransform = target.GetComponent<Transform>();
+                        float x = targetTransform.position.x - t.position.x;
+                        float y = targetTransform.position.y - t.position.y;
+                        bool isXneg = x < 0;
+                        bool isYneg = y < 0;
+                        float a = y / x;
+                        double arcTan = Math.Atan(a);
+                        double sumangle;
+                        sumangle = arcTan >= 135 ? arcTan + 45 - 180 : arcTan + 45;
+                        double back2Tan = Math.Tan(sumangle);
+
+                        float x1 = (float)Math.Sqrt(Math.Abs(1 / (back2Tan * back2Tan + 1)));
+                        float y1 = (float)Math.Sqrt(Math.Abs(back2Tan * back2Tan / (back2Tan * back2Tan + 1)));
+                        x1 = isXneg && x1 > 0 ? -x1 : x1;
+                        y1 = isYneg && y1 > 0 ? -y1 : y1;
+                        v2 = new Vector3(x1, y1);
+                    }
+                    t.Translate(v2 * 5f * Time.deltaTime);
                 };
-                //float d2 = (float)Math.Sqrt(0.5d);
-                //Vector3 vectorC = new Vector3(0, 0, 0);
-                //Vector3 vectorC2 = new Vector3(d2, d2, 0);
-                //Vector3 vectorC3 = new Vector3(-d2, -d2, 0);
-                
+
+                Vector3 vC3 = new Vector3(0, 0, 0);
+                newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
+                newP3.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
+                    if (target != null && vC3.Equals(new Vector3(0, 0, 0)))
+                    {
+                        Transform targetTransform = target.GetComponent<Transform>();
+                        float x = targetTransform.position.x - t.position.x;
+                        float y = targetTransform.position.y - t.position.y;
+                        bool isXneg = x < 0;
+                        bool isYneg = y < 0;
+                        float a = y / x;
+                        double arcTan = Math.Atan(a);
+                        double subangle;
+                        subangle = arcTan <= 45 ? arcTan - 45 + 180 : arcTan - 45;
+                        double back2Tan = Math.Tan(subangle);
+
+                        float x1 = (float)Math.Sqrt(Math.Abs(1 / (back2Tan * back2Tan + 1)));
+                        float y1 = (float)Math.Sqrt(Math.Abs(back2Tan * back2Tan / (back2Tan * back2Tan + 1)));
+                        x1 = isXneg && x1 > 0 ? -x1 : x1;
+                        y1 = isYneg && y1 > 0 ? -y1 : y1;
+                        vC3 = new Vector3(x1, y1);
+                    }
+                    t.Translate(vC3 * 5f * Time.deltaTime);
+                };
                 break;
             case "X":
                 break;
