@@ -41,6 +41,7 @@ public class LevelController : MonoBehaviour {
     public float invincibleTime;
     public float timeBetweenPlanets;
     public float planetsSpeed;
+    public bool isTest;
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
@@ -52,7 +53,7 @@ public class LevelController : MonoBehaviour {
     {
         mainCamera = Camera.main;
         StartPlayer();
-        StartLevel();
+        if(!isTest)StartLevel();
     }
     public void StartPlayer()
     {

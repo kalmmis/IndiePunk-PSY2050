@@ -23608,7 +23608,7 @@ GameObject:
   - component: {fileID: 1827067098}
   - component: {fileID: 1827067097}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23651,6 +23651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionFX: {fileID: 1587261729604890, guid: 600ec83cba1cec448bf41a6607229741,
     type: 3}
+  isInvincible: 1
+  isAttackMode: 0
 --- !u!114 &1827067101
 MonoBehaviour:
   m_ObjectHideFlags: 0
