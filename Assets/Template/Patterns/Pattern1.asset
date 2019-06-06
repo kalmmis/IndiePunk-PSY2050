@@ -16,4 +16,4 @@ MonoBehaviour:
   movingType: X
   attackType: C
   duration: 5
-  shotTime: 60
+  shotTime: 20

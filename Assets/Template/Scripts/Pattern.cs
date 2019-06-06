@@ -73,31 +73,7 @@ public class Pattern : ScriptableObject
                 Vector3 v = new Vector3(0,0,0);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                 {
-                    if (target != null && v.Equals(new Vector3(0, 0, 0)))
-                    {
-                        /*
-                         항상 백터크기를 1로 하는 방법
-                         기울기a 는 a=(y2-y1)/(x2-x1);
-                         vector의 크기를 항상 n로 하기 위해서는 위 ax=y에서 x^2+y^2 = n^2이 되어야한다.
-                         n=1 일때를 기준으로 
-                         Math.Sqrt = 제곱근 구하는 함수.
-                         x1 = (float) Math.Sqrt(Math.Abs(1/(a*a+1)));
-                         y1 = (float) Math.Sqrt(Math.Abs(a*a/(a*a+1)));
-                         이된다.
-                         한편 x1과 y1은 절대값이므로 초기 x와 y의 양수/음수 구분을 기록해 뒀다가 마지막에 양수음수를 맞춰줘야한다.
-                         */
-                        Transform targetTransform = target.GetComponent<Transform>();
-                        float x = targetTransform.position.x - t.position.x ;
-                        float y = targetTransform.position.y - t.position.y ;
-                        bool isXneg = x < 0;
-                        bool isYneg = y < 0;
-                        float a = y / x;
-                        float x1 = (float) Math.Sqrt(Math.Abs(1/(a*a+1)));
-                        float y1 = (float) Math.Sqrt(Math.Abs(a*a/(a*a+1)));
-                        x1 = isXneg && x1 > 0 ? -x1 : x1;
-                        y1 = isYneg && y1 > 0 ? -y1 : y1;
-                        v = new Vector3(x1, y1);
-                    }
+                    v = GetVector3ToPlayer(t, target, v);
                     t.Translate(v * 5f * Time.deltaTime);
                 };
                 break;
@@ -120,118 +96,61 @@ public class Pattern : ScriptableObject
                
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
-                    if (target != null && v.Equals(new Vector3(0, 0, 0)))
-                    {
-                        Transform targetTransform = target.GetComponent<Transform>();
-                        float x = targetTransform.position.x - t.position.x;
-                        float y = targetTransform.position.y - t.position.y;
-                        bool isXneg = x < 0;
-                        bool isYneg = y < 0;
-                        float a = y / x;
-                        float x1 = (float)Math.Sqrt(Math.Abs(1 / (a * a + 1)));
-                        float y1 = (float)Math.Sqrt(Math.Abs(a * a / (a * a + 1)));
-                        x1 = isXneg && x1 > 0 ? -x1 : x1;
-                        y1 = isYneg && y1 > 0 ? -y1 : y1;
-                        //Debug.Log("proj1 xy, x : " + x1 + " y : " + y1);
-                        v = new Vector3(x1, y1);
-                    }
+                    v = GetVector3ToPlayer(t, target, v);
                     t.Translate(v * 5f * Time.deltaTime);                 };
                 Vector3 projectileVector2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
-                    if (target != null && projectileVector2.Equals(new Vector3(0, 0, 0)))
-                    {
-                        bool isXNegative = v.x < 0;
-                        float tan = v.y / v.x;
-                        double dgr45Rad = 45 * (Math.PI / 180);
-                        double rad = Math.Atan(tan);
-                        Debug.Log("Origin Rad : " + rad + " | Origin Sin : "+Math.Sin(rad)+ " | Origin Cos : " + Math.Cos(rad));
-                        rad -= dgr45Rad;
-                        if (isXNegative)
-                        {
-                            if (rad > Math.PI / 2)
-                            {
-                                isXNegative = false;
-                            }
-                        }
-                        else
-                        {
-                            if (rad < -(Math.PI / 2))
-                            {
-                                isXNegative = true;
-                            }
-                        }
-                        Debug.Log("2nd Rad : " + rad + " | 2nd Sin : " + Math.Sin(rad) + " | 2nd Cos : " + Math.Cos(rad));
-                        //Debug.Log("Sin "+arc+ ":"+Math.Sin(nRad) + "| COS " + arc + ":" + Math.Cos(nRad));
-                        //projectileVector2 = new Vector3(isXNegative ? -1f * (float)Math.Cos(rad): (float)Math.Cos(rad),  (float)Math.Sin(rad));
-                        projectileVector2 = new Vector3(isXNegative ? -1f * (float)Math.Cos(rad) : (float)Math.Cos(rad), (float)Math.Sin(rad));
-
-                    }
+                    projectileVector2 = GetVectorRotated(t, target, 45f, v, projectileVector2);
                     t.Translate(projectileVector2 * 5f * Time.deltaTime);
+
+
                 };
-                //Vector3 projectileVector3 = new Vector3(0, 0, 0);
-                //newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
-                //newP3.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 //{
-                //    if (target != null && projectileVector3.Equals(new Vector3(0, 0, 0)))
-                //    {
-                //        projectileVector3 = new Vector3(v.y, -1f * v.x);
-                //    }
-                //    t.Translate(projectileVector3 * 5f * Time.deltaTime);
-                //};
-                //Vector3 v2 = new Vector3(0, 0, 0);
-                //newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
-                //newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 //{
-                //    if (target != null && v2.Equals(new Vector3(0, 0, 0)))
-                //    {
-                //        Transform targetTransform = target.GetComponent<Transform>();
-                //        float x = targetTransform.position.x - t.position.x;
-                //        float y = targetTransform.position.y - t.position.y;
-                //        bool isXneg = x < 0;
-                //        bool isYneg = y < 0;
-                //        float a = y / x;
-                //        double arcTan = Math.Atan(a);
-                //        double sumangle;
-                //        sumangle = arcTan >= 135 ? arcTan + 45 - 180 : arcTan + 45;
-                //        double back2Tan = Math.Tan(sumangle);
-
-                //        float x1 = (float)Math.Sqrt(Math.Abs(1 / (back2Tan * back2Tan + 1)));
-                //        float y1 = (float)Math.Sqrt(Math.Abs(back2Tan * back2Tan / (back2Tan * back2Tan + 1)));
-                //        x1 = isXneg && x1 > 0 ? -x1 : x1;
-                //        y1 = isYneg && y1 > 0 ? -y1 : y1;
-                //        v2 = new Vector3(x1, y1);
-                //    }
-                //    t.Translate(v2 * 5f * Time.deltaTime);
-                //};
-
-                //Vector3 vC3 = new Vector3(0, 0, 0);
-                //newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
-                //newP3.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 //{
-                //    if (target != null && vC3.Equals(new Vector3(0, 0, 0)))
-                //    {
-                //        Transform targetTransform = target.GetComponent<Transform>();
-                //        float x = targetTransform.position.x - t.position.x;
-                //        float y = targetTransform.position.y - t.position.y;
-                //        bool isXneg = x < 0;
-                //        bool isYneg = y < 0;
-                //        float a = y / x;
-                //        double arcTan = Math.Atan(a);
-                //        double subangle;
-                //        subangle = arcTan <= 45 ? arcTan - 45 + 180 : arcTan - 45;
-                //        double back2Tan = Math.Tan(subangle);
-
-                //        float x1 = (float)Math.Sqrt(Math.Abs(1 / (back2Tan * back2Tan + 1)));
-                //        float y1 = (float)Math.Sqrt(Math.Abs(back2Tan * back2Tan / (back2Tan * back2Tan + 1)));
-                //        x1 = isXneg && x1 > 0 ? -x1 : x1;
-                //        y1 = isYneg && y1 > 0 ? -y1 : y1;
-                //        vC3 = new Vector3(x1, y1);
-                //    }
-                //    t.Translate(vC3 * 5f * Time.deltaTime);
-                //};
-                break;
+                Vector3 projectileVector3 = new Vector3(0, 0, 0);
+                newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
+                newP3.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
+                {
+                    projectileVector3 = GetVectorRotated(t, target, -45f, v, projectileVector3);
+                    t.Translate(projectileVector3 * 5f * Time.deltaTime);
+                };                 break;
             case "X":
                 break;
             default:
                 throw new Exception("No Attack Type");
         }
+    }
+    Vector3 GetVector3ToPlayer(Transform t, Player target, Vector3 v)
+    {
+        if (target != null && v.Equals(new Vector3(0, 0, 0)))
+        {
+            Transform targetTransform = target.GetComponent<Transform>();
+            float x = targetTransform.position.x - t.position.x;
+            float y = targetTransform.position.y - t.position.y;
+            bool isXneg = x < 0;
+            bool isYneg = y < 0;
+            float a = y / x;
+            float x1 = (float)Math.Sqrt(Math.Abs(1 / (a * a + 1)));
+            float y1 = (float)Math.Sqrt(Math.Abs(a * a / (a * a + 1)));
+            x1 = isXneg && x1 > 0 ? -x1 : x1;
+            y1 = isYneg && y1 > 0 ? -y1 : y1;
+            return new Vector3(x1, y1);
+        }
+        return v;
+    }
+    Vector3 GetVectorRotated(Transform t, Player target, float angle,Vector3 originV, Vector3 rotatedV)
+    {
+        if (target != null && rotatedV.Equals(new Vector3(0, 0, 0)))
+        {
+            float radians = angle * Mathf.Deg2Rad;
+            float sin = Mathf.Sin(radians);
+            float cos = Mathf.Cos(radians);
+
+            float tx = originV.x;
+            float ty = originV.y;
+
+            rotatedV = new Vector3(cos * tx - sin * ty, sin * tx + cos * ty);
+            return rotatedV;
+        }
+        return rotatedV;
     }
 }
