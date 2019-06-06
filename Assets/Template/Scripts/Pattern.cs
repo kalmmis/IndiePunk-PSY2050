@@ -26,7 +26,7 @@ public class Pattern : ScriptableObject
         switch(movingType)
         {
             case "A" :
-                parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
+                parent.transform.Translate(Vector3.down * speed * 2f * Time.deltaTime);
                 break;
             case "B":                 GameObject target = GameObject.Find("Player");                 //플레이어가 없으면 쫒아갈 것도 없음                 if (target == null) { Destroy(target); return; };
                 Vector3 v = new Vector3(0, 0, 0);
@@ -74,7 +74,7 @@ public class Pattern : ScriptableObject
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 5f * Time.deltaTime);
+                    t.Translate(v * 10f * Time.deltaTime);
                 };
                 break;
             case "B":
@@ -85,7 +85,7 @@ public class Pattern : ScriptableObject
                     newP = Instantiate(p, go.transform.position, Quaternion.identity);
                     newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                     {
-                        t.Translate(vector * 5f * Time.deltaTime);
+                        t.Translate(vector * 10f * Time.deltaTime);
                     };
                 }
                 break;
@@ -97,12 +97,12 @@ public class Pattern : ScriptableObject
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 5f * Time.deltaTime);                 };
+                    t.Translate(v * 10f * Time.deltaTime);                 };
                 Vector3 projectileVector2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     projectileVector2 = GetVectorRotated(t, target, 45f, v, projectileVector2);
-                    t.Translate(projectileVector2 * 5f * Time.deltaTime);
+                    t.Translate(projectileVector2 * 10f * Time.deltaTime);
 
 
                 };
@@ -111,7 +111,7 @@ public class Pattern : ScriptableObject
                 newP3.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                 {
                     projectileVector3 = GetVectorRotated(t, target, -45f, v, projectileVector3);
-                    t.Translate(projectileVector3 * 5f * Time.deltaTime);
+                    t.Translate(projectileVector3 * 10f * Time.deltaTime);
                 };                 break;
             case "X":
                 break;
