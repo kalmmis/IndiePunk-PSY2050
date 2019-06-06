@@ -29,6 +29,7 @@ public class Pattern : ScriptableObject
         {
             case "A" :
                 parent.transform.Translate(Vector3.down * speed * 2f * Time.deltaTime);
+                //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;
             case "B":                 GameObject target = GameObject.Find("Player(Clone)");                 //플레이어가 없으면 쫒아갈 것도 없음                 if (target == null) { Destroy(target); return; };
                 Vector3 v = new Vector3(0, 0, 0);
@@ -48,25 +49,25 @@ public class Pattern : ScriptableObject
                         y1 = -1;//isYneg && y1 > 0 ? -y1 : y1;
                         v = new Vector3(x1, y1);
                     }
-                parent.transform.Translate(v * 5f * Time.deltaTime);
+                parent.transform.Translate(v * 2f * speed * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;             case "C":                 dash = new Vector3(0, 0, 0);
-                dash = GetVectorRotated(30f, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(30f, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
             case "D":
                 dash = new Vector3(0, 0, 0);
-                dash = GetVectorRotated(-30f, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(-30f, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
             case "E":                 dash = new Vector3(0, 0, 0);
                 maxAngle = 75f;
                 minAngle = 5f;
                 newAngle = minAngle + Math.Pow(1.01f, Time.frameCount - showUpTime);
                 if (newAngle > maxAngle) newAngle = maxAngle;
-                dash = GetVectorRotated((float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated((float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
             case "F":                 dash = new Vector3(0, 0, 0);
                 maxAngle = 75f;
                 minAngle = 5f;
                 newAngle = minAngle + Math.Pow(1.01f, Time.frameCount - showUpTime);
                 if (newAngle > maxAngle) newAngle = maxAngle;
-                dash = GetVectorRotated(-1f * (float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(-1f * (float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
             case "X": //테스트용
                 break;
             default:
@@ -92,7 +93,7 @@ public class Pattern : ScriptableObject
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 10f * Time.deltaTime);
+                    t.Translate(v * 8f * Time.deltaTime);
                 };
                 break;
             case "B":
@@ -103,7 +104,7 @@ public class Pattern : ScriptableObject
                     newP = Instantiate(p, go.transform.position, Quaternion.identity);
                     newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                     {
-                        t.Translate(vector * 10f * Time.deltaTime);
+                        t.Translate(vector * 8f * Time.deltaTime);
                     };
                 }
                 break;
@@ -115,7 +116,7 @@ public class Pattern : ScriptableObject
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 10f * Time.deltaTime);                 };
+                    t.Translate(v * 8f * Time.deltaTime);                 };
                 Vector3 projectileVector2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
@@ -123,7 +124,7 @@ public class Pattern : ScriptableObject
                     {
                         projectileVector2 = GetVectorRotated(45f, v, projectileVector2);
                     }
-                    t.Translate(projectileVector2 * 10f * Time.deltaTime);
+                    t.Translate(projectileVector2 * 8f * Time.deltaTime);
                 };
                 Vector3 projectileVector3 = new Vector3(0, 0, 0);
                 newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
@@ -133,7 +134,7 @@ public class Pattern : ScriptableObject
                     {
                         projectileVector3 = GetVectorRotated(-45f, v, projectileVector2);
                     }
-                    t.Translate(projectileVector3 * 10f * Time.deltaTime);
+                    t.Translate(projectileVector3 * 8f * Time.deltaTime);
                 };                 break;
             case "X":
                 break;
