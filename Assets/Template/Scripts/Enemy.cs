@@ -23,12 +23,10 @@ public class Enemy : MonoBehaviour {
     [Tooltip("Enemy's pattern prefab")]
     public List<Pattern> patternList = new List<Pattern>();
     Pattern pattern;
-    int showUpTime;
 
     #endregion
     private void Start()
     {
-        showUpTime = Time.frameCount;
         StartCoroutine(GetPattern());
         StartCoroutine(ActivateShooting());
         health = 5;
@@ -47,7 +45,7 @@ public class Enemy : MonoBehaviour {
     {
         /// Debug.Log(pattern != null);
         if(pattern != null) { 
-            pattern.Moving(this, 3f, showUpTime);
+            pattern.Moving(this, 3f);
         }
     }
     //coroutine making a shot
