@@ -21,18 +21,21 @@ public class Projectile : MonoBehaviour {
     {
         if (enemyBullet && collision.tag == "Player") //if anoter object is 'player' or 'enemy sending the command of receiving the damage
         {
+            damage = 1;
             Player.instance.GetDamage(damage); 
             if (destroyedByCollision)
                 Destruction();
         }
         else if (!enemyBullet && collision.tag == "Enemy")
         {
+            damage = 1;
             collision.GetComponent<Enemy>().GetDamage(damage);
             if (destroyedByCollision)
                 Destruction();
         }
         else if (!enemyBullet && collision.tag == "EnemyBoss")
         {
+            damage = 1;
             collision.GetComponent<Enemy_Boss>().GetDamage(damage);
             if (destroyedByCollision)
                 Destruction();

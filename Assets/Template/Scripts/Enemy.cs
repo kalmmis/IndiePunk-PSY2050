@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour {
     {
         StartCoroutine(GetPattern());
         StartCoroutine(ActivateShooting());
+        health = 5;
     }
     IEnumerator GetPattern()
     {
