@@ -51,22 +51,22 @@ public class Pattern : ScriptableObject
                 parent.transform.Translate(v * 5f * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;             case "C":                 dash = new Vector3(0, 0, 0);
-                dash = GetVectorRotated(30f, Vector3.down, dash);                 parent.transform.Translate(dash * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(30f, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
             case "D":
                 dash = new Vector3(0, 0, 0);
-                dash = GetVectorRotated(-30f, Vector3.down, dash);                 parent.transform.Translate(dash * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(-30f, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
             case "E":                 dash = new Vector3(0, 0, 0);
                 maxAngle = 75f;
                 minAngle = 5f;
                 newAngle = minAngle + Math.Pow(1.01f, Time.frameCount - showUpTime);
                 if (newAngle > maxAngle) newAngle = maxAngle;
-                dash = GetVectorRotated((float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated((float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
             case "F":                 dash = new Vector3(0, 0, 0);
                 maxAngle = 75f;
                 minAngle = 5f;
                 newAngle = minAngle + Math.Pow(1.01f, Time.frameCount - showUpTime);
                 if (newAngle > maxAngle) newAngle = maxAngle;
-                dash = GetVectorRotated(-1f * (float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * speed * Time.deltaTime);                 break;
+                dash = GetVectorRotated(-1f * (float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 5f * speed * Time.deltaTime);                 break;
             case "X": //테스트용
                 break;
             default:
