@@ -96,7 +96,7 @@ public class PlayerShooting : MonoBehaviour {
     {
         Instantiate(lazer, pos, Quaternion.Euler(rot)).GetComponent<DirectMoving>().moveFunc = (Transform t) =>
         {
-            t.Translate(Vector3.up * fireRate * Time.deltaTime);
+            t.Translate(Vector3.up * 5f * fireRate * Time.deltaTime);
         };
     }
 }
