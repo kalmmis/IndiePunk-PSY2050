@@ -68,6 +68,16 @@ public class Pattern : ScriptableObject
                 newAngle = minAngle + Math.Pow(1.01f, Time.frameCount - showUpTime);
                 if (newAngle > maxAngle) newAngle = maxAngle;
                 dash = GetVectorRotated(-1f * (float)newAngle, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
+            case "G":
+                dash = new Vector3(0, 0, 0);
+                Transform parentTransformG = parent.GetComponent<Transform>();
+                float yAxis = parentTransformG.position.y;
+                float maxAxis = 12f;
+                if (yAxis > maxAxis) {
+                    parent.transform.Translate(Vector3.down * speed * 2f * Time.deltaTime);
+                    //Debug.Log(yAxis);
+                };
+                break;
             case "X": //테스트용
                 break;
             default:
