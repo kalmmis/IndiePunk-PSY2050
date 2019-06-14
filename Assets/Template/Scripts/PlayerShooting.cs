@@ -24,8 +24,10 @@ public class PlayerShooting : MonoBehaviour {
 
 
     [Tooltip("current weapon power")]
+    public int weaponUpgradeIntervalOfFrame;
     [Range(1, 4)]       //change it if you wish
-    public int weaponPower = 1; 
+    [HideInInspector] public int weaponPower = 1;
+    [HideInInspector] public int startAttackTimestamp;
 
     public Guns guns;
     bool ShootingIsActive = true; 
@@ -54,10 +56,19 @@ public class PlayerShooting : MonoBehaviour {
             {
                 MakeAShot();                                                         
                 nextFire = Time.time + 1 / fireRate;
+                Debug.Log("Time.framecount " + Time.frameCount + " attack timestamp startAttackTimestamp "+ startAttackTimestamp);
+                if ((Time.frameCount - startAttackTimestamp) > weaponUpgradeIntervalOfFrame && weaponPower < 4)
+                {
+                    startAttackTimestamp = Time.frameCount;
+                    weaponPower += 1;
+                }
             }
         }
     }
-
+    public void ResetWeaponPower()
+    {
+        weaponPower = 1;
+    }
     //method for a shot
     void MakeAShot() 
     {
@@ -74,20 +85,26 @@ public class PlayerShooting : MonoBehaviour {
                 guns.rightGunVFX.Play();
                 break;
             case 3:
-                CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
+                CreateLazerShot(projectileObject, guns.rightGun.transform.position, Vector3.zero);
+                CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
+                guns.centralGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -5));
                 guns.leftGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 5));
                 guns.rightGunVFX.Play();
                 break;
             case 4:
-                CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
+                CreateLazerShot(projectileObject, guns.rightGun.transform.position, Vector3.zero);
+                CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
+                guns.centralGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -5));
+                CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -15));
                 guns.leftGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 5));
-                guns.rightGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 15));
-                CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -15));
+
+                guns.rightGunVFX.Play();
+
                 break;
         }
     }

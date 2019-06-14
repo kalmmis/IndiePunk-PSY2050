@@ -23,6 +23,7 @@ public class PlayerMoving : MonoBehaviour {
 
     public static PlayerMoving instance; //unique instance of the script for easy access to the script
     Player playerScript;
+    PlayerShooting playerShootingScript;
     private void Awake()
     {
         if (instance == null)
@@ -33,6 +34,8 @@ public class PlayerMoving : MonoBehaviour {
     {
         mainCamera = Camera.main;
         playerScript = gameObject.GetComponent<Player>();
+        playerShootingScript = gameObject.GetComponent<PlayerShooting>();
+
         ResizeBorders();                //setting 'Player's' moving borders deending on Viewport's size
     }
 
@@ -50,10 +53,13 @@ public class PlayerMoving : MonoBehaviour {
                 mousePosition.Set(mousePosition.x, mousePosition.y, mousePosition.z);
                 transform.position = mousePosition;//Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
                 playerScript.isAttackMode = true;
+                if(playerShootingScript.startAttackTimestamp == 0) playerShootingScript.startAttackTimestamp = Time.frameCount;
             }
             if (Input.GetMouseButtonUp(0))
             {
                 playerScript.isAttackMode = false;
+                playerShootingScript.startAttackTimestamp = 0;
+                playerShootingScript.ResetWeaponPower();
             }
            /* else if (Input.GetKey(KeyCode.A))
             {
