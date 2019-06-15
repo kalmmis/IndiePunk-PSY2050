@@ -82,6 +82,8 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(5);
         Debug.Log("Time scale"+Time.timeScale);
         Time.timeScale = 0;
+        yield return new WaitForSeconds(5);
+        Time.timeScale = 1;
     }
     public void ShowStageUI()
     {
