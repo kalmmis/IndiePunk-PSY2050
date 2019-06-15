@@ -51,6 +51,8 @@ public class LevelController : MonoBehaviour {
 
     private void Start()
     {
+        GameObject ui = GameObject.FindGameObjectWithTag("UI");
+        ui.SetActive(false);
         mainCamera = Camera.main;
         StartPlayer();
         if(!isTest)StartLevel();
@@ -69,7 +71,15 @@ public class LevelController : MonoBehaviour {
     public void StartLevel()
     {
         StartCoroutine(StringParser(ExcelParser.GetLevel(1)));
+        StartCoroutine(StopTheWorld());
     }
+    IEnumerator StopTheWorld()
+    {
+        yield return new WaitForSeconds(5);
+        Debug.Log("Time scale"+Time.timeScale);
+        Time.timeScale = 0;
+    }
+
     IEnumerator StringParser(string str)
     {
         char[] splitter = { '\n' };
