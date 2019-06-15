@@ -103,7 +103,7 @@ public class Pattern : ScriptableObject
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 8f * Time.deltaTime);
+                    t.Translate(v * 12f * Time.deltaTime);
                 };
                 break;
             case "B":
@@ -114,7 +114,7 @@ public class Pattern : ScriptableObject
                     newP = Instantiate(p, go.transform.position, Quaternion.identity);
                     newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                     {
-                        t.Translate(vector * 8f * Time.deltaTime);
+                        t.Translate(vector * 12f * Time.deltaTime);
                     };
                 }
                 break;
@@ -126,7 +126,7 @@ public class Pattern : ScriptableObject
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     v = GetVector3ToPlayer(t, target, v);
-                    t.Translate(v * 8f * Time.deltaTime);                 };
+                    t.Translate(v * 12f * Time.deltaTime);                 };
                 Vector3 projectileVector2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP2.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
@@ -134,7 +134,7 @@ public class Pattern : ScriptableObject
                     {
                         projectileVector2 = GetVectorRotated(45f, v, projectileVector2);
                     }
-                    t.Translate(projectileVector2 * 8f * Time.deltaTime);
+                    t.Translate(projectileVector2 * 12f * Time.deltaTime);
                 };
                 Vector3 projectileVector3 = new Vector3(0, 0, 0);
                 newP3 = Instantiate(p, go.transform.position, Quaternion.identity);
@@ -144,7 +144,7 @@ public class Pattern : ScriptableObject
                     {
                         projectileVector3 = GetVectorRotated(-45f, v, projectileVector2);
                     }
-                    t.Translate(projectileVector3 * 8f * Time.deltaTime);
+                    t.Translate(projectileVector3 * 12f * Time.deltaTime);
                 };                 break;
             case "X":
                 break;

@@ -14366,7 +14366,7 @@ MonoBehaviour:
   projectileObject: {fileID: 1413877261856170, guid: 7120694aa5e8a9d4a88b1e61228dabb0,
     type: 3}
   nextFire: 0
-  weaponUpgradeIntervalOfFrame: 240
+  weaponUpgradeIntervalOfFrame: 180
   weaponPower: 1
   startAttackTimestamp: 0
   guns:
@@ -14376,7 +14376,7 @@ MonoBehaviour:
     leftGunVFX: {fileID: 0}
     rightGunVFX: {fileID: 0}
     centralGunVFX: {fileID: 0}
-  maxweaponPower: 4
+  maxweaponPower: 2
 --- !u!212 &1827067099
 SpriteRenderer:
   m_ObjectHideFlags: 0

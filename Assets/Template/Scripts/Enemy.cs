@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
         showUpTime = Time.frameCount;
         StartCoroutine(GetPattern());
         StartCoroutine(ActivateShooting());
-        health = 5;
+        health = 10;
     }
     IEnumerator GetPattern()
     {
@@ -54,8 +54,8 @@ public class Enemy : MonoBehaviour {
     IEnumerator ActivateShooting()
     {
         while (true) {
-            yield return new WaitForSeconds(pattern.shotTime/60);
             pattern.Attack(gameObject);
+            yield return new WaitForSeconds(pattern.shotTime/60);
         }
     }
 

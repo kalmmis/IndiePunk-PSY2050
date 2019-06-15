@@ -49,7 +49,7 @@ public class PlayerMoving : MonoBehaviour {
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
-                if(playerScript.isAttackMode) mousePosition.y = transform.position.y;
+                //if(playerScript.isAttackMode) mousePosition.y = transform.position.y;
                 mousePosition.Set(mousePosition.x, mousePosition.y, mousePosition.z);
                 transform.position = mousePosition;//Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
                 playerScript.isAttackMode = true;
