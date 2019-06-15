@@ -43,6 +43,7 @@ public class LevelController : MonoBehaviour {
     public float timeBetweenPlanets;
     public float planetsSpeed;
     public bool isTest;
+    public bool wantStopTheWorld = false; //should be removed before release
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
@@ -75,7 +76,7 @@ public class LevelController : MonoBehaviour {
     public void StartLevel()
     {
         StartCoroutine(StringParser(ExcelParser.GetLevel(1)));
-        StartCoroutine(StopTheWorld());
+        if(wantStopTheWorld) StartCoroutine(StopTheWorld());
     }
     IEnumerator StopTheWorld()
     {
