@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Game Over");
+            lc.Invoke("ShowGameOverUI", 2);
         }
     }
     public IEnumerator RemoveInvincible(float delay)

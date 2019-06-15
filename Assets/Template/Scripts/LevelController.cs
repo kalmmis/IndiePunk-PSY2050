@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 using System;
 
@@ -47,7 +48,10 @@ public class LevelController : MonoBehaviour {
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
 
     Camera mainCamera;
-    
+    private Text stageText;
+    private GameObject stageImage;
+    private Text gameoverText;
+    private GameObject gameoverImage;
 
     private void Start()
     {
@@ -69,8 +73,29 @@ public class LevelController : MonoBehaviour {
     public void StartLevel()
     {
         StartCoroutine(StringParser(ExcelParser.GetLevel(1)));
+        Invoke("ShowStageUI", 2);
     }
-    IEnumerator StringParser(string str)
+    public void ShowStageUI()
+    {
+        int level = 1; // 나중에 값 받아와야징
+        stageImage = GameObject.Find("UIImageStage");
+        stageText = GameObject.Find("UITextStage").GetComponent<Text>();
+        stageText.text = "Stage" + level;
+
+        stageImage.SetActive(true);
+        Invoke("HideStageUI", 2);
+    }
+    public void HideStageUI()
+    {
+        stageText.text = "";
+    }
+    public void ShowGameOverUI()
+    {
+        gameoverImage = GameObject.Find("UIImageGameOver");
+        gameoverText = GameObject.Find("UITextStage").GetComponent<Text>();
+        gameoverText.text = "Game Over";
+    }
+        IEnumerator StringParser(string str)
     {
         char[] splitter = { '\n' };
         string[] rows = str.Split(splitter);
