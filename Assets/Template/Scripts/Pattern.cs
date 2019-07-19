@@ -89,6 +89,7 @@ public class Pattern : ScriptableObject
         Projectile newP;
         Projectile newP2;
         Projectile newP3;
+        Projectile lazerP;
         Player target;
         switch (attackType)
         {
@@ -146,6 +147,14 @@ public class Pattern : ScriptableObject
                     }
                     t.Translate(projectileVector3 * 12f * Time.deltaTime);
                 };                 break;
+            case "D":
+                v = Vector3.right;
+                    newP = Instantiate(p, go.transform.position, Quaternion.identity);
+                    newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
+                    {
+                        t.Translate(v * 100f * Time.deltaTime);
+                    };
+                break;
             case "X":
                 break;
             default:

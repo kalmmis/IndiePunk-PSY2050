@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour {
     //[Tooltip("Enemy's projectile prefab")]
     //public GameObject Projectile;
 
+    //public string attackType;
+
     [Tooltip("VFX prefab generating after destruction")]
     public GameObject destructionVFX;
     public GameObject hitEffect;
@@ -54,10 +56,18 @@ public class Enemy : MonoBehaviour {
     IEnumerator ActivateShooting()
     {
         while (true) {
-            pattern.Attack(gameObject);
-            yield return new WaitForSeconds(pattern.shotTime/60);
-        }
-    }
+            if (pattern.attackType == "D")
+            {
+                pattern.Attack(gameObject);
+                yield return new WaitForSeconds(pattern.shotTime / 360);
+            }
+            else
+            {
+                pattern.Attack(gameObject);
+                yield return new WaitForSeconds(pattern.shotTime / 60);
+            }
+        }   
+     }
 
     //method of getting damage for the 'Enemy'
     public void GetDamage(int damage) 

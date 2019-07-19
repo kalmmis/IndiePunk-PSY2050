@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour {
     [Tooltip("Whether the projectile belongs to the ‘Enemy’ or to the ‘Player’")]
     public bool enemyBullet;
 
+    [Tooltip("Define What kind of the projectiles")]
+    public string projectileType;
+
     [Tooltip("Whether the projectile is destroyed in the collision, or not")]
     public bool destroyedByCollision;
 
