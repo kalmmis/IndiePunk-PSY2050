@@ -12,6 +12,9 @@ public class Pattern : ScriptableObject
     public float shotTime;
     delegate void moving();
 
+    Enemy enemy;
+   
+
     public Pattern() { }
     public Pattern(string _pName, string _movingType, string _attackType,  string _shotTimeString)
     {
@@ -89,7 +92,6 @@ public class Pattern : ScriptableObject
         Projectile newP;
         Projectile newP2;
         Projectile newP3;
-        Projectile lazerP;
         Player target;
         switch (attackType)
         {
@@ -148,18 +150,35 @@ public class Pattern : ScriptableObject
                     t.Translate(projectileVector3 * 12f * Time.deltaTime);
                 };                 break;
             case "D":
-                v = Vector3.right;
-                    newP = Instantiate(p, go.transform.position, Quaternion.identity);
-                    newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
+                v = Vector3.down;
+                Vector3 positionGo = go.transform.position;
+                Vector3 addX = new Vector3(10, 0, 0);
+                Vector3 adjustedpositionGo = positionGo + addX;
+
+                //if (enemy.isActiveFire)
+                {
+                    Projectile oneP = Instantiate(p, adjustedpositionGo, Quaternion.identity);
+                    oneP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                     {
-                        t.Translate(v * 100f * Time.deltaTime);
+                        t.Translate(v * 6f * Time.deltaTime);
                     };
-                break;
+                    // enemy.isActiveFire = false;
+                    go.GetComponent<Enemy>().onDestroyExecutionList.Add(oneP.gameObject);
+                }
+                /*if (!enemy.isAlive)
+                {
+                    DestroyProjectile(p);
+                }*/
+                    break;
             case "X":
                 break;
             default:
                 throw new Exception("No Attack Type");
         }
+    }
+    public void DestroyProjectile(Projectile p)
+    {
+        Destroy(p);
     }
     Vector3 GetVector3ToPlayer(Transform t, Player target, Vector3 v)
     {
@@ -192,4 +211,11 @@ public class Pattern : ScriptableObject
         rotatedV = new Vector3(cos * tx - sin * ty, sin * tx + cos * ty);
         return rotatedV;
     }
+
+    /*Vector3 GetVectorAddX(Vector3 addV)
+    {
+        Transform originVTransform = go.GetComponent<Transform>();
+        float x = originVTransform.position.x + addV.position.x;
+        return calculatedV;
+    }*/
 }

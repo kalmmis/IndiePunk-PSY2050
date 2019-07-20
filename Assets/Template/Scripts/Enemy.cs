@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour {
     #region FIELDS
     [Tooltip("Health points in integer")]
     public int health;
+    public bool isAlive = true;
+    public bool isActiveFire = true;
 
     //[Tooltip("Enemy's projectile prefab")]
     //public GameObject Projectile;
@@ -26,7 +28,9 @@ public class Enemy : MonoBehaviour {
     public List<Pattern> patternList = new List<Pattern>();
     Pattern pattern;
     int showUpTime;
+    public List<GameObject> onDestroyExecutionList = new List<GameObject>();
 
+    public Enemy() { }
     #endregion
     private void Start()
     {
@@ -59,7 +63,7 @@ public class Enemy : MonoBehaviour {
             if (pattern.attackType == "D")
             {
                 pattern.Attack(gameObject);
-                yield return new WaitForSeconds(pattern.shotTime / 360);
+                yield return new WaitForSeconds(pattern.shotTime / 60);
             }
             else
             {
@@ -74,9 +78,12 @@ public class Enemy : MonoBehaviour {
     {
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
+        {
             Destruction();
+            isAlive = false;
+        }
         else
-            Instantiate(hitEffect,transform.position,Quaternion.identity,transform);
+            Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
     }    
 
     //if 'Enemy' collides 'Player', 'Player' gets the damage equal to projectile's damage value
@@ -98,9 +105,14 @@ public class Enemy : MonoBehaviour {
     }
 
     //method of destroying the 'Enemy'
-    void Destruction()                           
-    {        
-        Instantiate(destructionVFX, transform.position, Quaternion.identity); 
+    void Destruction()
+    {
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        foreach(GameObject obj in onDestroyExecutionList)
+        {
+            Destroy(obj);
+        }
         Destroy(gameObject);
     }
+    
 }
