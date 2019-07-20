@@ -12,7 +12,6 @@ public class Pattern : ScriptableObject
     public float shotTime;
     delegate void moving();
 
-    Enemy enemy;
    
 
     public Pattern() { }
@@ -31,7 +30,7 @@ public class Pattern : ScriptableObject
         switch (movingType)
         {
             case "A" :
-                parent.transform.Translate(Vector3.down * speed * 2f * Time.deltaTime);
+                parent.transform.Translate(Vector3.down * speed * 4f * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;
             case "B":                 GameObject target = GameObject.Find("Player(Clone)");                 //플레이어가 없으면 쫒아갈 것도 없음                 if (target == null) { Destroy(target); return; };
@@ -52,7 +51,7 @@ public class Pattern : ScriptableObject
                         y1 = -1;//isYneg && y1 > 0 ? -y1 : y1;
                         v = new Vector3(x1, y1);
                     }
-                parent.transform.Translate(v * 2f * speed * Time.deltaTime);
+                parent.transform.Translate(v * 4f * speed * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;             case "C":                 dash = new Vector3(0, 0, 0);
                 dash = GetVectorRotated(30f, Vector3.down, dash);                 parent.transform.Translate(dash * 3f * speed * Time.deltaTime);                 break;
@@ -149,26 +148,26 @@ public class Pattern : ScriptableObject
                     }
                     t.Translate(projectileVector3 * 12f * Time.deltaTime);
                 };                 break;
+
             case "D":
                 v = Vector3.down;
                 Vector3 positionGo = go.transform.position;
-                Vector3 addX = new Vector3(10, 0, 0);
-                Vector3 adjustedpositionGo = positionGo + addX;
+                Vector3 adjustX = new Vector3(4, 0, 0);
+                Vector3 adjustedPosition;
+                
+                //Debug.Log(positionGo.x);
+                if (positionGo.x < 0) adjustedPosition = positionGo + adjustX;
+                else adjustedPosition = positionGo - adjustX;
 
-                //if (enemy.isActiveFire)
                 {
-                    Projectile oneP = Instantiate(p, adjustedpositionGo, Quaternion.identity);
+                    Projectile oneP = Instantiate(p, adjustedPosition, Quaternion.identity);
                     oneP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
                     {
-                        t.Translate(v * 6f * Time.deltaTime);
+                        t.Translate(v * 12f * Time.deltaTime);
                     };
                     // enemy.isActiveFire = false;
                     go.GetComponent<Enemy>().onDestroyExecutionList.Add(oneP.gameObject);
                 }
-                /*if (!enemy.isAlive)
-                {
-                    DestroyProjectile(p);
-                }*/
                     break;
             case "X":
                 break;

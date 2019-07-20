@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour {
     #region FIELDS
     [Tooltip("Health points in integer")]
     public int health;
-    public bool isAlive = true;
-    public bool isActiveFire = true;
 
     //[Tooltip("Enemy's projectile prefab")]
     //public GameObject Projectile;
@@ -30,14 +28,17 @@ public class Enemy : MonoBehaviour {
     int showUpTime;
     public List<GameObject> onDestroyExecutionList = new List<GameObject>();
 
-    public Enemy() { }
     #endregion
     private void Start()
     {
         showUpTime = Time.frameCount;
         StartCoroutine(GetPattern());
         StartCoroutine(ActivateShooting());
-        health = 10;
+        if (pattern.attackType == "D")
+        {
+            health = 20;
+        }
+        else health = 10;
     }
     IEnumerator GetPattern()
     {
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour {
             if (pattern.attackType == "D")
             {
                 pattern.Attack(gameObject);
-                yield return new WaitForSeconds(pattern.shotTime / 60);
+                yield return new WaitForSeconds(360);
             }
             else
             {
@@ -80,7 +81,6 @@ public class Enemy : MonoBehaviour {
         if (health <= 0)
         {
             Destruction();
-            isAlive = false;
         }
         else
             Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
