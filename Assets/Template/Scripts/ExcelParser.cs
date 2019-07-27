@@ -5,13 +5,14 @@ using System.IO;
 
 public class ExcelParser : MonoBehaviour
 {
-    static string m_resourcePath = "Assets/Resources/level";
-    public static string GetLevel(int i)
+    static string m_resourcePath = "Assets/Resources";
+
+    public static string GetResource(string type, int i)
     {
-        FileStream f = new FileStream(m_resourcePath+i+".csv", FileMode.Open, FileAccess.Read)  ;
+        string additionalPath = "level".Equals(type) ? "/level" : "/dialog";
+        FileStream f = new FileStream(m_resourcePath + additionalPath + i + ".csv", FileMode.Open, FileAccess.Read);
         StreamReader reader = new StreamReader(f, System.Text.Encoding.UTF8);
-        string stageStr =reader.ReadToEnd();
+        string stageStr = reader.ReadToEnd();
         return stageStr;
     }
-
 }

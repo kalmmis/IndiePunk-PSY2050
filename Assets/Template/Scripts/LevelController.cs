@@ -47,17 +47,17 @@ public class LevelController : MonoBehaviour {
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
-
+    
     Camera mainCamera;
     private Text stageText;
     private GameObject stageImage;
     private Text gameoverText;
     private GameObject gameoverImage;
-
+    private GameObject UI;
     private void Start()
     {
-        GameObject ui = GameObject.FindGameObjectWithTag("UI");
-        ui.SetActive(false);
+        UI = GameObject.FindGameObjectWithTag("UI");
+        UI.SetActive(false);
         mainCamera = Camera.main;
         StartPlayer();
         if(!isTest)StartLevel();
@@ -75,7 +75,7 @@ public class LevelController : MonoBehaviour {
     }
     public void StartLevel()
     {
-        StartCoroutine(StringParser(ExcelParser.GetLevel(1)));
+        StartCoroutine(StringParser(ExcelParser.GetResource("level", 1), ExcelParser.GetResource("dialog", 1)));
         if(wantStopTheWorld) StartCoroutine(StopTheWorld());
     }
     IEnumerator StopTheWorld()
@@ -106,33 +106,180 @@ public class LevelController : MonoBehaviour {
         gameoverText = GameObject.Find("UITextStage").GetComponent<Text>();
         gameoverText.text = "Game Over";
     }
-    IEnumerator StringParser(string str) {
+    IEnumerator StringParser(string levelStr, string dialogs) {
         Invoke("ShowStageUI", 2);
     
         char[] splitter = { '\n' };
-        string[] rows = str.Split(splitter);
-        Debug.Log(rows[0]);
-        IEnumerable<string> rowsEnum = rows.Cast<string>();
-        IEnumerable<string[]> rowArrays = rowsEnum.Select(row => row.Split(','));
-        string[][] rowsDual = rowArrays.ToArray<string[]>();
-        float y = 24;
-        for (int j = rowsDual.Length - 1; j > -1; j--)
+        string[] levelRows = levelStr.Split(splitter);
+        string[] dialogRows = dialogs.Split(splitter);
+
+        IEnumerable<string> dialogRowsEnum = dialogRows.Cast<string>();
+        IEnumerable<string[]> dialogRowArrays = dialogRowsEnum.Select(row => row.Split(','));
+        string[][] dialogRowsDual = dialogRowArrays.ToArray<string[]>();
+        Dictionary<string, int> dialogBook = new Dictionary<string, int>();
+        for(int i =0; i < dialogRowsDual.Length; i++)
         {
-            string[] fd = rowsDual[j];
+            string[] row = dialogRowsDual[i];
+            if (row.Length == 1) continue;
+            if (!"".Equals(row[0]))
+            {
+                dialogBook.Add(row[0], i);
+            }
+            else if ("event".Equals(row[1]) && "route".Equals(row[2]))
+            {
+                dialogBook.Add(row[3], i);
+            }
+            else if (row[1].Contains("select") && "end".Equals(row[2]))
+            {
+                dialogBook.Add(row[1], i);
+            }
+        }
+
+
+        IEnumerable<string> levelRowsEnum = levelRows.Cast<string>();
+        IEnumerable<string[]> levelRowArrays = levelRowsEnum.Select(row => row.Split(','));
+        string[][] levelRowsDual = levelRowArrays.ToArray<string[]>();
+        float y = 24;
+
+        //levelRows
+        for (int j = levelRowsDual.Length - 1; j > -1; j--)
+        {
+            Debug.Log(levelRows[j]);
+            string[] fd = levelRowsDual[j];
             if (fd[0].Equals("")) fd[0] = "1";
             float duration = float.Parse(fd[0]);
             
             yield return new WaitForSeconds(duration+2);
-            for (int i = fd.Length - 1; i > 0 ; i -= 2) {
+            for (int i = fd.Length - 1; i > 0; i -= 2) {
                 if (fd[i - 1].Equals("")) continue;
-                float xPosition = float.Parse(fd[i-1]);
-                string type = fd[i];
-                Debug.Log(type);
-                GameObject enemyRscr = Resources.Load<GameObject>("Enemies/" + type.Substring(0, 1));
-                GameObject enemy = Instantiate(enemyRscr, new Vector3(((xPosition - 216) / 24),y ), Quaternion.identity);
-                List<Pattern> pl = enemy.GetComponent<Enemy>().patternList;
-                Pattern newOne = new Pattern(type.Substring(0, 1), type.Substring(1, 1), type.Substring(2, 1), type.Substring(4, 3));
-                pl.Add(newOne);
+                if (fd[1].Contains("load"))
+                {
+                    UI.SetActive(true);
+                    //stop the world!
+                    string[] loadRow = fd[1].Split('=');
+                    string dialogId = loadRow[1];
+                    int index = dialogBook[dialogId];
+                    while (true)
+                    {
+                        string[] row = dialogRowsDual[index];
+                        Debug.Log(row[1]);
+                        if ("event".Equals(row[1]))
+                        {
+                            if (row[2].Contains("end"))
+                            {
+                                //대화끝
+                                UI.SetActive(false);
+                                break;
+                            }
+                            else if (row[2].Contains("show"))
+                            {
+                                //표시하기
+                                string[] showParam = row[2].Split(' ');
+                                string fileName = showParam[1];
+                                string position = row[3];
+
+                                //getFile
+                                Debug.Log(position);
+                                //Resources.Load<Sprite>("Assets/Resources/" + fileName);
+                                //setFileToPositoin
+                                if ("left".Equals(position))
+                                {
+                                    Debug.Log("Left changed : "+ fileName);
+                                    Image left = UI.transform.Find("Left").GetComponent<Image>();
+                                    left.sprite = Resources.Load<Sprite>("Image/" + fileName) as Sprite;
+                                }
+                                else
+                                {
+                                    Debug.Log("Right changed : "+ fileName);
+                                    Image right = UI.transform.Find("Right").GetComponent<Image>();
+                                    right.sprite = Resources.Load<Sprite>("Image/" + fileName) as Sprite;
+                                }
+                            }
+                            else if (row[2].Contains("play_se"))
+                            {
+                                //음악플레이
+                            }
+                            else if (row[2].Contains("move"))
+                            {
+                                //해당 루트로 이동
+                                //index = dialogBook[row[3]];
+                                //continue;
+                            }
+                            else if (row[2].Contains("route"))
+                            {
+                                //다음행으로 갈것
+                                //암것도 안해도 됨
+                            }
+
+                            yield return new WaitForSeconds(1);
+
+                        }
+                        else if ("l".Equals(row[1]))
+                        {
+                            //대사표시
+                            UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
+                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3];
+                            yield return new WaitForSeconds(1);
+
+                        }
+                        else if (row[1].Contains("select"))
+                        {
+                            if (!"end".Equals(row[2]))
+                            {
+                                GameObject buttons = UI.transform.Find("Buttons").gameObject;
+                                GameObject button1 = buttons.transform.Find("Button1").gameObject;
+                                GameObject button2 = buttons.transform.Find("Button2").gameObject;
+                                GameObject button3 = buttons.transform.Find("Button3").gameObject;
+
+
+                                GameObject[] btnArr = new GameObject[] { button1, button2, button3 };
+
+                                button1.SetActive(false);
+                                button2.SetActive(false);
+                                button3.SetActive(false);
+                                buttons.SetActive(true);
+
+                                int endIndex = dialogBook[row[1]];
+                                for (int h = index; h <= endIndex; h++)
+                                {
+                                    string[] searching = dialogRowsDual[h];
+                                    if (row[1].Equals(searching[1]) && searching[2].Contains("choice"))
+                                    {
+                                        int btnIndex = Int32.Parse("" + searching[2][searching[2].Length - 1]);
+                                        Debug.Log(btnIndex);
+
+                                        Debug.Log(btnArr[btnIndex - 1]);
+                                        Debug.Log(btnArr.Length);
+                                        btnArr[btnIndex - 1].transform.Find("Text").GetComponent<Text>().text = searching[3];
+                                    }
+                                }
+                                button1.SetActive(true);
+                                button2.SetActive(true);
+                                button3.SetActive(true);
+
+                                yield return new WaitForSeconds(5);
+                                buttons.SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(1);
+                        }
+                        index++;   
+                    }
+                }
+                else
+                {
+                    float xPosition = float.Parse(fd[i - 1]);
+                    string type = fd[i];
+                    Debug.Log(type);
+                    GameObject enemyRscr = Resources.Load<GameObject>("Enemies/" + type.Substring(0, 1));
+                    GameObject enemy = Instantiate(enemyRscr, new Vector3(((xPosition - 216) / 24), y), Quaternion.identity);
+                    List<Pattern> pl = enemy.GetComponent<Enemy>().patternList;
+                    Pattern newOne = new Pattern(type.Substring(0, 1), type.Substring(1, 1), type.Substring(2, 1), type.Substring(4, 3));
+                    pl.Add(newOne);
+                }
+
             }
         }
     }
