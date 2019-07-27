@@ -128,6 +128,7 @@ public class Pattern : ScriptableObject
                 newP = Instantiate(p, go.transform.position, Quaternion.identity);
                 newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>                 {
                     v = GetVector3ToPlayer(t, target, v);
+                    //v = Vector3.Normalize(v);
                     t.Translate(v * 12f * Time.deltaTime);                 };
                 Vector3 projectileVector2 = new Vector3(0, 0, 0);
                 newP2 = Instantiate(p, go.transform.position, Quaternion.identity);
@@ -135,6 +136,7 @@ public class Pattern : ScriptableObject
                     if(target != null && projectileVector2.Equals(new Vector3(0, 0, 0)))
                     {
                         projectileVector2 = GetVectorRotated(45f, v, projectileVector2);
+                        //projectileVector2 = Vector3.Normalize(projectileVector2);
                     }
                     t.Translate(projectileVector2 * 12f * Time.deltaTime);
                 };
@@ -145,6 +147,7 @@ public class Pattern : ScriptableObject
                     if (target != null && projectileVector3.Equals(new Vector3(0, 0, 0)))
                     {
                         projectileVector3 = GetVectorRotated(-45f, v, projectileVector2);
+                        //projectileVector3 = Vector3.Normalize(projectileVector3);
                     }
                     t.Translate(projectileVector3 * 12f * Time.deltaTime);
                 };                 break;

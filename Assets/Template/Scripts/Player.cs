@@ -10,8 +10,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;
+    public GameObject timeslowEFX;
     public bool isInvincible;
     public bool isAttackMode;
+
+    PlayerShooting playerShootingScript;
+
     public static Player instance; 
 
     private void Awake()
@@ -31,6 +35,8 @@ public class Player : MonoBehaviour
     void Destruction()
     {
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
+        playerShootingScript = gameObject.GetComponent<PlayerShooting>();
+        playerShootingScript.ShootingIsActive = false;
         Destroy(gameObject);
         LevelController lc = GameObject.FindObjectOfType<LevelController>();
         if (lc.playerLife > 0)

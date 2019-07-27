@@ -30,8 +30,8 @@ public class PlayerShooting : MonoBehaviour {
     [HideInInspector] public int startAttackTimestamp;
 
     public Guns guns;
-    bool ShootingIsActive = true; 
-    public int maxweaponPower = 2; 
+    public bool ShootingIsActive = true; 
+    public int maxweaponPower = 4; 
     public static PlayerShooting instance;
     Player playerScript;
     private void Awake()
@@ -69,6 +69,12 @@ public class PlayerShooting : MonoBehaviour {
     public void ResetWeaponPower()
     {
         weaponPower = 1;
+        startAttackTimestamp = 0;
+        Invoke("TimeReset", 0.15f);
+    }
+    public void TimeReset()
+    {
+        Time.timeScale = 1f;
     }
     //method for a shot
     void MakeAShot() 
@@ -78,34 +84,44 @@ public class PlayerShooting : MonoBehaviour {
             case 1:
                 CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
                 guns.centralGunVFX.Play();
+                Time.timeScale = 1f;
                 break;
+
             case 2:
-                CreateLazerShot(projectileObject, guns.rightGun.transform.position, Vector3.zero);
+                CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
                 guns.leftGunVFX.Play();
-                CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
-                guns.rightGunVFX.Play();
+                /*CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
+                guns.rightGunVFX.Play();*/
+                Instantiate(playerScript.timeslowEFX, transform.position, Quaternion.identity);
+                Time.timeScale = 0.8f;
                 break;
             case 3:
+                CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
+                guns.leftGunVFX.Play();
+                //CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
+
+                /*CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, Vector3.zero);
-                CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
                 guns.centralGunVFX.Play();
-                CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -3));
+                
                 guns.leftGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 3));
-                guns.rightGunVFX.Play();
+                guns.rightGunVFX.Play(); */
+                Time.timeScale = 0.6f;
                 break;
             case 4:
+                CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
+                guns.leftGunVFX.Play();
+                /*CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, Vector3.zero);
-                CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
                 guns.centralGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -3));
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -5));
                 guns.leftGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 3));
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 5));
-
-                guns.rightGunVFX.Play();
-
+                guns.rightGunVFX.Play();*/
+                Time.timeScale = 0.5f;
                 break;
         }
     }
