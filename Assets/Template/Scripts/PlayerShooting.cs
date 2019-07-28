@@ -92,6 +92,7 @@ public class PlayerShooting : MonoBehaviour {
                 guns.leftGunVFX.Play();
                 /*CreateLazerShot(projectileObject, guns.leftGun.transform.position, Vector3.zero);
                 guns.rightGunVFX.Play();*/
+                if(playerScript != null)
                 Instantiate(playerScript.timeslowEFX, transform.position, Quaternion.identity);
                 Time.timeScale = 0.8f;
                 break;

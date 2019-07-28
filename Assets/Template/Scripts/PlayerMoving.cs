@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 /// <summary>
 /// This script defines the borders of ‘Player’s’ movement. Depending on the chosen handling type, it moves the ‘Player’ together with the pointer.
 /// </summary>
@@ -45,7 +45,7 @@ public class PlayerMoving : MonoBehaviour {
         {
 #if UNITY_STANDALONE || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
 
-            if (Input.GetMouseButton(0)) //if mouse button was pressed       
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) //if mouse button was pressed       
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;

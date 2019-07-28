@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using UnityEngine.EventSystems;
 
 #region Serializable classes
 [System.Serializable]
@@ -47,20 +48,22 @@ public class LevelController : MonoBehaviour {
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
-    
+
     Camera mainCamera;
     private Text stageText;
     private GameObject stageImage;
     private Text gameoverText;
     private GameObject gameoverImage;
     private GameObject UI;
+    private Boolean clicked = false;
+
     private void Start()
     {
         UI = GameObject.FindGameObjectWithTag("UI");
         UI.SetActive(false);
         mainCamera = Camera.main;
         StartPlayer();
-        if(!isTest)StartLevel();
+        if (!isTest) StartLevel();
     }
     public void StartPlayer()
     {
@@ -69,19 +72,19 @@ public class LevelController : MonoBehaviour {
     public IEnumerator InitPlayer(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        Player p = Instantiate(player, new Vector3(0,-5), Quaternion.identity);
+        Player p = Instantiate(player, new Vector3(0, -5), Quaternion.identity);
         p.isInvincible = true;
         StartCoroutine(p.RemoveInvincible(invincibleTime));
     }
     public void StartLevel()
     {
         StartCoroutine(StringParser(ExcelParser.GetResource("level", 1), ExcelParser.GetResource("dialog", 1)));
-        if(wantStopTheWorld) StartCoroutine(StopTheWorld());
+        if (wantStopTheWorld) StartCoroutine(StopTheWorld());
     }
     IEnumerator StopTheWorld()
     {
         yield return new WaitForSeconds(5);
-        Debug.Log("Time scale"+Time.timeScale);
+        Debug.Log("Time scale" + Time.timeScale);
         Time.timeScale = 0;
         yield return new WaitForSeconds(5);
         Time.timeScale = 1;
@@ -108,7 +111,7 @@ public class LevelController : MonoBehaviour {
     }
     IEnumerator StringParser(string levelStr, string dialogs) {
         Invoke("ShowStageUI", 2);
-    
+
         char[] splitter = { '\n' };
         string[] levelRows = levelStr.Split(splitter);
         string[] dialogRows = dialogs.Split(splitter);
@@ -117,7 +120,7 @@ public class LevelController : MonoBehaviour {
         IEnumerable<string[]> dialogRowArrays = dialogRowsEnum.Select(row => row.Split(','));
         string[][] dialogRowsDual = dialogRowArrays.ToArray<string[]>();
         Dictionary<string, int> dialogBook = new Dictionary<string, int>();
-        for(int i =0; i < dialogRowsDual.Length; i++)
+        for (int i = 0; i < dialogRowsDual.Length; i++)
         {
             string[] row = dialogRowsDual[i];
             if (row.Length == 1) continue;
@@ -148,13 +151,13 @@ public class LevelController : MonoBehaviour {
             string[] fd = levelRowsDual[j];
             if (fd[0].Equals("")) fd[0] = "1";
             float duration = float.Parse(fd[0]);
-            
-            yield return new WaitForSeconds(duration+2);
+
+            yield return new WaitForSeconds(duration + 2);
             for (int i = fd.Length - 1; i > 0; i -= 2) {
                 if (fd[i - 1].Equals("")) continue;
                 if (fd[1].Contains("load"))
                 {
-                    UI.SetActive(true);
+
                     //stop the world!
                     string[] loadRow = fd[1].Split('=');
                     string dialogId = loadRow[1];
@@ -179,20 +182,29 @@ public class LevelController : MonoBehaviour {
                                 string position = row[3];
 
                                 //getFile
-                                Debug.Log(position);
+                                Debug.Log("Position : "+position);
                                 //Resources.Load<Sprite>("Assets/Resources/" + fileName);
                                 //setFileToPositoin
+                                Transform leftTf = UI.transform.Find("Left");
+                                Transform rightTf = UI.transform.Find("Right");
+                                Image left = leftTf.GetComponent<Image>();
+                                Image right = rightTf.GetComponent<Image>();
                                 if ("left".Equals(position))
                                 {
-                                    Debug.Log("Left changed : "+ fileName);
-                                    Image left = UI.transform.Find("Left").GetComponent<Image>();
+                                    leftTf.SetAsFirstSibling();
                                     left.sprite = Resources.Load<Sprite>("Image/" + fileName) as Sprite;
+                                    left.color = new Color(255f, 255f, 255, 1f);
+                                    if(right.sprite != null)
+                                    right.color = new Color(100f, 100f, 100, 0.7f);
                                 }
                                 else
                                 {
-                                    Debug.Log("Right changed : "+ fileName);
-                                    Image right = UI.transform.Find("Right").GetComponent<Image>();
+                                    rightTf.SetAsFirstSibling();
                                     right.sprite = Resources.Load<Sprite>("Image/" + fileName) as Sprite;
+                                    right.color = new Color(255f, 255f, 255, 1f);
+                                    if (left.sprite != null)
+                                        left.color = new Color(100f, 100f, 100, 0.7f);
+                                    
                                 }
                             }
                             else if (row[2].Contains("play_se"))
@@ -202,8 +214,8 @@ public class LevelController : MonoBehaviour {
                             else if (row[2].Contains("move"))
                             {
                                 //해당 루트로 이동
-                                //index = dialogBook[row[3]];
-                                //continue;
+                                index = dialogBook[row[3]];
+                                continue;
                             }
                             else if (row[2].Contains("route"))
                             {
@@ -211,16 +223,17 @@ public class LevelController : MonoBehaviour {
                                 //암것도 안해도 됨
                             }
 
-                            yield return new WaitForSeconds(1);
+                            //yield return new WaitForSeconds(1);
 
                         }
                         else if ("l".Equals(row[1]))
                         {
                             //대사표시
+                            UI.SetActive(true);
                             UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
                             UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3];
                             yield return new WaitForSeconds(1);
-
+                            yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
                         }
                         else if (row[1].Contains("select"))
                         {
@@ -246,18 +259,31 @@ public class LevelController : MonoBehaviour {
                                     if (row[1].Equals(searching[1]) && searching[2].Contains("choice"))
                                     {
                                         int btnIndex = Int32.Parse("" + searching[2][searching[2].Length - 1]);
-                                        Debug.Log(btnIndex);
 
-                                        Debug.Log(btnArr[btnIndex - 1]);
-                                        Debug.Log(btnArr.Length);
+                                        int nextLine = h;
                                         btnArr[btnIndex - 1].transform.Find("Text").GetComponent<Text>().text = searching[3];
+                                        btnArr[btnIndex - 1].GetComponent<Button>().onClick.AddListener(() =>
+                                        {
+                                            clicked = true;
+                                            index = nextLine;
+                                        });
+                                        btnArr[btnIndex - 1].SetActive(true);
                                     }
                                 }
-                                button1.SetActive(true);
-                                button2.SetActive(true);
-                                button3.SetActive(true);
-
-                                yield return new WaitForSeconds(5);
+                               
+                                yield return new WaitForSeconds(1);
+                                yield return new WaitUntil(() =>
+                                {
+                                    if (clicked)
+                                    {
+                                        foreach(GameObject go in btnArr)
+                                            go.GetComponent<Button>().onClick.RemoveAllListeners();
+                                        clicked = false;
+                                        return true;
+                                    }
+                                    else
+                                        return false;
+                                });
                                 buttons.SetActive(false);
                             }
                         }
@@ -265,7 +291,7 @@ public class LevelController : MonoBehaviour {
                         {
                             yield return new WaitForSeconds(1);
                         }
-                        index++;   
+                        index++;
                     }
                 }
                 else
@@ -285,50 +311,19 @@ public class LevelController : MonoBehaviour {
     }
 
     //endless coroutine generating 'levelUp' bonuses. 
-    IEnumerator PowerupBonusCreation() 
+    IEnumerator PowerupBonusCreation()
     {
-        while (true) 
+        while (true)
         {
             yield return new WaitForSeconds(timeForNewPowerup);
             Instantiate(
                 powerUp,
                 //Set the position for the new bonus: for X-axis - random position between the borders of 'Player's' movement; for Y-axis - right above the upper screen border 
                 new Vector2(
-                    UnityEngine.Random.Range(PlayerMoving.instance.borders.minX, PlayerMoving.instance.borders.maxX), 
-                    mainCamera.ViewportToWorldPoint(Vector2.up).y + powerUp.GetComponent<Renderer>().bounds.size.y / 2), 
+                    UnityEngine.Random.Range(PlayerMoving.instance.borders.minX, PlayerMoving.instance.borders.maxX),
+                    mainCamera.ViewportToWorldPoint(Vector2.up).y + powerUp.GetComponent<Renderer>().bounds.size.y / 2),
                 Quaternion.identity
                 );
         }
     }
-
-    //IEnumerator PlanetsCreation()
-    //{
-    //    //Create a new list copying the arrey
-    //    for (int i = 0; i < planets.Length; i++)
-    //    {
-    //        planetsList.Add(planets[i]);
-    //    }
-    //    yield return new WaitForSeconds(10);
-    //    while (true)
-    //    {
-    //        ////choose random object from the list, generate and delete it
-    //        int randomIndex = Random.Range(0, planetsList.Count);
-    //        GameObject newPlanet = Instantiate(planetsList[randomIndex]);
-    //        planetsList.RemoveAt(randomIndex);
-    //        //if the list decreased to zero, reinstall it
-    //        if (planetsList.Count == 0)
-    //        {
-    //            for (int i = 0; i < planets.Length; i++)
-    //            {
-    //                planetsList.Add(planets[i]);
-    //            }
-    //        }
-    //        newPlanet.GetComponent<DirectMoving>().speed = planetsSpeed;
-
-    //        yield return new WaitForSeconds(timeBetweenPlanets);
-    //    }
-    //}
-    /*
-             
-*/
-}
+}    
