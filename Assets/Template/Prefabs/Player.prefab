@@ -14327,7 +14327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionFX: {fileID: 1587261729604890, guid: 600ec83cba1cec448bf41a6607229741,
     type: 3}
-  timeslowEFX: {fileID: 6754066341276187038, guid: e7b03d3a37346b647ad24a0775a21758,
+  timeslowEFX: {fileID: 6754066341276187038, guid: d6aa23acb9ed53949bd993169f34359b,
     type: 3}
   isInvincible: 1
   isAttackMode: 0
@@ -14378,6 +14378,7 @@ MonoBehaviour:
     leftGunVFX: {fileID: 0}
     rightGunVFX: {fileID: 0}
     centralGunVFX: {fileID: 0}
+  ShootingIsActive: 1
   maxweaponPower: 4
 --- !u!212 &1827067099
 SpriteRenderer:
