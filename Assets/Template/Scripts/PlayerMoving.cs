@@ -24,6 +24,9 @@ public class PlayerMoving : MonoBehaviour {
     public static PlayerMoving instance; //unique instance of the script for easy access to the script
     Player playerScript;
     PlayerShooting playerShootingScript;
+
+    public Animator animator;
+
     private void Awake()
     {
         if (instance == null)
@@ -54,12 +57,14 @@ public class PlayerMoving : MonoBehaviour {
                 transform.position = mousePosition;//Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
                 playerScript.isAttackMode = true;
                 if(playerShootingScript.startAttackTimestamp == 0) playerShootingScript.startAttackTimestamp = Time.frameCount;
+                // animator.SetTrigger("TrigPlayerAttack");
             }
             if (Input.GetMouseButtonUp(0))
             {
                 playerScript.isAttackMode = false;
                 playerShootingScript.startAttackTimestamp = 0;
                 playerShootingScript.ResetWeaponPower();
+                // animator.SetTrigger("TrigPlayerIdle");
             }
            /* else if (Input.GetKey(KeyCode.A))
             {
