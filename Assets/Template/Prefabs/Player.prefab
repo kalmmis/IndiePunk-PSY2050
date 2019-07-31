@@ -14352,6 +14352,7 @@ MonoBehaviour:
     maxX: 0
     minY: 0
     maxY: 0
+  animator: {fileID: 8935480500157451783}
 --- !u!114 &1827067100
 MonoBehaviour:
   m_ObjectHideFlags: 0
