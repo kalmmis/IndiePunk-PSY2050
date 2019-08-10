@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1459389605}
   - component: {fileID: 1459389604}
-  - component: {fileID: 1459389603}
   - component: {fileID: 1459389602}
   - component: {fileID: 1459389601}
   - component: {fileID: 1459389600}
+  - component: {fileID: 8480521673141985755}
   m_Layer: 0
-  m_Name: Boss1 1
+  m_Name: Boss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,27 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1459389603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459389599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb93e18709841574888ca778559f3bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
-    type: 3}
-  hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
-  shotChance: 10
-  shotTimeMin: 1
-  shotTimeMax: 3
-  patternList: []
-  onDestroyExecutionList: []
 --- !u!58 &1459389602
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,3 +139,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8480521673141985755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459389599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1544091e3b8d4a242bb66ada7f2f0006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  Projectiles:
+  - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
+  - {fileID: 0}
+  destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
+    type: 3}
+  hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
+  shotChance: 0
+  shotTimeMin: 0
+  shotTimeMax: 0

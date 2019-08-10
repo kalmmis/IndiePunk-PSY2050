@@ -13,7 +13,7 @@ public class Enemy_Boss : MonoBehaviour
     public int health;
 
     [Tooltip("Enemy's projectile prefab")]
-    public GameObject Projectile;
+    public List<GameObject> Projectiles;
 
     [Tooltip("VFX prefab generating after destruction")]
     public GameObject destructionVFX;
@@ -25,15 +25,32 @@ public class Enemy_Boss : MonoBehaviour
 
     private void Start()
     {
-        Invoke("ActivateShooting",3);
+        //Invoke("ActivateShooting",3);
+        StartCoroutine(GetBossPatterun());
     }
+
+    IEnumerator GetBossPatterun()
+    {
+        yield return new WaitForSeconds(2);
+        //move
+
+        //swing
+        GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
+        GameObject right = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, 25));
+        left.GetComponent<MovingSwing>().isRight = false;
+        right.GetComponent<MovingSwing>().isRight = true;
+        left.GetComponent<MovingSwing>().isPositive = true;
+        right.GetComponent<MovingSwing>().isPositive = true;
+
+    }
+
 
     //coroutine making a shot
     void ActivateShooting()
     {
-        Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -25));
-        Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 25));
-        Invoke("ActivateShooting", 3);
+        //Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -25));
+        //Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 25));
+        //Invoke("ActivateShooting", 3);
     }
 
     //method of getting damage for the 'Enemy'
@@ -51,10 +68,10 @@ public class Enemy_Boss : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (Projectile.GetComponent<Projectile>() != null)
-                Player.instance.GetDamage(Projectile.GetComponent<Projectile>().damage);
-            else
-                Player.instance.GetDamage(1);
+            //if (Projectile.GetComponent<Projectile>() != null)
+            //    Player.instance.GetDamage(Projectile.GetComponent<Projectile>().damage);
+            //else
+            //    Player.instance.GetDamage(1);
         }
     }
 
