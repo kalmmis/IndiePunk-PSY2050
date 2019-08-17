@@ -70,7 +70,7 @@ public class PlayerShooting : MonoBehaviour {
     {
         weaponPower = 1;
         startAttackTimestamp = 0;
-        Invoke("TimeReset", 0.15f);
+        //Invoke("TimeReset", 0.15f);
     }
     public void TimeReset()
     {
