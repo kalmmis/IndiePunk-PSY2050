@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// This script defines 'Enemy's' health and behavior. 
@@ -31,8 +32,9 @@ public class Enemy_Boss : MonoBehaviour
 
     IEnumerator GetBossPatterun()
     {
+        //0-1간격
         yield return new WaitForSeconds(2);
-        //move
+        ////move
 
         //swing
         GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
@@ -41,7 +43,30 @@ public class Enemy_Boss : MonoBehaviour
         right.GetComponent<MovingSwing>().isRight = true;
         left.GetComponent<MovingSwing>().isPositive = true;
         right.GetComponent<MovingSwing>().isPositive = true;
-
+        //1-2간격
+        yield return new WaitForSeconds(1);
+        GameObject.Destroy(left);
+        GameObject.Destroy(right);
+        GameObject[] windmill = {
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 0)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 90)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 180)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 270))
+        };
+        //2-3간격
+        yield return new WaitForSeconds(35);
+        foreach (GameObject go in windmill)
+        {
+            GameObject.Destroy(go);
+        }
+        Vector3 p = gameObject.transform.position;
+        p.x = p.x - 10;
+        p.y = p.y - 3;
+        while (true)
+        {
+            Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
+            yield return new WaitForSeconds(2);
+        }
     }
 
 
