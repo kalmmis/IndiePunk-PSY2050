@@ -92,6 +92,7 @@ public class Pattern : ScriptableObject
         Projectile newP2;
         Projectile newP3;
         Player target;
+        float d;
         switch (attackType)
         {
             case "A":
@@ -109,7 +110,7 @@ public class Pattern : ScriptableObject
                 };
                 break;
             case "B":
-                float d = (float) Math.Sqrt(0.5d);
+                d = (float) Math.Sqrt(0.5d);
                 Vector3[] v3 = { Vector3.left, Vector3.right, new Vector3(d,d,0), new Vector3(-d, d, 0) , new Vector3(d, -d, 0), new Vector3(-d, -d, 0) };
                 foreach (Vector3 vector in v3)
                 {
@@ -172,6 +173,20 @@ public class Pattern : ScriptableObject
                     go.GetComponent<Enemy>().onDestroyExecutionList.Add(oneP.gameObject);
                 }
                     break;
+
+            case "E":
+                d = (float)Math.Sqrt(0.5d);
+                Vector3[] v4 = {Vector3.down, new Vector3(d, d, 0), new Vector3(-d, d, 0), new Vector3(d, -d, 0), new Vector3(-d, -d, 0)};
+                foreach (Vector3 vector in v4)
+                {
+                    newP = Instantiate(p, go.transform.position, Quaternion.identity);
+                    newP.GetComponent<DirectMoving>().moveFunc = (Transform t) =>
+                    {
+                        t.Translate(vector * 18f * Time.deltaTime);
+                    };
+                }
+                break;
+
             case "X":
                 break;
             default:
