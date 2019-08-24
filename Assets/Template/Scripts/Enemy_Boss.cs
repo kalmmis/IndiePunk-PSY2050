@@ -23,7 +23,7 @@ public class Enemy_Boss : MonoBehaviour
     [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     #endregion
-
+    List<GameObject> onDestroyExecutionList = new List<GameObject>();
     private void Start()
     {
         //Invoke("ActivateShooting",3);
@@ -43,6 +43,8 @@ public class Enemy_Boss : MonoBehaviour
         right.GetComponent<MovingSwing>().isRight = true;
         left.GetComponent<MovingSwing>().isPositive = true;
         right.GetComponent<MovingSwing>().isPositive = true;
+        onDestroyExecutionList.Add(left.gameObject);
+        onDestroyExecutionList.Add(right.gameObject);
         //1-2간격
         yield return new WaitForSeconds(1);
         GameObject.Destroy(left);
@@ -53,8 +55,12 @@ public class Enemy_Boss : MonoBehaviour
             Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 180)),
             Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 270))
         };
+        foreach (GameObject go in windmill)
+        {
+            onDestroyExecutionList.Add(go.gameObject);
+        }
         //2-3간격
-        yield return new WaitForSeconds(35);
+        yield return new WaitForSeconds(5);
         foreach (GameObject go in windmill)
         {
             GameObject.Destroy(go);
@@ -68,16 +74,6 @@ public class Enemy_Boss : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
     }
-
-
-    //coroutine making a shot
-    void ActivateShooting()
-    {
-        //Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -25));
-        //Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 25));
-        //Invoke("ActivateShooting", 3);
-    }
-
     //method of getting damage for the 'Enemy'
     public void GetDamage(int damage)
     {
@@ -104,6 +100,10 @@ public class Enemy_Boss : MonoBehaviour
     void Destruction()
     {
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        foreach (GameObject obj in onDestroyExecutionList)
+        {
+            Destroy(obj);
+        }
         Destroy(gameObject);
     }
 }

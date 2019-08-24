@@ -33,13 +33,13 @@ public class PaletteApply : MonoBehaviour {
 
 		PlayerPrefs.SetString ("paletteName", paletteName);
 
-		BG_001_color = transform.parent.FindChild ("Image_BG_001").GetComponent<Image>().color;
-		BG_002_color = transform.parent.FindChild ("Image_BG_002").GetComponent<Image>().color;
-		Spot_001_color = transform.parent.FindChild ("Image_Spot_001").GetComponent<Image>().color;
-		Spot_002_color = transform.parent.FindChild ("Image_Spot_002").GetComponent<Image>().color;
-		Icon_001_color = transform.parent.FindChild ("Image_Icon_001").GetComponent<Image>().color;
-		Text_001_color = transform.parent.FindChild ("Text_001").GetComponent<Text>().color;
-		Text_002_color = transform.parent.FindChild ("Text_002").GetComponent<Text>().color;
+		BG_001_color = transform.parent.Find ("Image_BG_001").GetComponent<Image>().color;
+		BG_002_color = transform.parent.Find ("Image_BG_002").GetComponent<Image>().color;
+		Spot_001_color = transform.parent.Find ("Image_Spot_001").GetComponent<Image>().color;
+		Spot_002_color = transform.parent.Find ("Image_Spot_002").GetComponent<Image>().color;
+		Icon_001_color = transform.parent.Find ("Image_Icon_001").GetComponent<Image>().color;
+		Text_001_color = transform.parent.Find ("Text_001").GetComponent<Text>().color;
+		Text_002_color = transform.parent.Find ("Text_002").GetComponent<Text>().color;
 
 		GameObject.Find ("UI_ColorManager").GetComponent<ColorManager> ().BG_001 = BG_001_color;
 		GameObject.Find ("UI_ColorManager").GetComponent<ColorManager> ().BG_002 = BG_002_color;

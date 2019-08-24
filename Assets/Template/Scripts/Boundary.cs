@@ -21,7 +21,8 @@ public class Boundary : MonoBehaviour {
     {        
         Vector2 viewportSize = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)) * 2;
         viewportSize.x *= 1f;
-        viewportSize.y *= 0.7f;
+        viewportSize.y *= 0.75f;
+
         boundareCollider.size = viewportSize;
     }
 
