@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 #region Serializable classes
-[System.Serializable]
+    [System.Serializable]
 public class EnemyWaves 
 {
     [Tooltip("time for wave generation from the moment the game started")]
@@ -31,10 +32,6 @@ public class EnemyWave_Indi
 
 public class LevelController : MonoBehaviour {
     //Serializable classes implements
-    public EnemyWaves[] enemyWaves;
-    public EnemyWave_Indi enemyWaves_indi;
-    public int indeWavesCount;
-    public Boss_Wave bossWave;
     public GameObject powerUp;
     public float timeForNewPowerup;
     public GameObject[] planets;
@@ -49,6 +46,7 @@ public class LevelController : MonoBehaviour {
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
+    public int MAX_LEVEL;
 
     Camera mainCamera;
     private Text stageText;
@@ -68,7 +66,7 @@ public class LevelController : MonoBehaviour {
         UI.SetActive(false);
         mainCamera = Camera.main;
         StartPlayer();
-        if (!isTest) StartLevel();
+        if (!isTest) StartCoroutine( StartLevel(MAX_LEVEL) );
     }
     public void StartPlayer()
     {
@@ -80,13 +78,20 @@ public class LevelController : MonoBehaviour {
         Player p = Instantiate(player, new Vector3(0, -5), Quaternion.identity);
         p.isInvincible = true;
         StartCoroutine(p.RemoveInvincible(invincibleTime));
-        animator.SetTrigger("TrigPlayerIdle");
-        playerShootingScript.TimeReset();
+        //animator.SetTrigger("TrigPlayerIdle");
+        //playerShootingScript.TimeReset();
     }
-    public void StartLevel()
+    public IEnumerator StartLevel(int maxLevel)
     {
-        StartCoroutine(StringParser(ExcelParser.GetResource("level", 1), ExcelParser.GetResource("dialog", 1)));
-        if (wantStopTheWorld) StartCoroutine(StopTheWorld());
+        for (int i = 1; i <= maxLevel; i++)
+        {
+            bool isFinishied = false;
+            StartCoroutine(StringParser(ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val)=> { isFinishied = val; }));
+            if (wantStopTheWorld) StartCoroutine(StopTheWorld());
+            yield return new WaitUntil(() => isFinishied);
+        }
+        SceneManager.LoadScene("StartMenu");
+
     }
     IEnumerator StopTheWorld()
     {
@@ -116,7 +121,7 @@ public class LevelController : MonoBehaviour {
         gameoverText = GameObject.Find("UITextStage").GetComponent<Text>();
         gameoverText.text = "Game Over";
     }
-    IEnumerator StringParser(string levelStr, string dialogs) {
+    IEnumerator StringParser(string levelStr, string dialogs, System.Action<bool> callback) {
         Invoke("ShowStageUI", 2);
 
         char[] splitter = { '\n' };
@@ -189,7 +194,7 @@ public class LevelController : MonoBehaviour {
                                 string position = row[3];
 
                                 //getFile
-                                Debug.Log("Position : "+position);
+                                Debug.Log("Position : " + position);
                                 //Resources.Load<Sprite>("Assets/Resources/" + fileName);
                                 //setFileToPositoin
                                 Transform leftTf = UI.transform.Find("Left");
@@ -201,8 +206,8 @@ public class LevelController : MonoBehaviour {
                                     leftTf.SetAsFirstSibling();
                                     left.sprite = Resources.Load<Sprite>("Image/" + fileName) as Sprite;
                                     left.color = new Color(255f, 255f, 255, 1f);
-                                    if(right.sprite != null)
-                                    right.color = new Color(100f, 100f, 100, 0.7f);
+                                    if (right.sprite != null)
+                                        right.color = new Color(100f, 100f, 100, 0.7f);
                                 }
                                 else
                                 {
@@ -211,7 +216,7 @@ public class LevelController : MonoBehaviour {
                                     right.color = new Color(255f, 255f, 255, 1f);
                                     if (left.sprite != null)
                                         left.color = new Color(100f, 100f, 100, 0.7f);
-                                    
+
                                 }
                             }
                             else if (row[2].Contains("play_se"))
@@ -239,7 +244,7 @@ public class LevelController : MonoBehaviour {
                             UI.SetActive(true);
                             UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
                             UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',');
-                            
+
                             yield return new WaitForSeconds(1);
                             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
                         }
@@ -278,13 +283,13 @@ public class LevelController : MonoBehaviour {
                                         btnArr[btnIndex - 1].SetActive(true);
                                     }
                                 }
-                               
+
                                 yield return new WaitForSeconds(1);
                                 yield return new WaitUntil(() =>
                                 {
                                     if (clicked)
                                     {
-                                        foreach(GameObject go in btnArr)
+                                        foreach (GameObject go in btnArr)
                                             go.GetComponent<Button>().onClick.RemoveAllListeners();
                                         clicked = false;
                                         return true;
@@ -302,6 +307,13 @@ public class LevelController : MonoBehaviour {
                         index++;
                     }
                 }
+                else if(fd[1].Contains("boss")) {
+                    string[] loadRow = fd[1].Split('=');
+                    string bossId = loadRow[1];
+                    GameObject enemyRscr = Resources.Load<GameObject>("Enemies/" + bossId);
+                    GameObject enemy = Instantiate(enemyRscr, enemyRscr.GetComponent<Enemy_Boss>().GetInitPosition(), Quaternion.identity);
+                    yield return new WaitWhile(() => enemy != null);
+                }
                 else
                 {
                     float xPosition = float.Parse(fd[i - 1]);
@@ -313,9 +325,10 @@ public class LevelController : MonoBehaviour {
                     Pattern newOne = new Pattern(type.Substring(0, 1), type.Substring(1, 1), type.Substring(2, 1), type.Substring(4, 3));
                     pl.Add(newOne);
                 }
-
+                
             }
         }
+        callback(true);
     }
 
     //endless coroutine generating 'levelUp' bonuses. 

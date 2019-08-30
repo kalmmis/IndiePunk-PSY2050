@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 /// <summary>
 /// This script defines 'Enemy's' health and behavior. 
@@ -70,7 +71,8 @@ public class Enemy_Boss : MonoBehaviour
         p.y = p.y - 3;
         while (true)
         {
-            Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
+            GameObject wall = Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
+            onDestroyExecutionList.Add(wall);
             yield return new WaitForSeconds(2);
         }
     }
@@ -105,5 +107,10 @@ public class Enemy_Boss : MonoBehaviour
             Destroy(obj);
         }
         Destroy(gameObject);
+    }
+
+    internal Vector3 GetInitPosition()
+    {
+        return new Vector3(0, 18);
     }
 }

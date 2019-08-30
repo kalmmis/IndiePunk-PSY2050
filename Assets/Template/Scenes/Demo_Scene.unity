@@ -1390,6 +1390,11 @@ PrefabInstance:
       propertyPath: skipDialog
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: MAX_LEVEL
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 61647215913099182, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
       propertyPath: m_Size.x
