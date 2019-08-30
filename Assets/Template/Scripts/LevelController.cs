@@ -44,6 +44,7 @@ public class LevelController : MonoBehaviour {
     public float timeBetweenPlanets;
     public float planetsSpeed;
     public bool isTest;
+    public bool skipDialog;
     public bool wantStopTheWorld = false; //should be removed before release
     List<GameObject> planetsList = new List<GameObject>();
     public List<GameObject> enemyList = new List<GameObject>();
@@ -157,7 +158,7 @@ public class LevelController : MonoBehaviour {
                 if (fd[i - 1].Equals("")) continue;
                 if (fd[1].Contains("load"))
                 {
-
+                    if (skipDialog) continue;
                     //stop the world!
                     string[] loadRow = fd[1].Split('=');
                     string dialogId = loadRow[1];
@@ -231,7 +232,8 @@ public class LevelController : MonoBehaviour {
                             //대사표시
                             UI.SetActive(true);
                             UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
-                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3];
+                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',');
+                            
                             yield return new WaitForSeconds(1);
                             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
                         }
