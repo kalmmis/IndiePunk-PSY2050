@@ -29,7 +29,7 @@ public class Enemy_Boss : MonoBehaviour
     {
         //Invoke("ActivateShooting",3);
         StartCoroutine(GetBossPatterun());
-        health = 150;
+        health = 1;
     }
 
     IEnumerator GetBossPatterun()
@@ -108,6 +108,13 @@ public class Enemy_Boss : MonoBehaviour
             Destroy(obj);
         }
         Destroy(gameObject);
+    }
+    public void DestructionProject()
+    {
+        foreach (GameObject obj in onDestroyExecutionList)
+        {
+            Destroy(obj);
+        }
     }
 
     internal Vector3 GetInitPosition()

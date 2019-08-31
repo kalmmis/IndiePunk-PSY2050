@@ -47,6 +47,8 @@ public class LevelController : MonoBehaviour {
     public List<GameObject> enemyList = new List<GameObject>();
     public Dictionary<string, GameObject> enemyMap = new Dictionary<string, GameObject>();
     public int MAX_LEVEL;
+    public int BOSS_TIMEOUT;
+    private bool isBossKilled;
 
     Camera mainCamera;
     private Text stageText;
@@ -173,6 +175,11 @@ public class LevelController : MonoBehaviour {
                     //stop the world!
                     string[] loadRow = fd[1].Split('=');
                     string dialogId = loadRow[1];
+                    if (dialogId.Contains("Boss"))
+                    {
+                        dialogId = isBossKilled ? dialogId + 1 : dialogId + 0;
+                    }
+                    Debug.Log(dialogId);
                     int index = dialogBook[dialogId];
                     while (true)
                     {
@@ -308,11 +315,29 @@ public class LevelController : MonoBehaviour {
                     }
                 }
                 else if(fd[1].Contains("boss")) {
+                    float bossInitTime = Time.time;
                     string[] loadRow = fd[1].Split('=');
                     string bossId = loadRow[1];
                     GameObject enemyRscr = Resources.Load<GameObject>("Enemies/" + bossId);
                     GameObject enemy = Instantiate(enemyRscr, enemyRscr.GetComponent<Enemy_Boss>().GetInitPosition(), Quaternion.identity);
-                    yield return new WaitWhile(() => enemy != null);
+
+                    yield return new WaitWhile(() => {
+                        bool bossnotkill = enemy != null;
+                        Debug.Log("Timeout : " + (Time.time - bossInitTime));
+                        bool timeout = Time.time - bossInitTime > BOSS_TIMEOUT;
+                        if (!bossnotkill)
+                        {
+                            isBossKilled = true;
+                        }else if (timeout)
+                        {
+                            isBossKilled = false;
+                            enemy.GetComponent<Enemy_Boss>().DestructionProject();
+                            enemy.SetActive(false);
+                            
+                        }
+
+                        return bossnotkill && !timeout;
+                    });
                 }
                 else
                 {

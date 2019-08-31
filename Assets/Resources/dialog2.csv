@@ -52,6 +52,9 @@ Story01Mid1,event,show portrait_player.png,left,,endline
 ,l,노아,덤비세요. 선배.,,endline
 ,l,노아,이 이야기의 끝을 봐야죠.,,endline
 ,event,end,,스테이지1 진행 중이었는데 보스 전 시작,endline
-Story01Boss,event,show portrait_player.png,left,,endline
-,l,미나,이김!,,endline
+Story01Boss0,event,show portrait_player.png,left,,endline
+,l,미나,안죽!!,,endline
+,event,end,,스테이지 1 시작,endline
+Story01Boss1,event,show portrait_player.png,left,,endline
+,l,미나,반갈죽!!,,endline
 ,event,end,,스테이지 1 시작,endline

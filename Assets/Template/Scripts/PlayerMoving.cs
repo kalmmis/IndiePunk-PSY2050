@@ -65,7 +65,7 @@ public class PlayerMoving : MonoBehaviour {
                 playerShootingScript.startAttackTimestamp = 0;
                 playerShootingScript.ResetWeaponPower();
                 animator.SetTrigger("TrigPlayerIdle");
-                playerShootingScript.TimeReset();
+                StartCoroutine(playerShootingScript.TimeReset());
             }
             else
             {

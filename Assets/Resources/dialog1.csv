@@ -10,6 +10,9 @@ Story01Mid1,l,연구소장,너라면 현장에 누구보다 먼저 도착할 수
 ,l,미나,드디어 찾았다.\n노아.,,
 ,event,show portrait_fire,right,,
 ,l,노아,아….. 당신이군요. 미나 선배.,,
-Story01Boss,event,show portrait_player,left,,
-,l,미나,이김!,,
-,event,end,,,
+Story01Boss0,event,show portrait_player.png,left,,endline
+,l,미나,안죽!!,,endline
+,event,end,,스테이지 1 시작,endline
+Story01Boss1,event,show portrait_player.png,left,,endline
+,l,미나,반갈죽!!,,endline
+,event,end,,스테이지 1 시작,endline

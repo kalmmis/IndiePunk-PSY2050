@@ -27,6 +27,7 @@ public class PlayerShooting : MonoBehaviour {
     public int weaponUpgradeIntervalOfFrame;
     [Range(1, 4)]       //change it if you wish
     [HideInInspector] public int weaponPower = 1;
+    [HideInInspector] public int timeScaleUp = 1;
     [HideInInspector] public int startAttackTimestamp;
 
     public Guns guns;
@@ -62,6 +63,7 @@ public class PlayerShooting : MonoBehaviour {
                     startAttackTimestamp = Time.frameCount;
                     //Debug.Log("weaponPower is" + weaponPower + "maxweaponPower is :" + maxweaponPower);
                     weaponPower += 1;
+                    timeScaleUp += 1;
                 }
             }
         }
@@ -72,14 +74,36 @@ public class PlayerShooting : MonoBehaviour {
         startAttackTimestamp = 0;
         //Invoke("TimeReset", 0.15f);
     }
-    public void TimeReset()
+    public IEnumerator TimeReset()
     {
-        Time.timeScale = 1f;
+        if (!playerScript.isAttackMode) {
+            while (timeScaleUp > 1)
+            {
+                switch (timeScaleUp)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        timeScaleUp = 1;
+                        Time.timeScale = 1f; 
+                        break;
+                    case 3:
+                        timeScaleUp = 2;
+                        Time.timeScale = 0.8f;
+                        break;
+                    case 4:
+                        timeScaleUp = 3;
+                        Time.timeScale = 0.6f;
+                        break;
+                }
+                yield return new WaitForSeconds(0.3333333f);
+            }
+        }
     }
     //method for a shot
     void MakeAShot() 
     {
-        switch (weaponPower) // according to weapon power 'pooling' the defined anount of projectiles, on the defined position, in the defined rotation
+        switch (timeScaleUp) // according to weapon power 'pooling' the defined anount of projectiles, on the defined position, in the defined rotation
         {
             case 1:
                 CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
