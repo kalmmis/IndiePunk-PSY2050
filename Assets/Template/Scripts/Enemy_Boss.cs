@@ -29,6 +29,7 @@ public class Enemy_Boss : MonoBehaviour
     {
         //Invoke("ActivateShooting",3);
         StartCoroutine(GetBossPatterun());
+        health = 150;
     }
 
     IEnumerator GetBossPatterun()
