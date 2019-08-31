@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(ActivateShooting());
         if (pattern.attackType == "D")
         {
-            health = 20;
+            health = 15;
         }
         else health = 10;
     }

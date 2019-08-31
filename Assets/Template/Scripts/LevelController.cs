@@ -58,6 +58,10 @@ public class LevelController : MonoBehaviour {
     private GameObject UI;
     private Boolean clicked = false;
 
+    
+    PlayerShooting playerShootingScript;
+    public Animator animator;
+
     private void Start()
     {
         UI = GameObject.FindGameObjectWithTag("UI");
@@ -76,6 +80,8 @@ public class LevelController : MonoBehaviour {
         Player p = Instantiate(player, new Vector3(0, -5), Quaternion.identity);
         p.isInvincible = true;
         StartCoroutine(p.RemoveInvincible(invincibleTime));
+        animator.SetTrigger("TrigPlayerIdle");
+        playerShootingScript.TimeReset();
     }
     public void StartLevel()
     {

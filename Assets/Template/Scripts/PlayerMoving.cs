@@ -64,10 +64,11 @@ public class PlayerMoving : MonoBehaviour {
                 playerScript.isAttackMode = false;
                 playerShootingScript.startAttackTimestamp = 0;
                 playerShootingScript.ResetWeaponPower();
+                animator.SetTrigger("TrigPlayerIdle");
+                playerShootingScript.TimeReset();
             }
             else
             {
-                animator.SetTrigger("TrigPlayerIdle");
             }
            /* else if (Input.GetKey(KeyCode.A))
             {
