@@ -6,13 +6,25 @@ Story01Start,event,show portrait_player,left,,endline
 ,l,리타,너라면 현장에 누구보다 먼저 도착할 수 있을 테고.,,endline
 ,event,end,,,endline
 Story01Mid1,l,연구소장,너라면 현장에 누구보다 먼저 도착할 수 있을 테고.,,endline
-,event,show portrait_player,left,,
-,l,미나,드디어 찾았다.\n노아.,,
-,event,show portrait_fire,right,,
-,l,노아,아….. 당신이군요. 미나 선배.,,
-Story01Boss0,event,show portrait_player.png,left,,endline
-,l,미나,안죽!!,,endline
-,event,end,,스테이지 1 시작,endline
-Story01Boss1,event,show portrait_player.png,left,,endline
-,l,미나,반갈죽!!,,endline
-,event,end,,스테이지 1 시작,endline
+,event,show portrait_player,left,,endline
+,l,미나,드디어 찾았다.\n노아.,,endline
+,event,show portrait_fire,right,,endline
+,l,노아,아….. 당신이군요. 미나 선배.,,endline
+Story01Boss1,event,show portrait_player,left,,endline
+,l,미나,쥬김,,endline
+,event,end,,,endline
+Story01Boss0,event,show portrait_player,left,,endline
+,l,미나,살림,,endline
+,event,end,,,endline
+Stage1Debug,event,show portrait_player,left,,endline
+,l,미나,스테이지1 디버그 시작,,endline
+,event,end,,,endline
+Stage2Debug,event,show portrait_player,left,,endline
+,l,미나,스테이지2 디버그 시작,,endline
+,event,end,,,endline
+Stage3Debug,event,show portrait_player,left,,endline
+,l,미나,스테이지3 디버그 시작,,endline
+,event,end,,,endline
+Stage4Debug,event,show portrait_player,left,,endline
+,l,미나,스테이지4 디버그 시작,,endline
+,event,end,,,endline
