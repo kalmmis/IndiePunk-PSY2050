@@ -11,8 +11,8 @@ public class Pattern : ScriptableObject
     public float duration;
     public float shotTime;
     delegate void moving();
+    private LevelController lc = GameObject.FindObjectOfType<LevelController>();
 
-   
 
     public Pattern() { }
     public Pattern(string _pName, string _movingType, string _attackType,  string _shotTimeString)
@@ -33,24 +33,29 @@ public class Pattern : ScriptableObject
                 parent.transform.Translate(Vector3.down * speed * 4f * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;
-            case "B":                 GameObject target = GameObject.Find("Player(Clone)");                 //플레이어가 없으면 쫒아갈 것도 없음                 if (target == null) { Destroy(target); return; };
-                Vector3 v = new Vector3(0, 0, 0);
-                    if (target != null && v.Equals(new Vector3(0, 0, 0)))
-                    {
-                        /*                          항상 백터크기를 1로 하는 방법                          기울기a 는 a=(y2-y1)/(x2-x1);                          vector의 크기를 항상 n로 하기 위해서는 위 ax=y에서 x^2+y^2 = n^2이 되어야한다.                          n=1 일때를 기준으로                           Math.Sqrt = 제곱근 구하는 함수.                          x1 = (float) Math.Sqrt(Math.Abs(1/(a*a+1)));                          y1 = (float) Math.Sqrt(Math.Abs(a*a/(a*a+1)));                          이된다.                          한편 x1과 y1은 절대값이므로 초기 x와 y의 양수/음수 구분을 기록해 뒀다가 마지막에 양수음수를 맞춰줘야한다.                          */
-                        Transform targetTransform = target.GetComponent<Transform>();
-                        Transform parentTransform = parent.GetComponent<Transform>();
-                        float x = targetTransform.position.x - parentTransform.position.x;
-                        float y = targetTransform.position.y - parentTransform.position.y;
-                        bool isXneg = x < 0;
-                        bool isYneg = y < 0;
-                        float a = y / x;
-                        float x1 = (float)Math.Sqrt(Math.Abs(1 / (a * a + 1)));
-                        float y1 = (float)Math.Sqrt(Math.Abs(a * a / (a * a + 1)));
-                        x1 = isXneg && x1 > 0 ? -x1 : x1;
-                        y1 = -1;//isYneg && y1 > 0 ? -y1 : y1;
-                        v = new Vector3(x1, y1);
-                    }
+            case "B":
+                /* GameObject target = GameObject.Find("Player(Clone)");                 //플레이어가 없으면 쫒아갈 것도 없음                 if (target == null) {
+Destroy(target); return;
+};*/
+                Vector3 v = lc.lastPlayerPosition;
+                Debug.Log("B lc position x " + v.x + " | y "+ v.y);
+                    //new Vector3(0, 0, 0);
+                //if (target != null && v.Equals(new Vector3(0, 0, 0)))
+                {
+                    /*                         항상 백터크기를 1로 하는 방법                         기울기a 는 a=(y2-y1)/(x2-x1);                         vector의 크기를 항상 n로 하기 위해서는 위 ax=y에서 x^2+y^2 = n^2이 되어야한다.                         n=1 일때를 기준으로                          Math.Sqrt = 제곱근 구하는 함수.                         x1 = (float) Math.Sqrt(Math.Abs(1/(a*a+1)));                         y1 = (float) Math.Sqrt(Math.Abs(a*a/(a*a+1)));                         이된다.                         한편 x1과 y1은 절대값이므로 초기 x와 y의 양수/음수 구분을 기록해 뒀다가 마지막에 양수음수를 맞춰줘야한다.                         */
+                    //Transform targetTransform = target.GetComponent<Transform>();
+                    Transform parentTransform = parent.GetComponent<Transform>();
+                    float x = v.x - parentTransform.position.x;
+                    float y = v.y - parentTransform.position.y;
+                    bool isXneg = x < 0;
+                    bool isYneg = y < 0;
+                    float a = y / x;
+                    float x1 = (float)Math.Sqrt(Math.Abs(1 / (a * a + 1)));
+                    float y1 = (float)Math.Sqrt(Math.Abs(a * a / (a * a + 1)));
+                    x1 = isXneg && x1 > 0 ? -x1 : x1;
+                    y1 = -1;//isYneg && y1 > 0 ? -y1 : y1;
+                    v = new Vector3(x1, y1);
+                }
                 parent.transform.Translate(v * 4f * speed * Time.deltaTime);
                 //parent.transform.Translate(Vector3.down * speed * Time.deltaTime);
                 break;             case "C":                 dash = new Vector3(0, 0, 0);

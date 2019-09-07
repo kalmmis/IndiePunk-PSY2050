@@ -17,7 +17,7 @@ Story01Boss0,event,show portrait_player,left,,endline
 ,l,미나,살림,,endline
 ,event,end,,,endline
 Stage1Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지1 디버그 시작,,endline
+,l,미나,스테이지1; 디버그 시작,,endline
 ,event,end,,,endline
 Stage2Debug,event,show portrait_player,left,,endline
 ,l,미나,스테이지2 디버그 시작,,endline
