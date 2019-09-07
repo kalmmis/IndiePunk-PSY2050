@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pattern1
   m_EditorClassIdentifier: 
   p: {fileID: 114558762702151638, guid: 9610b32634c0355409b4b5991571a66b, type: 3}
-  movingType: G
-  attackType: C
+  movingType: X
+  attackType: A
   duration: 5
   shotTime: 20

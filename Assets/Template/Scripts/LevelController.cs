@@ -61,7 +61,7 @@ public class LevelController : MonoBehaviour {
     
     PlayerShooting playerShootingScript;
     public Animator animator;
-
+    public Vector3 lastPlayerPosition;
     private void Start()
     {
         UI = GameObject.FindGameObjectWithTag("UI");
@@ -250,7 +250,7 @@ public class LevelController : MonoBehaviour {
                             //대사표시
                             UI.SetActive(true);
                             UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
-                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',');
+                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',').Replace(';','\n');
 
                             yield return new WaitForSeconds(1);
                             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());

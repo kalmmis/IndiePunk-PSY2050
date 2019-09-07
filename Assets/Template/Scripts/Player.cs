@@ -13,11 +13,20 @@ public class Player : MonoBehaviour
     public GameObject timeslowEFX;
     public bool isInvincible;
     public bool isAttackMode;
-
+    private bool destrunctionCall;
     PlayerShooting playerShootingScript;
+    LevelController lc;
+    public static Player instance;
 
-    public static Player instance; 
-
+    public void Start()
+    {
+        destrunctionCall = false;
+    }
+    private void Update()
+    {
+        lc = GameObject.FindObjectOfType<LevelController>();
+        lc.lastPlayerPosition = transform.position;
+    }
     private void Awake()
     {
         if (instance == null) 
@@ -27,18 +36,22 @@ public class Player : MonoBehaviour
     //method for damage proceccing by 'Player'
     public void GetDamage(int damage)   
     {
-        if(!isInvincible)
+        if (!isInvincible && !destrunctionCall)
+        {
             Destruction();
+        }
+            
     }    
 
     //'Player's' destruction procedure
     void Destruction()
     {
+        destrunctionCall = true;
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
         playerShootingScript = gameObject.GetComponent<PlayerShooting>();
         playerShootingScript.ShootingIsActive = false;
         Destroy(gameObject);
-        LevelController lc = GameObject.FindObjectOfType<LevelController>();
+        
         if (lc.playerLife > 0)
         {
             lc.playerLife--;
