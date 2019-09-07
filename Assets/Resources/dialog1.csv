@@ -1,15 +1,67 @@
 Story01Start,event,show portrait_player,left,,endline
-,l,미나,아니마들이.... 다시 나타났어.,,endline
+,l,미나,저 불꽃들.,,endline
+,l,미나,아니마들이 다시 나타났다는 게 정말이었군요.,,endline
 ,event,show portrait_player_gray,left,,endline
-,l,리타,그래.\n보다시피 위험한 상황이야.,,endline
-,l,리타,네가 가줘야겠어.,,endline
-,l,리타,너라면 현장에 누구보다 먼저 도착할 수 있을 테고.,,endline
-,event,end,,,endline
-Story01Mid1,l,연구소장,너라면 현장에 누구보다 먼저 도착할 수 있을 테고.,,endline
+,l,리타,그래서 널 부른 거야.,,endline
+,l,리타,능력이 없는 인간은 그 안에 들어설 수 없으니까.,,endline
 ,event,show portrait_player,left,,endline
-,l,미나,드디어 찾았다.\n노아.,,endline
-,event,show portrait_fire,right,,endline
-,l,노아,아….. 당신이군요. 미나 선배.,,endline
+,l,미나,…네.,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,좋아.;시작하기 전에 체크를 좀 해보자.,,endline
+,l,리타,아무 지점이나 텔레포트를 해 봐.,,endline
+,event,end,,,endline
+Story01Mid01,l,리타,좋아.;잘했어.,,endline
+,l,리타,잊지 마. 미나.;너는 시선이 닿는 곳이라면 어디로든 텔레포트 할 수 있어.,,endline
+,l,리타,텔레포트를 활용하면 아니마의 공격쯤 쉽게 피할 수 있을 거야.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,네.;해볼게요.,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,자. 지금부터 아니마의 영역이야.,,endline
+,l,리타,아니마를 공격해 봐.,,endline
+,event,end,,,endline
+Story01Mid02,l,리타,잘했어.,,endline
+,l,리타,이제부터는 실전이야.,,endline
+,l,리타,기대하고 있을게. 미나.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,….,,endline
+,event,end,,,endline
+Story01Mid03,event,show portrait_fire,left,,endline
+,l,레이나,…화염과 불길.,,endline
+,l,레이나,이 모든 게 결국 내 안에 있었던 거야.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,…선배?;레이나 선배죠?,,endline
+,event,show portrait_fire,left,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,너는…. 미나.,,endline
+,l,레이나,너도 이 안에서 움직일 수 있나 보네.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,능력이 있으면 아니마의 영역에서도 움직일 수 있어요.,,endline
+,event,show portrait_fire,left,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,능력….그랬구나.;너도 모든 걸 알고 있었던 거야.,,endline
+,l,레이나,우리 모두가 실험실의 쥐에 불과하다는 걸 말야.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,네?,,endline
+,event,show portrait_fire,left,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,모르는 척 해도 소용 없어.,,endline
+,l,레이나,나도 모두 들었으니까.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,무슨 말씀인지 모르겠어요.,,endline
+,l,미나,선배님은 지금 불안정해요.,,endline
+,l,미나,능력을 각성한 직후엔 누구나….;,,endline
+,event,show portrait_fire,left,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,거짓말! 거짓말!;거짓말!!!,,endline
+,l,레이나,거짓은 모두….; 태워버려야 해.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,선배….,,endline
+,event,end,,,endline
 Story01Boss1,event,show portrait_player,left,,endline
 ,l,미나,쥬김,,endline
 ,event,end,,,endline
@@ -17,7 +69,7 @@ Story01Boss0,event,show portrait_player,left,,endline
 ,l,미나,살림,,endline
 ,event,end,,,endline
 Stage1Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지1; 디버그 시작,,endline
+,l,미나,스테이지1 디버그 시작,,endline
 ,event,end,,,endline
 Stage2Debug,event,show portrait_player,left,,endline
 ,l,미나,스테이지2 디버그 시작,,endline
