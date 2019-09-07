@@ -17,6 +17,7 @@ TagManager:
   - EnemyBoss
   - Boundary
   - UI
+  - Credit
   layers:
   - Default
   - TransparentFX

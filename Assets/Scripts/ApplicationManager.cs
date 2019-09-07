@@ -8,6 +8,10 @@ public class ApplicationManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Demo_Scene");
     }
+    public void CreditButtonLoadScene()
+    {
+        SceneManager.LoadScene("Credit");
+    }
 
     public void Quit () 
 	{
