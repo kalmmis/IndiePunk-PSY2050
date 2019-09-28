@@ -25,21 +25,29 @@ public class Enemy_Boss : MonoBehaviour
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     #endregion
     List<GameObject> onDestroyExecutionList = new List<GameObject>();
+    public bool isStarted = false;
     private void Start()
     {
         //Invoke("ActivateShooting",3);
-        StartCoroutine(GetBossPatterun());
+        StartCoroutine(GetBossPattern());
         health = 150;
     }
 
-    IEnumerator GetBossPatterun()
+    IEnumerator GetBossPattern()
     {
         //0-1간격
         yield return new WaitForSeconds(2);
+
+
+
+
+        yield return new WaitUntil(()=>isStarted);
+        
         ////move
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0), 1f * Time.deltaTime);
 
         //swing
-        GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
+    GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
         GameObject right = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, 25));
         left.GetComponent<MovingSwing>().isRight = false;
         right.GetComponent<MovingSwing>().isRight = true;
