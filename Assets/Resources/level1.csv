@@ -1,6 +1,7 @@
 0,load id=Story01Boss,,,,,,,,,
-0,boss=Boss1,,,,,,,,,
+0,boss=Boss1|inactivated,,,,,,,,,
 0,load id=Story01Mid1,,,,,,,,,
+0,boss=Boss1|activated,,,,,,,,,
 0.03,32,CADA030,128,AAEA030,224,CADA030,320,AAEA030,416,CADA030
 0.03,,,128,CADA030,,,320,CADA030,,
 0.03,32,AAAA060,,,224,AAAA060,,,416,AAAA060
