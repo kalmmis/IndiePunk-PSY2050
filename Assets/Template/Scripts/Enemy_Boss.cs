@@ -36,18 +36,22 @@ public class Enemy_Boss : MonoBehaviour
     IEnumerator GetBossPattern()
     {
         //0-1간격
-        yield return new WaitForSeconds(2);
-
-
-
-
-        yield return new WaitUntil(()=>isStarted);
+        while (Vector3.Distance(transform.position, new Vector3(0, 15)) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 15), 1f * Time.deltaTime);
+            yield return null;
+        }
         
+        yield return new WaitUntil(()=>isStarted);
+        while (Vector3.Distance(transform.position, new Vector3(0, 18)) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 18), 3f * Time.deltaTime);
+            yield return null;
+        }
         ////move
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0), 1f * Time.deltaTime);
 
         //swing
-    GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
+        GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
         GameObject right = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, 25));
         left.GetComponent<MovingSwing>().isRight = false;
         right.GetComponent<MovingSwing>().isRight = true;
@@ -56,9 +60,14 @@ public class Enemy_Boss : MonoBehaviour
         onDestroyExecutionList.Add(left.gameObject);
         onDestroyExecutionList.Add(right.gameObject);
         //1-2간격
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         GameObject.Destroy(left);
         GameObject.Destroy(right);
+        while (Vector3.Distance(transform.position, new Vector3(0, 8)) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 8), 3f * Time.deltaTime);
+            yield return null;
+        }
         GameObject[] windmill = {
             Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 0)),
             Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 90)),
@@ -75,6 +84,12 @@ public class Enemy_Boss : MonoBehaviour
         {
             GameObject.Destroy(go);
         }
+        while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 6f * Time.deltaTime);
+            yield return null;
+        }
+
         Vector3 p = gameObject.transform.position;
         p.x = p.x - 10;
         p.y = p.y - 3;
@@ -119,14 +134,16 @@ public class Enemy_Boss : MonoBehaviour
     }
     public void DestructionProject()
     {
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
         foreach (GameObject obj in onDestroyExecutionList)
         {
             Destroy(obj);
         }
+        Destroy(gameObject);
     }
 
     internal Vector3 GetInitPosition()
     {
-        return new Vector3(0, 18);
+        return new Vector3(0, 23);
     }
 }
