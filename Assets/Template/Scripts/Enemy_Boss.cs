@@ -30,29 +30,30 @@ public class Enemy_Boss : MonoBehaviour
     {
         //Invoke("ActivateShooting",3);
         StartCoroutine(GetBossPattern());
-        health = 150;
     }
 
     IEnumerator GetBossPattern()
     {
         //0-1간격
-        while (Vector3.Distance(transform.position, new Vector3(0, 15)) > 0.1f)
+        while (Vector3.Distance(transform.position, new Vector3(0, 15)) > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 15), 1f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 15), 5f * Time.deltaTime);
             yield return null;
         }
-        
-        yield return new WaitUntil(()=>isStarted);
-        while (Vector3.Distance(transform.position, new Vector3(0, 18)) > 0.1f)
+
+        yield return new WaitUntil(() => isStarted);
+        while (Vector3.Distance(transform.position, new Vector3(0, 8)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 18), 3f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 8), 5f * Time.deltaTime);
             yield return null;
         }
         ////move
+        health = 300;
+        //Showing UI
 
         //swing
-        GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -25));
-        GameObject right = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, 25));
+        GameObject left = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, -90));
+        GameObject right = Instantiate(Projectiles[0], gameObject.transform.position, Quaternion.Euler(0, 0, 90));
         left.GetComponent<MovingSwing>().isRight = false;
         right.GetComponent<MovingSwing>().isRight = true;
         left.GetComponent<MovingSwing>().isPositive = true;
@@ -60,7 +61,9 @@ public class Enemy_Boss : MonoBehaviour
         onDestroyExecutionList.Add(left.gameObject);
         onDestroyExecutionList.Add(right.gameObject);
         //1-2간격
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(20);
+        //20초가 지나거나 health 가 200이 되거나!
+
         GameObject.Destroy(left);
         GameObject.Destroy(right);
         while (Vector3.Distance(transform.position, new Vector3(0, 8)) > 0.1f)
@@ -68,39 +71,58 @@ public class Enemy_Boss : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 8), 3f * Time.deltaTime);
             yield return null;
         }
+        yield return new WaitForSeconds(3);
+        health = 200;
+
         GameObject[] windmill = {
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 0)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 90)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 180)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 270))
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 45)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 135)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 225)),
+            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 315))
         };
         foreach (GameObject go in windmill)
         {
             onDestroyExecutionList.Add(go.gameObject);
         }
         //2-3간격
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(20);
+        //20초가 지나거나 health 가 100이 되거나!
+
         foreach (GameObject go in windmill)
         {
             GameObject.Destroy(go);
         }
         while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 6f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 5f * Time.deltaTime);
             yield return null;
         }
-
+        health = 100;
         Vector3 p = gameObject.transform.position;
         p.x = p.x - 10;
-        p.y = p.y - 3;
+        p.y = p.y + 5;
+        Invoke("BossPattern1Add", 20f);
         while (true)
         {
-            GameObject wall = Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
-            onDestroyExecutionList.Add(wall);
-            yield return new WaitForSeconds(2);
+             GameObject wall = Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
+             onDestroyExecutionList.Add(wall);
+             yield return new WaitForSeconds(2);
         }
+
     }
     //method of getting damage for the 'Enemy'
+    public void BossPattern1Add()
+    {
+    //swing
+        GameObject left2 = Instantiate(Projectiles[3], gameObject.transform.position, Quaternion.Euler(0, 0, -90));
+        GameObject right2 = Instantiate(Projectiles[3], gameObject.transform.position, Quaternion.Euler(0, 0, 90));
+        left2.GetComponent<MovingSwing>().isRight = false;
+        right2.GetComponent<MovingSwing>().isRight = true;
+        left2.GetComponent<MovingSwing>().isPositive = true;
+        right2.GetComponent<MovingSwing>().isPositive = true;
+        onDestroyExecutionList.Add(left2.gameObject);
+        onDestroyExecutionList.Add(right2.gameObject);
+     }
     public void GetDamage(int damage)
     {
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
@@ -130,7 +152,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             Destroy(obj);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     public void DestructionProject()
     {
@@ -139,7 +161,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             Destroy(obj);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     internal Vector3 GetInitPosition()

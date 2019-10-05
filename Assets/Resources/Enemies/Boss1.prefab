@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4429232728938651570}
   - component: {fileID: 3716884297399528274}
   m_Layer: 0
-  m_Name: Boss1 1
+  m_Name: Boss1
   m_TagString: EnemyBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,9 +156,11 @@ MonoBehaviour:
   - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
   - {fileID: 588071189681846106, guid: 25b1b14e078658c42995ef3f8ff0e829, type: 3}
   - {fileID: 1661317585406152123, guid: bae2be1aae6a8e54f8d1f6dcf17fc684, type: 3}
+  - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
   destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
     type: 3}
   hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
   shotChance: 0
   shotTimeMin: 0
   shotTimeMax: 0
+  isStarted: 0
