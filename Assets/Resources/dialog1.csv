@@ -1,82 +1,134 @@
 Story01Start,event,show portrait_player,left,,endline
-,l,미나,저 불꽃들.,,endline
-,l,미나,아니마들이 다시 나타났다는 게 정말이었군요.,,endline
+,l,미나,불꽃의 아니마.,,endline
+,l,미나,도심에 아니마가 나타났다는 게 정말이었군요.,,endline
 ,event,show portrait_player_gray,left,,endline
-,l,리타,그래서 널 부른 거야.,,endline
-,l,리타,능력이 없는 인간은 그 안에 들어설 수 없으니까.,,endline
+,l,리타,그래.;일반인들은 모두 대피했어.,,endline
+,l,리타,맘껏 날뛰어도 돼.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,…절 무슨 괴수처럼 말하지 마세요.,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,하하하.;농담이야. 농담.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,…이번에 폭주를 일으킨 건 누구죠?,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,글쎄….;아직 신원은 확인되지 않았어.,,endline
+,l,리타,이번에도 진공 고등학교 학생이란 것만 알고 있을 뿐.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,또…. 저랑 같은 학교의 학생이란 말이군요.,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,그래.;누군지는 현장에서 확인해보자고.,,endline
+,l,리타,자. 시작할게.,,endline
 ,event,show portrait_player,left,,endline
 ,l,미나,…네.,,endline
-,event,show portrait_player_gray,left,,endline
-,l,리타,좋아.;시작하기 전에 체크를 좀 해보자.,,endline
-,l,리타,아무 지점이나 텔레포트를 해 봐.,,endline
 ,event,end,,,endline
-Story01Mid01,l,리타,좋아.;잘했어.,,endline
-,l,리타,잊지 마. 미나.;너는 시선이 닿는 곳이라면 어디로든 텔레포트 할 수 있어.,,endline
-,l,리타,텔레포트를 활용하면 아니마의 공격쯤 쉽게 피할 수 있을 거야.,,endline
+Story01Mid01,event,show portrait_player_gray,left,,endline
+,l,리타,그러고보니 네 능력은 활용하고 있어?,,endline
 ,event,show portrait_player,left,,endline
-,l,미나,네.;해볼게요.,,endline
+,l,미나,아….,,endline
 ,event,show portrait_player_gray,left,,endline
-,l,리타,자. 지금부터 아니마의 영역이야.,,endline
-,l,리타,아니마를 공격해 봐.,,endline
-,event,end,,,endline
-Story01Mid02,l,리타,잘했어.,,endline
-,l,리타,이제부터는 실전이야.,,endline
-,l,리타,기대하고 있을게. 미나.,,endline
+,l,리타,하아…. 역시나.,,endline
+,l,리타,잊지 마. 미나.;너는 순간이동 능력자야.,,endline
+,l,리타,시선이 닿는 곳이라면 어디로든 텔레포트 할 수 있다고.,,endline
 ,event,show portrait_player,left,,endline
-,l,미나,….,,endline
+,l,미나,아. 알고 있어요.,,endline
+,event,show portrait_player_gray,left,,endline
+,l,리타,안다면 활용도 할 줄 알아야지.,,endline
+,event,show portrait_player,left,,endline
+,l,미나,으….,,endline
 ,event,end,,,endline
-Story01Mid03,event,show portrait_fire,left,,endline
-,l,레이나,…화염과 불길.,,endline
-,l,레이나,이 모든 게 결국 내 안에 있었던 거야.,,endline
+Story01Mid02,event,show portrait_fire,,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,?;너는?,,endline
 ,event,show portrait_fire_gray,left,,endline
 ,event,show portrait_player,right,,endline
-,l,미나,…선배?;레이나 선배죠?,,endline
+,l,미나,…레이나 선배?,,endline
+,l,미나,학생회장 레이나 선배죠?,,endline
 ,event,show portrait_fire,left,,endline
 ,event,show portrait_player_gray,right,,endline
-,l,레이나,너는…. 미나.,,endline
-,l,레이나,너도 이 안에서 움직일 수 있나 보네.,,endline
+,l,레이나,너는…. 미나구나.;학생회에서 본 기억이 있어.,,endline
+,l,레이나,아니마의 영역까지 들어왔다는 건….,,endline
+,l,레이나,너도 능력자란 말이구나.,,endline
 ,event,show portrait_fire_gray,left,,endline
 ,event,show portrait_player,right,,endline
-,l,미나,능력이 있으면 아니마의 영역에서도 움직일 수 있어요.,,endline
+,l,미나,마음을 가라앉히세요.,,endline
+,l,미나,선배님은 지금 불안정한 상태에요.,,endline
 ,event,show portrait_fire,left,,endline
 ,event,show portrait_player_gray,right,,endline
-,l,레이나,능력….그랬구나.;너도 모든 걸 알고 있었던 거야.,,endline
-,l,레이나,우리 모두가 실험실의 쥐에 불과하다는 걸 말야.,,endline
+,l,레이나,…후후후. 미나야.;이름으로 불러도 되겠지?,,endline
+,l,레이나,고온의 불꽃으로도 태울 수 없는 게 뭔지 아니?,,endline
 ,event,show portrait_fire_gray,left,,endline
 ,event,show portrait_player,right,,endline
-,l,미나,네?,,endline
+,l,미나,그게 무슨 말이죠?,,endline
 ,event,show portrait_fire,left,,endline
 ,event,show portrait_player_gray,right,,endline
-,l,레이나,모르는 척 해도 소용 없어.,,endline
-,l,레이나,나도 모두 들었으니까.,,endline
+,l,레이나,…바로 기억이야.,,endline
+,l,레이나,그 어떤 열기로도….;기억만큼은 불태울 수가 없어.,,endline
 ,event,show portrait_fire_gray,left,,endline
 ,event,show portrait_player,right,,endline
-,l,미나,무슨 말씀인지 모르겠어요.,,endline
-,l,미나,선배님은 지금 불안정해요.,,endline
-,l,미나,능력을 각성한 직후엔 누구나….;,,endline
+,l,미나,이렇게 되면;…어쩔 수 없네요.,,endline
+,event,end,,,endline
+Story01Boss0,event,show portrait_fire,left,,endline
+,event,show portrait_player_gray,right,,endline
+,l,레이나,왜 공격하지 않지?,,endline
+,l,레이나,죄인은 벌을 받아야 해.,,endline
+,event,show portrait_fire_gray,left,,endline
+,event,show portrait_player,right,,endline
+,l,미나,죄인?;선배가 말인가요?,,endline
 ,event,show portrait_fire,left,,endline
 ,event,show portrait_player_gray,right,,endline
-,l,레이나,거짓말! 거짓말!;거짓말!!!,,endline
-,l,레이나,거짓은 모두….; 태워버려야 해.,,endline
-,event,show portrait_fire_gray,left,,endline
-,event,show portrait_player,right,,endline
-,l,미나,선배….,,endline
-,event,end,,,endline
-Story01Boss1,event,show portrait_player,left,,endline
-,l,미나,쥬김,,endline
-,event,end,,,endline
-Story01Boss0,event,show portrait_player,left,,endline
-,l,미나,살림,,endline
-,event,end,,,endline
-Stage1Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지1 디버그 시작,,endline
-,event,end,,,endline
-Stage2Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지2 디버그 시작,,endline
-,event,end,,,endline
-Stage3Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지3 디버그 시작,,endline
-,event,end,,,endline
-Stage4Debug,event,show portrait_player,left,,endline
-,l,미나,스테이지4 디버그 시작,,endline
-,event,end,,,endline
+,l,레이나,그래.;나는 죄인이야.,,endline
+,l,레이나,그날의 기억이 자꾸 떠올라.,,endline
+,l,레이나,기억을 떨치려고 끊임없이 달려왔는데.,,endline
+,l,레이나,어느샌가 턱밑까지 차올랐어.,,endline
+,event,show portrait_fire_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,….,,
+,event,show portrait_fire,left,,
+,event,show portrait_player_gray,right,,
+,l,레이나,불꽃의 기억….,,
+,l,레이나,카이나….,,
+,l,레이나,미안해….,,
+,event,show portrait_fire_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,"아, 안돼요!;선배!",,
+,event,end,,,
+Story01Boss1,event,show portrait_fire,left,,
+,event,show portrait_player_gray,right,,
+,l,레이나,고마워. 미나.,,
+,event,show portrait_fire_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,…왜 우리가 이렇게까지 싸워야 하는 거죠.,,
+,event,show portrait_fire,left,,
+,event,show portrait_player_gray,right,,
+,l,레이나,죄인은 벌을 받아야지.,,
+,event,show portrait_fire_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,죄인?;선배가 말인가요?,,
+,event,show portrait_fire,left,,
+,event,show portrait_player_gray,right,,
+,l,레이나,그래. 나는 죄인이야.,,
+,l,레이나,불꽃의 기억.,,
+,l,레이나,그 기억이 나를 쫓아왔어.,,
+,event,show portrait_fire_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,"아, 안돼요!;선배!",,
+,l,사운드,(사운드),,
+,l,미나,"어, 어째서.",,
+,event,show portrait_time,left,,
+,event,show portrait_player_gray,right,,
+,l,?,죽었나….,,
+,l,?,아깝네….,,
+,event,show portrait_time_gray,left,,
+,event,show portrait_player,right,,
+,l,미나,당신은?,,
+,event,show portrait_time,left,,
+,event,show portrait_player_gray,right,,
+,l,?,어쩔 수 없지….,,
+,event,show portrait_time_sui,left,,
+,l,?,….,,
+,event,show,left,,
+,event,show portrait_player,right,,
+,l,미나,!,,
+,l,사운드,(사운드),,
+,event,show portrait_player_gray,left,,
+,l,리타,무슨 일이야? 미나?,,
