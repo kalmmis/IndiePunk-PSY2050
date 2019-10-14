@@ -34,11 +34,12 @@ public class Enemy : MonoBehaviour {
         showUpTime = Time.frameCount;
         StartCoroutine(GetPattern());
         StartCoroutine(ActivateShooting());
-        if (pattern.attackType == "D")
-        {
-            health = 15;
-        }
-        else health = 10;
+        //if (pattern.attackType == "D")
+        //{
+        //    health = 15;
+        //}
+        //else health = 10;
+        // 일반 자코 health 는 유니티 프리팹에서 처리함
     }
     IEnumerator GetPattern()
     {

@@ -147,13 +147,27 @@ public class Enemy_Boss : MonoBehaviour
     //method of destroying the 'Enemy'
     void Destruction()
     {
-        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        GetDie();
+    }
+    // (도와주세요) 죽기 전에 y 위치를 25까지 이동 후 사망하게 하고 싶어요
+    IEnumerator GetDie()
+    {
         foreach (GameObject obj in onDestroyExecutionList)
         {
             Destroy(obj);
         }
-        //Destroy(gameObject);
+        while (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 25), 5f * Time.deltaTime);
+            yield return null;
+        }
+        if (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
+        {
+            Instantiate(destructionVFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
+
     public void DestructionProject()
     {
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
@@ -161,7 +175,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             Destroy(obj);
         }
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     internal Vector3 GetInitPosition()

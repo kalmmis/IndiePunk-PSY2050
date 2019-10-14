@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingWindmill : MonoBehaviour
 {
     public float speed;
+    // (도와주세요) speed 가 적용되지 않는 중
     float initVal, prevVal;
     float direction, x, totalX ;
     int disableFrame = 10;
@@ -31,11 +32,13 @@ public class MovingWindmill : MonoBehaviour
         if (direction == 1 && x > 360+ initVal)
         {
             direction = -1 * direction;
+            speed = 0.1f;
         }
         else if(direction == -1  && x < 0 + initVal)
             direction = -1 * direction;
         
         x += direction * Time.deltaTime * 90;
+        speed += 0.2f;
         Debug.Log("x : " + x);
         transform.rotation = Quaternion.Euler(0, 0, x);
         //disableFrame--;
