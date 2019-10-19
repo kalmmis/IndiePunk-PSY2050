@@ -19,20 +19,10 @@ public class MovingWindmill : MonoBehaviour
     //moving the object with the defined speed
     private void Update()
     {
-        //Debug.Log("initval : "+ initVal + " Curr : " + transform.eulerAngles.z + " prev : " + prevVal);
-//        if (disableFrame < 0 && ((direction == -1 && 0 > transform.eulerAngles.z - initVal) || (direction == 1 && 360 < transform.eulerAngles.z - initVal)))
-        //if(transform.eulerAngles.z > initVal-3f && transform.eulerAngles.z < initVal + 3f)
-        //{
-        //    direction = -1 * direction;
-        //    //disableFrame = 10;
-        //}
-
-        //prevVal = transform.eulerAngles.z;
-        //transform.Rotate(0, 0, direction * speed, Space.World);
         if (direction == 1 && x > 360+ initVal)
         {
             direction = -1 * direction;
-            speed = 0.1f;
+            
         }
         else if(direction == -1  && x < 0 + initVal)
             direction = -1 * direction;
