@@ -27,8 +27,8 @@ public class MovingWindmill : MonoBehaviour
         else if(direction == -1  && x < 0 + initVal)
             direction = -1 * direction;
         
-        x += direction * Time.deltaTime * 90;
-        speed += 0.2f;
+        x += direction * Time.deltaTime * speed;
+        // speed += 0.2f;
         Debug.Log("x : " + x);
         transform.rotation = Quaternion.Euler(0, 0, x);
         //disableFrame--;

@@ -26,6 +26,9 @@ public class Enemy_Boss : MonoBehaviour
     #endregion
     List<GameObject> onDestroyExecutionList = new List<GameObject>();
     public bool isStarted = false;
+    private bool isDestroyedVal = false;
+    private float bossInitTime;
+
     private void Start()
     {
         //Invoke("ActivateShooting",3);
@@ -61,8 +64,12 @@ public class Enemy_Boss : MonoBehaviour
         onDestroyExecutionList.Add(left.gameObject);
         onDestroyExecutionList.Add(right.gameObject);
         //1-2간격
-        yield return new WaitForSeconds(20);
         //20초가 지나거나 health 가 200이 되거나!
+        yield return new WaitUntil(() =>
+        {
+            return health < 300 || (Time.time - bossInitTime > 20);
+        });
+        
 
         GameObject.Destroy(left);
         GameObject.Destroy(right);
@@ -73,42 +80,43 @@ public class Enemy_Boss : MonoBehaviour
         }
         yield return new WaitForSeconds(3);
         health = 200;
-
-        GameObject[] windmill = {
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 45)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 135)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 225)),
-            Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 315))
-        };
-        foreach (GameObject go in windmill)
+        if (!isDestroyedVal)
         {
-            onDestroyExecutionList.Add(go.gameObject);
+            GameObject[] windmill = {
+                Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 45)),
+                Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 135)),
+                Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 225)),
+                Instantiate(Projectiles[1], gameObject.transform.position, Quaternion.Euler(0, 0, 315))
+            };
+            foreach (GameObject go in windmill)
+            {
+                onDestroyExecutionList.Add(go.gameObject);
+            }
+            yield return new WaitUntil(() =>
+            {
+                return (health < 100 || (Time.time - bossInitTime > 40));
+            });
+            foreach (GameObject go in windmill)
+            {
+                Destroy(go);
+            }
         }
         //2-3간격
-        yield return new WaitForSeconds(20);
         //20초가 지나거나 health 가 100이 되거나!
+        if (!isDestroyedVal)
+        {
+            health = 100;
+            Vector3 p = gameObject.transform.position;
+            p.x = p.x - 10;
+            p.y = p.y + 5;
+            //Invoke("BossPattern1Add", 20f);
 
-        foreach (GameObject go in windmill)
-        {
-            GameObject.Destroy(go);
+            while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
+            {
+                if (isDestroyedVal) break;
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 5f * Time.deltaTime);
+            }
         }
-        while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 5f * Time.deltaTime);
-            yield return null;
-        }
-        health = 100;
-        Vector3 p = gameObject.transform.position;
-        p.x = p.x - 10;
-        p.y = p.y + 5;
-        Invoke("BossPattern1Add", 20f);
-        while (true)
-        {
-             GameObject wall = Instantiate(Projectiles[2], p, Quaternion.Euler(0, 0, 90));
-             onDestroyExecutionList.Add(wall);
-             yield return new WaitForSeconds(2);
-        }
-
     }
     //method of getting damage for the 'Enemy'
     public void BossPattern1Add()
@@ -127,7 +135,7 @@ public class Enemy_Boss : MonoBehaviour
     {
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
-            Destruction();
+            isDestroyedVal = true;
         else
             Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
     }
@@ -145,12 +153,8 @@ public class Enemy_Boss : MonoBehaviour
     }
 
     //method of destroying the 'Enemy'
-    void Destruction()
-    {
-        GetDie();
-    }
     // (도와주세요) 죽기 전에 y 위치를 25까지 이동 후 사망하게 하고 싶어요
-    IEnumerator GetDie()
+    void Destruction()
     {
         foreach (GameObject obj in onDestroyExecutionList)
         {
@@ -159,13 +163,9 @@ public class Enemy_Boss : MonoBehaviour
         while (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 25), 5f * Time.deltaTime);
-            yield return null;
         }
-        if (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
-        {
-            Instantiate(destructionVFX, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     public void DestructionProject()
@@ -177,9 +177,20 @@ public class Enemy_Boss : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    public void setActive(bool val)
+    {
+        isStarted = val;
+        if (val)
+        {
+            bossInitTime = Time.time;
+        }
+    }
     internal Vector3 GetInitPosition()
     {
         return new Vector3(0, 23);
+    }
+    public bool isDestroyed()
+    {
+        return isDestroyedVal;
     }
 }
