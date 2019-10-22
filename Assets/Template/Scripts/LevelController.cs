@@ -68,7 +68,7 @@ public class LevelController : MonoBehaviour {
         UI.SetActive(false);
         mainCamera = Camera.main;
         StartPlayer();
-        if (!isTest) StartCoroutine( StartLevel(MAX_LEVEL) );
+        if (!isTest) StartCoroutine( StartLevel() );
     }
     public void StartPlayer()
     {
@@ -83,12 +83,13 @@ public class LevelController : MonoBehaviour {
         //animator.SetTrigger("TrigPlayerIdle");
         //playerShootingScript.TimeReset();
     }
-    public IEnumerator StartLevel(int maxLevel)
+    public IEnumerator StartLevel()
     {
-        for (int i = 1; i <= maxLevel; i++)
+        int i = 1;
+        while(true)
         {
             bool isFinishied = false;
-            StartCoroutine(StringParser(ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val)=> { isFinishied = val; }));
+            StartCoroutine(StringParser(i, ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val, int nextStage)=> { isFinishied = val; i = nextStage; }));
             if (wantStopTheWorld) StartCoroutine(StopTheWorld());
             yield return new WaitUntil(() => isFinishied);
         }
@@ -123,13 +124,13 @@ public class LevelController : MonoBehaviour {
         gameoverText = GameObject.Find("UITextStage").GetComponent<Text>();
         gameoverText.text = "Game Over";
     }
-    IEnumerator StringParser(string levelStr, string dialogs, System.Action<bool> callback) {
+    IEnumerator StringParser(int currentInt,string levelStr, string dialogs, System.Action<bool, int> callback) {
         Invoke("ShowStageUI", 2);
 
         char[] splitter = { '\n' };
         string[] levelRows = levelStr.Split(splitter);
         string[] dialogRows = dialogs.Split(splitter);
-
+        int nextStage = currentInt + 1;
         IEnumerable<string> dialogRowsEnum = dialogRows.Cast<string>();
         IEnumerable<string[]> dialogRowArrays = dialogRowsEnum.Select(row => row.Split(','));
         string[][] dialogRowsDual = dialogRowArrays.ToArray<string[]>();
@@ -157,7 +158,7 @@ public class LevelController : MonoBehaviour {
         IEnumerable<string[]> levelRowArrays = levelRowsEnum.Select(row => row.Split(','));
         string[][] levelRowsDual = levelRowArrays.ToArray<string[]>();
         float y = 24;
-
+        bool hasToExit = false;
         //levelRows
         for (int j = levelRowsDual.Length - 1; j > -1; j--)
         {
@@ -250,7 +251,7 @@ public class LevelController : MonoBehaviour {
                             //대사표시
                             UI.SetActive(true);
                             UI.transform.Find("Name").Find("Text").GetComponent<Text>().text = row[2];
-                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',').Replace(';','\n');
+                            UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',').Replace(';', '\n');
 
                             yield return new WaitForSeconds(1);
                             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
@@ -314,8 +315,9 @@ public class LevelController : MonoBehaviour {
                         index++;
                     }
                 }
-                else if(fd[1].Contains("boss")) {
-                    
+                else if (fd[1].Contains("boss"))
+                {
+
                     string[] loadRow = fd[1].Split('=');
                     string[] bossStatus = loadRow[1].Split('|');
                     string bossId = bossStatus[0];
@@ -338,10 +340,19 @@ public class LevelController : MonoBehaviour {
                     else
                     {
                         enemy.GetComponent<Enemy_Boss>().setActive(true);
-                        yield return new WaitUntil(() => {
+                        yield return new WaitUntil(() =>
+                        {
                             return enemy.GetComponent<Enemy_Boss>().isDestroyed();
                         });
                     }
+                }
+                else if (fd[1].Contains("nextStage"))
+                {
+                    string[] loadRow = fd[1].Split('=');
+                    string nextStageStr = loadRow[1];
+                    nextStage = int.Parse(nextStageStr);
+                    hasToExit = true;
+                    break;
                 }
                 else
                 {
@@ -356,8 +367,9 @@ public class LevelController : MonoBehaviour {
                 }
                 
             }
+            if (hasToExit) break;
         }
-        callback(true);
+        callback(true, nextStage);
     }
 
     //endless coroutine generating 'levelUp' bonuses. 

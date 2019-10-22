@@ -1,3 +1,4 @@
+0,nextStage=1
 0,boss=Boss1|destroy,,,,,,,,,
 0,load id=Story01Boss,,,,,,,,,
 0,boss=Boss1|inactivated,,,,,,,,,
