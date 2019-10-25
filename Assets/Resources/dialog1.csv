@@ -1,24 +1,29 @@
 Story01Start,event,show portrait_player,left,endline
-,l,미나,…아니마.,endline
+,l,미나,…이 불꽃.,endline
+,l,미나,아니마야.,endline
 ,event,show empty,left,endline
-,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
+,l,통신기,(미나…? 들려?),endline
+,l,통신기,(…지금 그 지역에 아니마가 발생했어.),endline
 ,l,통신기,(수색은 종료야.),endline
 ,event,show portrait_player,left,endline
-,l,미나,리타….;불꽃의 아니마야.,endline
+,l,미나,리타….;이건 불꽃의 아니마야.,endline
 ,l,미나,미사가 죽던 날….;나타났던 아니마라고.,endline
 ,event,show empty,left,endline
-,l,통신기,(네 심정은 이해하지만….),endline
+,l,통신기,(….;네 심정은 이해하지만….),endline
 ,l,통신기,(지금 그곳은 위험지역이야….),endline
 ,l,통신기,(현장에서 나와. 어서 복귀해. 미나.),endline
 ,event,show portrait_player,left,endline
-,l,미나,미안해. 리타.,endline
+,l,미나,아니. 안되겠어.,endline
 ,event,show empty,left,endline
 ,l,통신기,(미나….?),endline
 ,event,show portrait_player,left,endline
-,l,미나,난…. 더 깊이 들어가봐야겠어.,endline
+,l,미나,난…. 만나봐야겠어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나? 미나!),endline
 ,event,play_se,beep_out.wav,endline
+,event,show portrait_player,left,endline
+,l,미나,미안해. 리타.,endline
+,event,show empty,left,endline
 ,event,end,,endline
 Story01Mid01,event,show portrait_player,left,endline
 ,l,미나,아니마의 힘이 점차 강해지고 있어.,endline
@@ -26,6 +31,7 @@ Story01Mid01,event,show portrait_player,left,endline
 ,l,미나,미사를 위해서라도….,endline
 ,l,미나,난 시선이 닿는 곳이라면 어디든 텔레포트 할 수 있으니까.,endline
 ,l,,(아무 곳이나 클릭해 텔레포트를 할 수 있습니다.),endline
+,event,show empty,left,endline
 ,event,end,,endline
 Story01Mid02,event,show portrait_fire,,endline
 ,event,show portrait_player_gray,right,endline
@@ -42,13 +48,13 @@ Story01Mid02,event,show portrait_fire,,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…단도직입적으로 물어볼게요.,endline
-,l,미나,"얼마 전, 미사가 있는 병원에서 있었던 폭발.",endline
+,l,미나,얼마 전. 미사가 있는 병원에서 있었던 폭발.,endline
 ,l,미나,선배가 그런건가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,병원이라면….;리안 병원 말이구나….,endline
 ,l,레이나,거기에 미사라는 애가 있었던 모양이네.,endline
-,l,레이나,미안.,endline
+,l,레이나,미안하게 됐어.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,선배였군요….,endline
@@ -63,6 +69,8 @@ Story01Mid02,event,show portrait_fire,,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,네 손에 죽는 것도 나쁘지 않을 것 같거든.,endline
 ,l,레이나,오해와.;절망 속에서….,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story01Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -105,6 +113,8 @@ Story01Boss0,event,show portrait_fire,left,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
 ,event,load stage2,stage2 로드,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story01Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -147,6 +157,8 @@ Story01Boss1,event,show portrait_fire,left,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
 ,event,load stage2,stage2 로드,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story02Start,event,show portrait_player,left,endline
 ,l,미나,여긴…?,endline
@@ -170,6 +182,8 @@ Story02Start,event,show portrait_player,left,endline
 ,event,play_se,beep_out.wav,endline
 ,event,show portrait_player,,endline
 ,l,미나,몇 시간 전으로….;되돌아 온거야?,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story02Mid,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
@@ -199,8 +213,10 @@ Story02Mid,event,show portrait_fire_gray,left,endline
 ,l,레이나,네 손에 죽는 것도 나쁘지 않을 것 같거든.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,"자, 잠깐만요!",endline
+,l,미나,자 잠깐만요!,endline
 ,l,미나,….,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story02Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -267,6 +283,8 @@ Story02Boss0,event,show portrait_fire,left,endline
 ,l,노아,자. 날 따라 와.,endline
 ,l,노아,그럼 모든 걸 이야기해줄게.,endline
 ,event,load ending,,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
 Story02Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -304,4 +322,6 @@ Story02Boss1,event,show portrait_fire,left,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
 ,event,load stage2,stage2 로드,endline
+,event,show empty,left,endline
+,event,show empty,right,endline
 ,event,end,,endline
