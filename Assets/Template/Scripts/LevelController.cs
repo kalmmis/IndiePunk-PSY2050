@@ -158,7 +158,6 @@ public class LevelController : MonoBehaviour {
         IEnumerable<string[]> levelRowArrays = levelRowsEnum.Select(row => row.Split(','));
         string[][] levelRowsDual = levelRowArrays.ToArray<string[]>();
         float y = 24;
-        bool hasToExit = false;
         //levelRows
         for (int j = levelRowsDual.Length - 1; j > -1; j--)
         {
@@ -241,10 +240,11 @@ public class LevelController : MonoBehaviour {
                             {
                                 //다음행으로 갈것
                                 //암것도 안해도 됨
+                            }else if (row[2].Contains("nextStage"))
+                            {
+                                string nextStageStr = row[3];
+                                nextStage = int.Parse(nextStageStr);
                             }
-
-                            //yield return new WaitForSeconds(1);
-
                         }
                         else if ("l".Equals(row[1]))
                         {
@@ -346,14 +346,14 @@ public class LevelController : MonoBehaviour {
                         });
                     }
                 }
-                else if (fd[1].Contains("nextStage"))
-                {
-                    string[] loadRow = fd[1].Split('=');
-                    string nextStageStr = loadRow[1];
-                    nextStage = int.Parse(nextStageStr);
-                    hasToExit = true;
-                    break;
-                }
+                //else if (fd[1].Contains("nextStage"))
+                //{
+                //    string[] loadRow = fd[1].Split('=');
+                //    string nextStageStr = loadRow[1];
+                //    nextStage = int.Parse(nextStageStr);
+                //    hasToExit = true;
+                //    break;
+                //}
                 else
                 {
                     float xPosition = float.Parse(fd[i - 1]);
@@ -367,7 +367,6 @@ public class LevelController : MonoBehaviour {
                 }
                 
             }
-            if (hasToExit) break;
         }
         callback(true, nextStage);
     }
