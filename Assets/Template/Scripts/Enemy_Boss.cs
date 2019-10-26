@@ -31,6 +31,7 @@ public class Enemy_Boss : MonoBehaviour
 
     private void Start()
     {
+        health = 300;
         //Invoke("ActivateShooting",3);
         StartCoroutine(GetBossPattern());
     }
@@ -67,7 +68,7 @@ public class Enemy_Boss : MonoBehaviour
         //20초가 지나거나 health 가 200이 되거나!
         yield return new WaitUntil(() =>
         {
-            return health < 300 || (Time.time - bossInitTime > 20);
+            return health < 200 || (Time.time - bossInitTime > 20);
         });
         
 
@@ -105,17 +106,24 @@ public class Enemy_Boss : MonoBehaviour
         //20초가 지나거나 health 가 100이 되거나!
         if (!isDestroyedVal)
         {
+            Debug.Log("Pattern3");
+            Debug.Log("isDestroyedVal "+ isDestroyedVal);
+            health = 500;
+            while (Vector3.Distance(transform.position, new Vector3(0, 15)) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 15), 5f * Time.deltaTime);
+                yield return null;
+            }
             health = 100;
             Vector3 p = gameObject.transform.position;
-            p.x = p.x - 10;
-            p.y = p.y + 5;
-            //Invoke("BossPattern1Add", 20f);
-
-            while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
+            while (!isDestroyedVal && true)
             {
-                if (isDestroyedVal) break;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 5f * Time.deltaTime);
+                if(health < 0 || (Time.time - bossInitTime > 65)) break;
+                GameObject wall = Instantiate(Projectiles[2], new Vector3(p.x - 10, p.y -3), Quaternion.Euler(0, 0, 90));
+                onDestroyExecutionList.Add(wall);
+                yield return new WaitForSeconds(2);
             }
+            
         }
     }
     //method of getting damage for the 'Enemy'
@@ -133,7 +141,7 @@ public class Enemy_Boss : MonoBehaviour
      }
     public void GetDamage(int damage)
     {
-        health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
+        health -= 20;// damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
             isDestroyedVal = true;
         else
@@ -160,6 +168,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             Destroy(obj);
         }
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
         while (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 25), 5f * Time.deltaTime);

@@ -104,15 +104,14 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(5);
         Time.timeScale = 1;
     }
-    public void ShowStageUI()
+    public void ShowStageUI(int level = 1)
     {
-        int level = 1; // 나중에 값 받아와야징
         stageImage = GameObject.Find("UIImageStage");
         stageText = GameObject.Find("UITextStage").GetComponent<Text>();
         stageText.text = "Stage" + level;
 
         stageImage.SetActive(true);
-        Invoke("HideStageUI", 2);
+        Invoke("HideStageUI", 4);
     }
     public void HideStageUI()
     {
@@ -125,7 +124,7 @@ public class LevelController : MonoBehaviour {
         gameoverText.text = "Game Over";
     }
     IEnumerator StringParser(int currentInt,string levelStr, string dialogs, System.Action<bool, int> callback) {
-        Invoke("ShowStageUI", 2);
+        ShowStageUI(currentInt);
 
         char[] splitter = { '\n' };
         string[] levelRows = levelStr.Split(splitter);
