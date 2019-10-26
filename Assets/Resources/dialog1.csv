@@ -112,7 +112,7 @@ Story01Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_time_gray,right,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
-,event,load stage2,stage2 로드,endline
+,event,nextStage,2,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -156,7 +156,7 @@ Story01Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_time_gray,right,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
-,event,load stage2,stage2 로드,endline
+,event,nextStage,2,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -321,7 +321,7 @@ Story02Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_time_gray,right,endline
 ,event,play_se,gun_firing.wav,endline
 ,l,미나,!?,endline
-,event,load stage2,stage2 로드,endline
+,event,nextStage,2,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
