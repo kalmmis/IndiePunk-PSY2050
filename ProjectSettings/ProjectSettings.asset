@@ -571,7 +571,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -592,10 +592,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 2
-  cloudProjectId: 
+  cloudProjectId: 317149bd-94e8-4f47-a44e-a7981e4672bf
   framebufferDepthMemorylessMode: 0
-  projectName: Space Shooter FREE
-  organizationId: 
+  projectName: PSY2050
+  organizationId: hyunseop-han
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
