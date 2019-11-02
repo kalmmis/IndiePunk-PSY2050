@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;
+    public GameObject destructionSound;
     public GameObject timeslowEFX;
     public bool isInvincible;
     public bool isAttackMode;
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     {
         destrunctionCall = true;
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
+        Instantiate(destructionSound, transform.position, Quaternion.identity);
         playerShootingScript = gameObject.GetComponent<PlayerShooting>();
         playerShootingScript.ShootingIsActive = false;
         Destroy(gameObject);

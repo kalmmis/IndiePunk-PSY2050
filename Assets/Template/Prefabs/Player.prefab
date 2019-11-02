@@ -14327,6 +14327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionFX: {fileID: 1587261729604890, guid: 600ec83cba1cec448bf41a6607229741,
     type: 3}
+  destructionSound: {fileID: 4347955793420917717, guid: 86c99562291e3974eab9a0274b43168b,
+    type: 3}
   timeslowEFX: {fileID: 6754066341276187038, guid: d6aa23acb9ed53949bd993169f34359b,
     type: 3}
   isInvincible: 1
@@ -14371,6 +14373,7 @@ MonoBehaviour:
   nextFire: 0
   weaponUpgradeIntervalOfFrame: 60
   weaponPower: 1
+  timeScaleUp: 1
   startAttackTimestamp: 0
   guns:
     rightGun: {fileID: 1462174475}

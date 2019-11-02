@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
 
     [Tooltip("VFX prefab generating after destruction")]
     public GameObject destructionVFX;
+    public GameObject destructionSound;
     public GameObject hitEffect;
     
     [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
@@ -109,7 +110,8 @@ public class Enemy : MonoBehaviour {
     void Destruction()
     {
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
-        foreach(GameObject obj in onDestroyExecutionList)
+        Instantiate(destructionSound, transform.position, Quaternion.identity);
+        foreach (GameObject obj in onDestroyExecutionList)
         {
             Destroy(obj);
         }
