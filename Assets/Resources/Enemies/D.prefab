@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7146693616577398687}
   - component: {fileID: 5772689173878262932}
   m_Layer: 0
-  m_Name: B
+  m_Name: D
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
+    type: 3}
+  destructionSound: {fileID: 269315769977826233, guid: 3350da63ccc5d48438ceac2e93245d8b,
     type: 3}
   hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
   shotChance: 10
