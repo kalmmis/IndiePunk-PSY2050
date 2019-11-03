@@ -151,13 +151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1544091e3b8d4a242bb66ada7f2f0006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 3000
   Projectiles:
   - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
   - {fileID: 588071189681846106, guid: 25b1b14e078658c42995ef3f8ff0e829, type: 3}
   - {fileID: 1661317585406152123, guid: bae2be1aae6a8e54f8d1f6dcf17fc684, type: 3}
   - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
-  destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
+  destructionVFX: {fileID: 4927065586229045827, guid: 892f8d0e9b15b9e4e8aeb01b6f4ef466,
     type: 3}
   hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
   shotChance: 0
