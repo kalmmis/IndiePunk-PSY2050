@@ -29,7 +29,6 @@ public class MovingWindmill : MonoBehaviour
         
         x += direction * Time.deltaTime * speed;
         // speed += 0.2f;
-        Debug.Log("x : " + x);
         transform.rotation = Quaternion.Euler(0, 0, x);
         //disableFrame--;
     }

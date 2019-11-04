@@ -14492,7 +14492,7 @@ GameObject:
   - component: {fileID: 8935480500157451783}
   m_Layer: 0
   m_Name: Animation
-  m_TagString: Untagged
+  m_TagString: PlayerAni
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

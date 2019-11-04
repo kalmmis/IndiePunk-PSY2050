@@ -16,7 +16,6 @@ public class MovingSwing : MonoBehaviour
     {
         float z = gameObject.transform.eulerAngles.z;
         if (isRight) {
-            Debug.Log("Right z : " + z);
             if (z > 90 && z < 135)
                 isPositive = false;
             else if(z < 90 && z > 45)
@@ -24,9 +23,9 @@ public class MovingSwing : MonoBehaviour
 
             if (isPositive)
             {
-                transform.Rotate(0, 0, -1 * speed, Space.World);
+                transform.Rotate(0, 0, -1 * speed *Time.deltaTime, Space.World);
             }else
-                transform.Rotate(0, 0, speed, Space.World);
+                transform.Rotate(0, 0, speed * Time.deltaTime, Space.World);
         }
         else
         {
@@ -37,10 +36,10 @@ public class MovingSwing : MonoBehaviour
 
             if (isPositive)
             {
-                transform.Rotate(0, 0,  speed, Space.World);
+                transform.Rotate(0, 0,  speed * Time.deltaTime, Space.World);
             }
             else
-                transform.Rotate(0, 0, -1 * speed, Space.World);
+                transform.Rotate(0, 0, -1 * speed * Time.deltaTime, Space.World);
         }
     }
 }

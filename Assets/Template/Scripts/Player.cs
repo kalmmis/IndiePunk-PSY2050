@@ -18,14 +18,15 @@ public class Player : MonoBehaviour
     PlayerShooting playerShootingScript;
     LevelController lc;
     public static Player instance;
+    private int timer;
 
     public void Start()
     {
         destrunctionCall = false;
+        lc = FindObjectOfType<LevelController>();
     }
     private void Update()
     {
-        lc = GameObject.FindObjectOfType<LevelController>();
         lc.lastPlayerPosition = transform.position;
     }
     private void Awake()
@@ -42,28 +43,55 @@ public class Player : MonoBehaviour
             Destruction();
         }
             
-    }    
+    }
 
     //'Player's' destruction procedure
     void Destruction()
     {
+        Debug.Log("Destroy Player");
         destrunctionCall = true;
-        Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
+        Instantiate(destructionFX, transform.position, Quaternion.identity); 
         Instantiate(destructionSound, transform.position, Quaternion.identity);
         playerShootingScript = gameObject.GetComponent<PlayerShooting>();
         playerShootingScript.ShootingIsActive = false;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        Invoke("PlayerRevive", 2f);
         
+    }
+    void PlayerRevive()
+    {
         if (lc.playerLife > 0)
         {
             lc.playerLife--;
-            lc.StartPlayer();
+            lc.ShowAdsUI();
+            Time.timeScale = 0.05f;
+            timer = 5;
+            for(int i = 1; i < 6; i++)
+            {
+                Debug.Log(i);
+                Invoke("CountDownTimer", i * Time.timeScale);
+            }
         }
         else
         {
             Debug.Log("Game Over");
             lc.Invoke("ShowGameOverUI", 2);
         }
+    }
+    void CountDownTimer()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("Timer");
+        Debug.Log(go);
+        if(null != go) {
+            Debug.Log(timer);
+            go.GetComponent<Text>().text = "" + timer;
+            timer--;
+        }else { 
+}
+    }
+    void GameOver()
+    {
+
     }
     public IEnumerator RemoveInvincible(float delay)
     {

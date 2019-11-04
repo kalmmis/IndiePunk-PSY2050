@@ -18,6 +18,9 @@ TagManager:
   - Boundary
   - UI
   - Credit
+  - Ads
+  - PlayerAni
+  - Timer
   layers:
   - Default
   - TransparentFX

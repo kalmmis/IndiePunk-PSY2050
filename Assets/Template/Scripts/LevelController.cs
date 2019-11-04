@@ -56,6 +56,7 @@ public class LevelController : MonoBehaviour {
     private Text gameoverText;
     private GameObject gameoverImage;
     private GameObject UI;
+    private GameObject ads;
     private Boolean clicked = false;
 
     
@@ -66,6 +67,9 @@ public class LevelController : MonoBehaviour {
     {
         UI = GameObject.FindGameObjectWithTag("UI");
         UI.SetActive(false);
+        ads = GameObject.FindGameObjectWithTag("Ads");
+        ads.SetActive(false);
+
         mainCamera = Camera.main;
         StartPlayer();
         if (!isTest) StartCoroutine( StartLevel() );
@@ -117,6 +121,15 @@ public class LevelController : MonoBehaviour {
     {
         stageText.text = "";
     }
+    public void ShowAdsUI(int level = 1)
+    {
+        ads.SetActive(true);
+    }
+    public void HideAdsUI()
+    {
+        ads.SetActive(false);
+    }
+
     public void ShowGameOverUI()
     {
         gameoverImage = GameObject.Find("UIImageGameOver");
