@@ -1622,6 +1622,11 @@ PrefabInstance:
       propertyPath: BOSS_TIMEOUT
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: wantStopTheWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 61647215913099182, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
       propertyPath: m_Size.x

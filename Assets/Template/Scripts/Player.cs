@@ -66,11 +66,11 @@ public class Player : MonoBehaviour
             lc.ShowAdsUI();
             Time.timeScale = 0.05f;
             timer = 5;
-            for(int i = 1; i < 6; i++)
-            {
-                Debug.Log(i);
-                Invoke("CountDownTimer", i * Time.timeScale);
-            }
+            //for(int i = 1; i < 6; i++)
+            //{
+            //    Debug.Log(i);
+            //    Invoke("CountDownTimer", i * Time.timeScale);
+            //}
         }
         else
         {
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
             go.GetComponent<Text>().text = "" + timer;
             timer--;
         }else { 
-}
+        }
     }
     void GameOver()
     {

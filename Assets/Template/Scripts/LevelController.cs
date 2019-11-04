@@ -69,7 +69,7 @@ public class LevelController : MonoBehaviour {
         UI.SetActive(false);
         ads = GameObject.FindGameObjectWithTag("Ads");
         ads.SetActive(false);
-
+        Time.timeScale = 1f;
         mainCamera = Camera.main;
         StartPlayer();
         if (!isTest) StartCoroutine( StartLevel() );
@@ -94,7 +94,7 @@ public class LevelController : MonoBehaviour {
         {
             bool isFinishied = false;
             StartCoroutine(StringParser(i, ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val, int nextStage)=> { isFinishied = val; i = nextStage; }));
-            if (wantStopTheWorld) StartCoroutine(StopTheWorld());
+            
             yield return new WaitUntil(() => isFinishied);
         }
         SceneManager.LoadScene("StartMenu");
@@ -104,7 +104,7 @@ public class LevelController : MonoBehaviour {
     {
         yield return new WaitForSeconds(5);
         Debug.Log("Time scale" + Time.timeScale);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         yield return new WaitForSeconds(5);
         Time.timeScale = 1;
     }
@@ -173,11 +173,9 @@ public class LevelController : MonoBehaviour {
         //levelRows
         for (int j = levelRowsDual.Length - 1; j > -1; j--)
         {
-            Debug.Log(levelRows[j]);
             string[] fd = levelRowsDual[j];
             if (fd[0].Equals("")) fd[0] = "1";
             float duration = float.Parse(fd[0]);
-
             yield return new WaitForSeconds(duration + 2);
             for (int i = fd.Length - 1; i > 0; i -= 2) {
                 if (fd[i - 1].Equals("")) continue;
@@ -329,7 +327,6 @@ public class LevelController : MonoBehaviour {
                 }
                 else if (fd[1].Contains("boss"))
                 {
-
                     string[] loadRow = fd[1].Split('=');
                     string[] bossStatus = loadRow[1].Split('|');
                     string bossId = bossStatus[0];
@@ -377,9 +374,10 @@ public class LevelController : MonoBehaviour {
                     Pattern newOne = new Pattern(type.Substring(0, 1), type.Substring(1, 1), type.Substring(2, 1), type.Substring(4, 3));
                     pl.Add(newOne);
                 }
-                
+                Debug.Log(levelRows[j]);
             }
         }
+
         callback(true, nextStage);
     }
 
