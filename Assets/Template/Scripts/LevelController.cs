@@ -239,6 +239,13 @@ public class LevelController : MonoBehaviour {
                             else if (row[2].Contains("play_se"))
                             {
                                 //음악플레이
+                                string fileName = row[3];
+                                AudioSource audio = gameObject.AddComponent<AudioSource>();
+                                AudioClip clip = (AudioClip) Resources.Load(fileName);
+                                if( clip != null)
+                                {
+                                    audio.PlayOneShot(clip);
+                                }
                             }
                             else if (row[2].Contains("move"))
                             {

@@ -41,6 +41,7 @@ Story01Mid01,event,show portrait_player,left,endline,endline
 ,event,end,,endline,endline
 Story01Mid02,event,show portrait_fire,left,endline,endline
 ,event,show portrait_player_gray,right,endline,endline
+,event,play_se,beep_out,,endline,endline
 ,l,레이나,너는 누구야?,endline,endline
 ,l,레이나,여기는 왜 왔어?,endline,endline
 ,event,show portrait_fire_gray,left,endline,endline
