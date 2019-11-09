@@ -57,6 +57,7 @@ public class LevelController : MonoBehaviour {
     private GameObject gameoverImage;
     private GameObject UI;
     private GameObject ads;
+    private GameObject adsDialog;
     private Boolean clicked = false;
 
     
@@ -67,6 +68,8 @@ public class LevelController : MonoBehaviour {
     {
         UI = GameObject.FindGameObjectWithTag("UI");
         UI.SetActive(false);
+        adsDialog = GameObject.FindGameObjectWithTag("AdsConfirm");
+        adsDialog.SetActive(false);
         ads = GameObject.FindGameObjectWithTag("Ads");
         ads.SetActive(false);
         Time.timeScale = 1f;
@@ -129,6 +132,16 @@ public class LevelController : MonoBehaviour {
     {
         ads.SetActive(false);
     }
+
+    public void ShowAdsDialogUI(int level = 1)
+    {
+        adsDialog.SetActive(true);
+    }
+    public void HideAdsDialogUI()
+    {
+        adsDialog.SetActive(false);
+    }
+
 
     public void ShowGameOverUI()
     {

@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     //method for damage proceccing by 'Player'
     public void GetDamage(int damage)   
     {
+        Debug.Log("GetDamaged!");
         if (!isInvincible && !destrunctionCall)
         {
             Destruction();
@@ -56,10 +57,10 @@ public class Player : MonoBehaviour
         playerShootingScript.ShootingIsActive = false;
         gameObject.SetActive(false);
         Invoke("PlayerRevive", 2f);
-        
     }
     void PlayerRevive()
     {
+        Destroy(gameObject);
         if (lc.playerLife > 0)
         {
             lc.playerLife--;
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
             Debug.Log("Game Over");
             lc.Invoke("ShowGameOverUI", 2);
         }
+        
     }
     void CountDownTimer()
     {

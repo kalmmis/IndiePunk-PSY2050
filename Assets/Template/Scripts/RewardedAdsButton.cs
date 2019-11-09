@@ -19,7 +19,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
     void Start()
     {
-        lc = FindObjectOfType<LevelController>();
         myButton = GetComponent<Button>();
 
         // Set interactivity to be dependent on the Placement’s status:
@@ -55,6 +54,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
         if (showResult == ShowResult.Finished)
         {
             // Reward the user for watching the ad to completion.
+            lc = FindObjectOfType<LevelController>();
             lc.StartPlayer();
             lc.HideAdsUI();
             Time.timeScale = 1f;
