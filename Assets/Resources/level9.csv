@@ -1,8 +1,8 @@
-1,load id=Story03End,,,,,,,,,
+1,load id=Story09End,,,,,,,,,
 0,boss=Boss1|destroy,,,,,,,,,
-0,load id=Story03Boss,,,,,,,,,
+0,load id=Story09Boss,,,,,,,,,
 0,boss=Boss1|activated,,,,,,,,,
-0,load id=Story03Mid,,,,,,,,,
+0,load id=Story09Mid,,,,,,,,,
 5,boss=Boss1|inactivated,,,,,,,,,
 2,32,AABA060,,,224,AABA060,,,416,AABA060
 2,,,128,AABA060,,,320,AABA060,,
@@ -27,4 +27,4 @@
 2,,,128,AAAA060,,,320,AAAA060,,
 2,32,AAAA060,,,224,AAAA060,,,416,AAAA060
 0.5,,,128,AAAX060,,,320,AAAA060,,
-0,load id=Story03Start,,,,,,,,,
+0,load id=Story09Start,,,,,,,,,
