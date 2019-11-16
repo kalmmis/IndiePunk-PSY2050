@@ -14371,7 +14371,7 @@ MonoBehaviour:
   projectileObject: {fileID: 1413877261856170, guid: 7120694aa5e8a9d4a88b1e61228dabb0,
     type: 3}
   nextFire: 0
-  weaponUpgradeIntervalOfFrame: 60
+  weaponUpgradeIntervalOfFrame: 300
   weaponPower: 1
   timeScaleUp: 1
   startAttackTimestamp: 0

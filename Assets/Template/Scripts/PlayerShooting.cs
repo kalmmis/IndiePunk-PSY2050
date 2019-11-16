@@ -89,11 +89,11 @@ public class PlayerShooting : MonoBehaviour {
                         break;
                     case 3:
                         timeScaleUp = 2;
-                        Time.timeScale = 0.8f;
+                        Time.timeScale = 0.9f;
                         break;
                     case 4:
                         timeScaleUp = 3;
-                        Time.timeScale = 0.6f;
+                        Time.timeScale = 0.8f;
                         break;
                 }
                 yield return new WaitForSeconds(0.3333333f);
@@ -118,7 +118,7 @@ public class PlayerShooting : MonoBehaviour {
                 guns.rightGunVFX.Play();*/
                 if(playerScript != null)
                 Instantiate(playerScript.timeslowEFX, transform.position, Quaternion.identity);
-                Time.timeScale = 0.8f;
+                Time.timeScale = 0.9f;
                 break;
             case 3:
                 CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
@@ -132,7 +132,7 @@ public class PlayerShooting : MonoBehaviour {
                 guns.leftGunVFX.Play();
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 3));
                 guns.rightGunVFX.Play(); */
-                Time.timeScale = 0.6f;
+                Time.timeScale = 0.8f;
                 break;
             case 4:
                 CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
@@ -146,7 +146,7 @@ public class PlayerShooting : MonoBehaviour {
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 3));
                 CreateLazerShot(projectileObject, guns.leftGun.transform.position, new Vector3(0, 0, 5));
                 guns.rightGunVFX.Play();*/
-                Time.timeScale = 0.5f;
+                Time.timeScale = 0.7f;
                 break;
         }
     }
