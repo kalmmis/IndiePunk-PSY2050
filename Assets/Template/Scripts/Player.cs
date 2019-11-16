@@ -76,10 +76,13 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Game Over");
+            lc.Invoke("GotoStartMenu", 4);
             lc.Invoke("ShowGameOverUI", 2);
+            
         }
         
     }
+    
     void CountDownTimer()
     {
         GameObject go = GameObject.FindGameObjectWithTag("Timer");

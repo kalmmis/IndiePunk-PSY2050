@@ -119,6 +119,10 @@ public class LevelController : MonoBehaviour {
         SceneManager.LoadScene("StartMenu");
 
     }
+    void GotoStartMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
     IEnumerator StopTheWorld()
     {
         yield return new WaitForSeconds(5);
