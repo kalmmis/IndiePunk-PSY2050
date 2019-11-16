@@ -1,6 +1,6 @@
 1,load id=Story04End,,,,,,,,,
 0,boss=Boss1|destroy,,,,,,,,,
-0,load id=Story04Boss,,,,,,,,,
+2,load id=Story04Boss,,,,,,,,,
 0,boss=Boss1|activated,,,,,,,,,
 0,load id=Story04Mid,,,,,,,,,
 5,boss=Boss1|inactivated,,,,,,,,,
