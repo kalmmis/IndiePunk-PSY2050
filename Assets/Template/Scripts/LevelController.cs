@@ -64,6 +64,10 @@ public class LevelController : MonoBehaviour {
     PlayerShooting playerShootingScript;
     public Animator animator;
     public Vector3 lastPlayerPosition;
+    private void Awake()
+    {
+        Debug.Log("Awaked!");
+    }
     private void Start()
     {
         UI = GameObject.FindGameObjectWithTag("UI");
@@ -76,6 +80,7 @@ public class LevelController : MonoBehaviour {
         mainCamera = Camera.main;
         StartPlayer();
         if (!isTest) StartCoroutine( StartLevel() );
+        Debug.Log("Started!");
     }
     public void StartPlayer()
     {
@@ -83,10 +88,13 @@ public class LevelController : MonoBehaviour {
     }
     public IEnumerator InitPlayer(float delayTime)
     {
+        GameObject oldP = GameObject.Find("Player(Clone)");
         yield return new WaitForSeconds(delayTime);
-        Player p = Instantiate(player, new Vector3(0, -5), Quaternion.identity);
-        p.isInvincible = true;
-        StartCoroutine(p.RemoveInvincible(invincibleTime));
+        if(oldP == null) { 
+            Player p = Instantiate(player, new Vector3(0, -5), Quaternion.identity);
+            p.isInvincible = true;
+            StartCoroutine(p.RemoveInvincible(invincibleTime));
+        }
         //animator.SetTrigger("TrigPlayerIdle");
         //playerShootingScript.TimeReset();
     }
@@ -95,10 +103,18 @@ public class LevelController : MonoBehaviour {
         int i = 1;
         while(true)
         {
-            bool isFinishied = false;
-            StartCoroutine(StringParser(i, ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val, int nextStage)=> { isFinishied = val; i = nextStage; }));
-            
-            yield return new WaitUntil(() => isFinishied);
+            if (i == 999) break;
+            bool isFinished = false;
+            StartCoroutine(StringParser(i, ExcelParser.GetResource("level", i), ExcelParser.GetResource("dialog", i), (bool val, int nextStage)=> {
+                isFinished = val; i = nextStage;
+                Debug.Log("isFin : " + isFinished);
+                Debug.Log("nextStage : " + i);
+            }));
+
+
+            yield return new WaitUntil(() => {
+                return isFinished;
+             });
         }
         SceneManager.LoadScene("StartMenu");
 
@@ -155,7 +171,7 @@ public class LevelController : MonoBehaviour {
         char[] splitter = { '\n' };
         string[] levelRows = levelStr.Split(splitter);
         string[] dialogRows = dialogs.Split(splitter);
-        int nextStage = currentInt + 1;
+        int nextStage = 999;
         IEnumerable<string> dialogRowsEnum = dialogRows.Cast<string>();
         IEnumerable<string[]> dialogRowArrays = dialogRowsEnum.Select(row => row.Split(','));
         string[][] dialogRowsDual = dialogRowArrays.ToArray<string[]>();
@@ -364,7 +380,7 @@ public class LevelController : MonoBehaviour {
                     }
                     else if ("destroy".Equals(option))
                     {
-                        Destroy(enemy);
+                        enemy.GetComponent<Enemy_Boss>().Destruction();
                     }
                     else
                     {

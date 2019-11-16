@@ -94,9 +94,9 @@ public class Enemy : MonoBehaviour {
         if (collision.tag == "Player")
         {
             if (pattern.p.GetComponent<Projectile>() != null) 
-              Player.instance.GetDamage(pattern.p.GetComponent<Projectile>().damage);
+              Player.instance.GetDamage();
             else 
-              Player.instance.GetDamage(1);
+              Player.instance.GetDamage();
         }
         if (collision.tag == "Boundary")
         {

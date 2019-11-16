@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 571598790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b831e0643cbfb40ad0083cd55b2f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 327e919329d81e04aa8dd63c4769f5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myPlacementId: rewardedVideo
@@ -2013,7 +2013,7 @@ PrefabInstance:
     - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
       propertyPath: skipDialog
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}

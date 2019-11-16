@@ -126,7 +126,10 @@ public class Enemy_Boss : MonoBehaviour
                 onDestroyExecutionList.Add(wall);
                 yield return new WaitForSeconds(2);
             }
-
+            foreach (GameObject obj in onDestroyExecutionList)
+            {
+                Destroy(obj);
+            }
         }
     }
     //method of getting damage for the 'Enemy'
@@ -144,6 +147,7 @@ public class Enemy_Boss : MonoBehaviour
      }
     public void GetDamage(int damage)
     {
+        damage = 30;
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
             isDestroyedVal = true;
@@ -163,25 +167,23 @@ public class Enemy_Boss : MonoBehaviour
         }
     }
 
-    //method of destroying the 'Enemy'
-    // (도와주세요) 죽기 전에 y 위치를 25까지 이동 후 사망하게 하고 싶어요
-    void Destruction()
+    public void Destruction()
     {
         foreach (GameObject obj in onDestroyExecutionList)
         {
             Destroy(obj);
         }
-        while (Vector3.Distance(transform.position, new Vector3(0, 25)) > 0.5f)
+        while (Vector3.Distance(transform.position, new Vector3(0, 18)) > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 25), 5f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 18), 5f * Time.deltaTime);
         }
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
     public void DestructionProject()
     {
-        Instantiate(destructionVFX, transform.position, Quaternion.identity);
         foreach (GameObject obj in onDestroyExecutionList)
         {
             Destroy(obj);
@@ -203,5 +205,9 @@ public class Enemy_Boss : MonoBehaviour
     public bool isDestroyed()
     {
         return isDestroyedVal;
+    }
+    private void OnDestroy()
+    {
+        
     }
 }

@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ApplicationManager : MonoBehaviour {
+    private void Start()
+    {
+        Time.timeScale = 0.5f;
+    }
 
     public void StartButtonLoadScene()
     {

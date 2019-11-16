@@ -22,6 +22,8 @@ TagManager:
   - PlayerAni
   - Timer
   - AdsConfirm
+  - FontStyle
+  - logo
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 #elif UNITY_ANDROID
     private string gameId = "3346606";
 #endif
+    private string gameId = "3346606";
     LevelController lc;
     public static Player instance;
     
@@ -19,6 +20,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
     void Start()
     {
+        Debug.Log("Started Rewarded");
         myButton = GetComponent<Button>();
 
         // Set interactivity to be dependent on the Placement’s status:
@@ -35,6 +37,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     // Implement a function for showing a rewarded video ad:
     void ShowRewardedVideo()
     {
+        Debug.Log("ShowRewardedVideo Rewarded");
         Advertisement.Show(myPlacementId);
     }
 
@@ -53,6 +56,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
         // Define conditional logic for each ad completion status:
         if (showResult == ShowResult.Finished)
         {
+            Debug.Log("OnUnityAdsDidFinish : showResult Skept");
             // Reward the user for watching the ad to completion.
             lc = FindObjectOfType<LevelController>();
             lc.StartPlayer();
@@ -79,5 +83,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     {
         // Optional actions to take when the end-users triggers an ad.
         Debug.Log("Ad Triggered");
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("Advertise REmoved!");
+        Advertisement.RemoveListener(this);
     }
 }

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     }
 
     //method for damage proceccing by 'Player'
-    public void GetDamage(int damage)   
+    public void GetDamage()   
     {
         Debug.Log("GetDamaged!");
         if (!isInvincible && !destrunctionCall)
@@ -94,6 +94,14 @@ public class Player : MonoBehaviour
     void GameOver()
     {
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) //when a projectile collides with another object
+    {
+        if (collision.tag == "EnemyBoss") //if anoter object is 'player' or 'enemy sending the command of receiving the damage
+        {
+            this.GetDamage();
+        }
     }
     public IEnumerator RemoveInvincible(float delay)
     {

@@ -42,9 +42,9 @@ public class PanelManager : MonoBehaviour {
 		m_Open = anim;
 		m_Open.SetBool(m_OpenParameterId, true);
 
-		GameObject go = FindFirstEnabledSelectable(anim.gameObject);
+		//GameObject go = FindFirstEnabledSelectable(anim.gameObject);
 
-		SetSelected(go);
+		//SetSelected(go);
 	}
 
 	static GameObject FindFirstEnabledSelectable (GameObject gameObject)
