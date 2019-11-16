@@ -1,8 +1,8 @@
 Story01Start,event,show portrait_player,left,endline
-,l,미나,…이 불꽃.,endline
-,l,미나,아니마야.,endline
+,l,미나,…이 불꽃은.,endline
+,l,미나,아니마의 불꽃이야.,endline
 ,event,show empty,left,endline
-,event,play_se,Beep_in.wav,endline
+,event,play_se,Beep_in,endline
 ,l,통신기,(미나…? 들려?),endline
 ,l,통신기,(…지금 그 지역에 아니마가 발생한 모양이네.),endline
 ,event,show portrait_player,left,endline
@@ -25,7 +25,7 @@ Story01Start,event,show portrait_player,left,endline
 ,l,미나,난…. 이 아니마의 주인과 만나봐야겠어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나! 안된다고….),endline
-,event,play_se,Beep_out.wav,endline
+,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
 ,l,미나,미안해. 리타.,endline
 ,event,show empty,left,endline
@@ -41,7 +41,7 @@ Story01Mid01,event,show portrait_player,left,endline
 ,event,end,,endline
 Story01Mid02,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,여기는 왜 왔어?,endline
+,l,레이나,손님이 왔구나.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…레이나 선배?,endline
@@ -56,14 +56,13 @@ Story01Mid02,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,그래.;미나.,endline
 ,l,레이나,아니마의 영역에 들어왔다는 건….,endline
-,l,레이나,너도 '특별한 아이'라는 말이네.,endline
+,l,레이나,너도 '특별한 아이'라는 말이겠네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,그런 이야기를 하러 온 게 아니예요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…그러니?;아쉽네.,endline
-,l,레이나,그렇다면 무슨 일로 왔어?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,얼마 전….;미사가 있는 병원에서 폭발이 있었어요.,endline
@@ -121,9 +120,10 @@ Story01Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…….,endline
 ,l,레이나,순간이동 능력자라면….;바깥 세상을 본 적 있니?,endline
-,l,레이나,너도 진실을 본다면….,endline
-,l,레이나,날 이해할….,endline
-,event,play_se,s_ef_ce_mine_e.wav,endline
+,l,레이나,너도 진실을 봤다면….,endline
+,l,레이나,날 이해할 수 있었을 거야….,endline
+,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
+,event,play_se,s_ef_ce_mine_e,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -155,21 +155,21 @@ Story01Boss1,event,show portrait_fire,left,endline
 ,l,레이나,너도 진실을 봤다면….,endline
 ,l,레이나,날 이해할 수 있었을 거야….,endline
 ,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
-,event,play_se,s_ef_ce_mine_e.wav,endline
+,event,play_se,s_ef_ce_mine_e,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story01End,event,nextStage,2,endline
 ,event,end,,endline
 Story02Start,event,show portrait_player,left,endline
-,event,play_se,outer_space_twinkle_lp_01.wav,endline
+,event,play_se,outer_space_twinkle_lp_01,endline
 ,l,미나,무슨 일이…?,endline
-,event,show portrait_player_gray,,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,리타?,endline
 ,l,미나,어떻게 통신이?,endline
-,event,show portrait_player_gray,,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(무슨 소리야. 미나.),endline
 ,l,통신기,(그보다 어서 돌아 와.),endline
 ,l,통신기,(지금 그곳은 위험지역이야….),endline
@@ -179,7 +179,7 @@ Story02Start,event,show portrait_player,left,endline
 ,l,미나,다시 가봐야 겠어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나! 안된다고….),endline
-,event,play_se,Beep_out.wav,endline
+,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
 ,l,미나,…미안해. 리타.,endline
 ,event,show empty,left,endline
@@ -187,7 +187,7 @@ Story02Start,event,show portrait_player,left,endline
 ,event,end,,endline
 Story02Mid,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,여기는 왜 왔어?,endline
+,l,레이나,손님이 왔구나.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…뭐가 어떻게 된 거죠?,endline
@@ -267,14 +267,14 @@ Story02Boss1,event,show portrait_fire,left,endline
 Story02End,event,nextStage,3,endline
 ,event,end,,endline
 Story03Start,event,show portrait_player,left,endline
-,event,play_se,outer_space_twinkle_lp_01.wav,endline
+,event,play_se,outer_space_twinkle_lp_01,endline
 ,l,미나,또야….;또 되돌아 왔어.,endline
-,event,show portrait_player_gray,,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,리타….,endline
 ,l,미나,모든 게 똑같아….,endline
-,event,show portrait_player_gray,,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(무슨 소리야. 미나.),endline
 ,l,통신기,(그보다 어서 돌아 와.),endline
 ,l,통신기,(지금 그곳은 위험지역이야….),endline
@@ -282,7 +282,7 @@ Story03Start,event,show portrait_player,left,endline
 ,l,미나,…미안해. 리타.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나…?),endline
-,event,play_se,Beep_out.wav,endline
+,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
 ,l,미나,…다시 가보는 수밖에 없어.,endline
 ,event,show empty,left,endline
@@ -375,11 +375,11 @@ Story03Boss1,event,show portrait_fire,left,endline
 Story03End,event,nextStage,4,endline
 ,event,end,,endline
 Story04Start,event,show portrait_player,left,endline
-,event,play_se,outer_space_twinkle_lp_01.wav,endline
+,event,play_se,outer_space_twinkle_lp_01,endline
 ,l,미나,…또야.,endline
-,event,show portrait_player_gray,,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
-,event,play_se,Beep_out.wav,endline
+,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
 ,l,미나,…다시 가보는 수밖에 없어.,endline
 ,event,show empty,left,endline

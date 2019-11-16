@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 571598790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 327e919329d81e04aa8dd63c4769f5af, type: 3}
+  m_Script: {fileID: 11500000, guid: 00ac4accfd830be4781719b9df8eeef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &637846356
@@ -1346,7 +1346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YES!
+  m_Text: "\uC608"
 --- !u!222 &637846359
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 839889515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64395610fa14b2348af29591a1c68503, type: 3}
+  m_Script: {fileID: 11500000, guid: 527409757f669974e9146f59e1b1cec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myPlacementId: rewardedVideo
@@ -3051,7 +3051,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ShowAdd
+  m_Text: ShowAd
 --- !u!222 &1596074686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3333,7 +3333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NO!
+  m_Text: "\uC544\uB2C8\uC624"
 --- !u!222 &1766313983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3524,7 +3524,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 0.5
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3758,7 +3758,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3769,7 +3769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD80\uD65C\uD558\uB824\uBA74 \uAD11\uACE0\uB97C \uB20C\uB7EC\uB77C!"
+  m_Text: "\uAD11\uACE0\uB97C \uBCF4\uACE0\n\uBD80\uD65C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
 --- !u!222 &2009123201
 CanvasRenderer:
   m_ObjectHideFlags: 0
