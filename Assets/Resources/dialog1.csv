@@ -1,6 +1,6 @@
 Story01Start,event,show portrait_player,left,endline
 ,l,미나,…이 불꽃은.,endline
-,l,미나,아니마의 불꽃이야.,endline
+,l,미나,아니마의 불꽃이잖아.,endline
 ,event,show empty,left,endline
 ,event,play_se,Beep_in,endline
 ,l,통신기,(미나…? 들려?),endline
@@ -11,18 +11,18 @@ Story01Start,event,show portrait_player,left,endline
 ,l,통신기,(그래. 당연히 알겠지만 수색은 종료야.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,…하지만 리타.;이건 불꽃의 아니마야.,endline
-,l,미나,미사가 죽던 날….;나타났던 아니마라고.,endline
+,l,미나,미사가 죽던 날….;나타났던 그 아니마라고.,endline
 ,event,show empty,left,endline
 ,l,통신기,(…네 심정은 이해해. 미나.),endline
 ,l,통신기,(하지만 지금 그곳은 위험지역이야….),endline
 ,l,통신기,(현장에서 나와. 미나.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,….,endline
-,l,미나,아니.;안되겠어.,endline
+,l,미나,아니.;그럴 수 없어.,endline
 ,event,show empty,left,endline
 ,l,통신기,(미나…?),endline
 ,event,show portrait_player,left,endline
-,l,미나,난…. 이 아니마의 주인과 만나봐야겠어.,endline
+,l,미나,이 아니마의 주인과 만나봐야겠어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나! 안된다고….),endline
 ,event,play_se,Beep_out,endline
@@ -34,29 +34,27 @@ Story01Mid01,event,show portrait_player,left,endline
 ,l,미나,아니마의 힘이 점차 짙어져.,endline
 ,l,미나,…가까이 있는 거야.,endline
 ,l,미나,아니마의 주인이….,endline
-,l,미나,침착하게 가자.,endline
-,l,미나,난 시선이 닿는 곳이라면 어디든 텔레포트 할 수 있으니까.,endline
-,l,,(아무 곳이나 클릭해 텔레포트를 할 수 있습니다.),endline
+,l,,(화면을 터치해 텔레포트를 할 수 있습니다.),endline
 ,event,show empty,left,endline
 ,event,end,,endline
 Story01Mid02,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,손님이 왔구나.,endline
+,l,레이나,손님이 왔네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…레이나 선배?,endline
+,l,미나,당신이….;불꽃의 아니마의 주인인가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,나를 아는구나.,endline
-,l,레이나,이름이 뭐니?,endline
+,l,레이나,그래. 맞아.,endline
+,l,레이나,네 이름이 뭐니?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,미나예요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,그래.;미나.,endline
-,l,레이나,아니마의 영역에 들어왔다는 건….,endline
-,l,레이나,너도 '특별한 아이'라는 말이겠네.,endline
+,l,레이나,내 아니마의 영역에 들어왔다는 건….,endline
+,l,레이나,너도 아니마에게 선택받은 '특별한 아이'라는 말이겠네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,그런 이야기를 하러 온 게 아니예요.,endline
@@ -65,13 +63,12 @@ Story01Mid02,event,show portrait_fire,left,endline
 ,l,레이나,…그러니?;아쉽네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,얼마 전….;미사가 있는 병원에서 폭발이 있었어요.,endline
-,l,미나,선배가 그런건가요?,endline
+,l,미나,얼마 전….;미사가 있던 리안 병원에서 폭발 사고가 있었어요.,endline
+,l,미나,…당신이 그런건가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,리안 병원 말이구나….,endline
+,l,레이나,리안 병원….,endline
 ,l,레이나,그곳에 미사라는 아이가 있었던 모양이네.,endline
-,l,레이나,…….,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…네.,endline
@@ -83,79 +80,83 @@ Story01Mid02,event,show portrait_fire,left,endline
 ,l,미나,그 말은….;선배가 그런 게 맞다는 거군요….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,…….;그렇다고 하면.,endline
+,l,레이나,….;그렇다고 하면.,endline
 ,l,레이나,넌 나를 죽여주겠니?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…네?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,살살 부탁할게.,endline
-,l,레이나,누군가의 손에 죽는 건….;처음이니까.,endline
+,l,레이나,기다리고 있었거든.,endline
+,l,레이나,누군가 나를 죽여주기를 말이야.,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story01Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,쥬김 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,미나라고 했지?;대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,….;왜 리안 병원을 공격했죠?,endline
+,l,미나,…뉴스에서는 리안 병원에 가스 폭발 사고가 났다고 했어요.,endline
+,l,미나,하지만…. 난 봤어요.,endline
+,l,미나,당신의…. 아니마를요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그건…. 사고였어.,endline
+,l,레이나,그건….;사고였어.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,사고라고요?,endline
+,l,미나,왜…. 왜 그런 짓을 한 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 날….;나는 깨달았거든.,endline
+,l,레이나,그 날….;깨달아 버렸거든.,endline
 ,l,레이나,모든 게 다….;거짓이라는 걸.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,말 돌리지 마세요.,endline
-,l,미나,왜 병원을 공격했냐고요!,endline
+,l,미나,말 돌리지 마세요!,endline
+,l,미나,왜 그런 짓을 했냐고요!,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,…….,endline
-,l,레이나,순간이동 능력자라면….;바깥 세상을 본 적 있니?,endline
 ,l,레이나,너도 진실을 봤다면….,endline
 ,l,레이나,날 이해할 수 있었을 거야….,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
-,event,play_se,s_ef_ce_mine_e,endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
+,event,play_se,Hit_03,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,!,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story01Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,살림 루트,endline
-,l,레이나,순간 이동 능력이라….;대단한…. 능력이네.,endline
+,l,레이나,미나라고 했지?;대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,….;왜 리안 병원을 공격했죠?,endline
+,l,미나,…뉴스에서는 리안 병원에 가스 폭발 사고가 났다고 했어요.,endline
+,l,미나,하지만…. 난 봤어요.,endline
+,l,미나,당신의…. 아니마를요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그건…. 사고였어.,endline
+,l,레이나,그건….;사고였어.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,사고라고요?,endline
+,l,미나,왜…. 왜 그런 짓을 한 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 날….;나는 깨달았거든.,endline
+,l,레이나,그 날….;깨달아 버렸거든.,endline
 ,l,레이나,모든 게 다….;거짓이라는 걸.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,말 돌리지 마세요.,endline
-,l,미나,왜 병원을 공격했냐고요!,endline
+,l,미나,말 돌리지 마세요!,endline
+,l,미나,왜 그런 짓을 했냐고요!,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,…….,endline
-,l,레이나,순간이동 능력자라면….;바깥 세상을 본 적 있니?,endline
 ,l,레이나,너도 진실을 봤다면….,endline
 ,l,레이나,날 이해할 수 있었을 거야….,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
-,event,play_se,s_ef_ce_mine_e,endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
+,event,play_se,Hit_03,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,!,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -163,22 +164,28 @@ Story01End,event,nextStage,2,endline
 ,event,end,,endline
 Story02Start,event,show portrait_player,left,endline
 ,event,play_se,outer_space_twinkle_lp_01,endline
-,l,미나,무슨 일이…?,endline
+,l,미나,"포, 폭발이….",endline
 ,event,show portrait_player_gray,left,endline
+,event,play_se,Beep_in,endline
 ,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
 ,event,show portrait_player,left,endline
-,l,미나,리타?,endline
-,l,미나,어떻게 통신이?,endline
+,l,미나,…리타?,endline
+,l,미나,"토, 통신기는 꺼두었을텐데….",endline
 ,event,show portrait_player_gray,left,endline
-,l,통신기,(무슨 소리야. 미나.),endline
-,l,통신기,(그보다 어서 돌아 와.),endline
+,l,통신기,(미나. 듣고 있어?),endline
+,l,통신기,(어서 돌아 오라고.),endline
+,event,show portrait_player,left,endline
+,l,미나,여긴….;불꽃의 아니마가 시작되는 곳이잖아.,endline
+,l,미나,어떻게 여기로….;돌아온 거지?,endline
+,l,미나,…뭔가 이상해.,endline
+,event,show portrait_player_gray,left,endline
 ,l,통신기,(지금 그곳은 위험지역이야….),endline
 ,event,show portrait_player,left,endline
-,l,미나,…불꽃의 아니마가 다시 나타났어?,endline
-,l,미나,뭔가 이상해.,endline
-,l,미나,다시 가봐야 겠어.,endline
+,l,미나,미안해. 리타.,endline
+,l,미나,…다시 가봐야 겠어.,endline
 ,event,show portrait_player_gray,left,endline
-,l,통신기,(미나! 안된다고….),endline
+,l,통신기,(미나?! 안된다고….),endline
+,l,통신기,(미나!),endline
 ,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
 ,l,미나,…미안해. 리타.,endline
@@ -187,43 +194,48 @@ Story02Start,event,show portrait_player,left,endline
 ,event,end,,endline
 Story02Mid,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,손님이 왔구나.,endline
+,l,레이나,손님이 왔네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…뭐가 어떻게 된 거죠?,endline
-,l,미나,왜 아무 상처도 없는 거죠?,endline
+,l,미나,어떻게 된 거죠?,endline
+,l,미나,그 폭발을 겪고도 아무 상처도 없다니….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그게 대체…. 무슨 말이니?,endline
-,event,show portrait_fire_gray,left,endline
+,l,레이나,폭발….,endline
+,l,레이나,내 죄를 물으러 온 거니?,endline
+,event,show portrait_fire_gray,,endline
 ,event,show portrait_player,right,endline
-,l,미나,…상황이 반복되고 있어요.,endline
+,l,미나,…?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,무슨 이야기를 하려는 건지 모르겠네.,endline
-,l,레이나,하지만 결국 나와 적대하기 위해 온 걸테지?,endline
-,l,레이나,여기까지 왔다는 건 너도 '특별한 아이' 일테니….,endline
-,l,레이나,그들이 보낸 거야.,endline
-,l,레이나,또 한번….;진실을 입막음하기 위해서….,endline
+,l,레이나,표정을 보니 아닌 모양이지?,endline
+,l,레이나,폭발 사건을 좇아 여기까지 온 거라고 생각했는데.,endline
+,l,레이나,아쉽네.,endline
+,event,show portrait_fire_gray,,endline
+,event,show portrait_player,right,endline
+,l,미나,뭐가 아쉽다는 거죠?,endline
+,event,show portrait_fire,left,endline
+,event,show portrait_player_gray,right,endline
+,l,레이나,계속 기다리고 있었거든.,endline
+,l,레이나,날 죽여줄 사람을….,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story02Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,쥬김 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,진실이란 게….;대체 뭐죠.,endline
+,l,미나,왜…. 왜 이렇게까지 하는 거죠.,endline
+,l,미나,우리가 싸울 이유 같은 건….;없잖아요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,진실은 거짓된 어둠을 밝히는 빛이지.,endline
+,l,레이나,날…. 죽이지 않을 거니.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,선문답하지 말고요!,endline
+,l,미나,대체 왜 그렇게 죽고 싶어하는 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,…….,endline
 ,l,레이나,리안 병원에서….,endline
 ,l,레이나,난 진실을 봤어.,endline
 ,event,show portrait_fire_gray,left,endline
@@ -231,27 +243,35 @@ Story02Boss0,event,show portrait_fire,left,endline
 ,l,미나,리안 병원에서?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그곳에서 만들어지는 것들을….,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
+,l,레이나,그곳에서 만들어지는 것을 보고 말았어.,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,뭘 말이죠?,endline
+,event,show portrait_fire,left,endline
+,event,show portrait_player_gray,right,endline
+,l,레이나,부모라는 말을 알고 있니? 미나?,endline
+,l,레이나,엄마와 아빠라는 말은 알고 있니?,endline
+,l,레이나,아마 모를 거야….,endline
+,l,레이나,우리는 '특별하니까'.,endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story02Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,살림 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,진실이란 게….;대체 뭐죠.,endline
+,l,미나,왜…. 왜 이렇게까지 하는 거죠.,endline
+,l,미나,우리가 싸울 이유 같은 건….;없잖아요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,진실은 거짓된 어둠을 밝히는 빛이지.,endline
+,l,레이나,날…. 죽이지 않을 거니.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,선문답하지 말고요!,endline
+,l,미나,대체 왜 그렇게 죽고 싶어하는 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,…….,endline
 ,l,레이나,리안 병원에서….,endline
 ,l,레이나,난 진실을 봤어.,endline
 ,event,show portrait_fire_gray,left,endline
@@ -259,8 +279,17 @@ Story02Boss1,event,show portrait_fire,left,endline
 ,l,미나,리안 병원에서?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그곳에서 만들어지는 것들을….,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
+,l,레이나,그곳에서 만들어지는 것을 보고 말았어.,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,뭘 말이죠?,endline
+,event,show portrait_fire,left,endline
+,event,show portrait_player_gray,right,endline
+,l,레이나,부모라는 말을 알고 있니? 미나?,endline
+,l,레이나,엄마와 아빠라는 말은 알고 있니?,endline
+,l,레이나,아마 모를 거야….,endline
+,l,레이나,우리는 '특별하니까'.,endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -268,29 +297,36 @@ Story02End,event,nextStage,3,endline
 ,event,end,,endline
 Story03Start,event,show portrait_player,left,endline
 ,event,play_se,outer_space_twinkle_lp_01,endline
-,l,미나,또야….;또 되돌아 왔어.,endline
+,l,미나,또야….;또 폭발과 함께 되돌아 왔어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나…. 지금 막 그 지역에 봉쇄령이 떨어졌어.),endline
 ,event,show portrait_player,left,endline
-,l,미나,리타….,endline
-,l,미나,모든 게 똑같아….,endline
+,l,미나,부모….,endline
+,l,미나,엄마와 아빠?,endline
 ,event,show portrait_player_gray,left,endline
-,l,통신기,(무슨 소리야. 미나.),endline
-,l,통신기,(그보다 어서 돌아 와.),endline
+,l,통신기,(혼자 무슨 소리를 하는 거야. 미나.),endline
+,l,통신기,(어서 돌아 와.),endline
 ,l,통신기,(지금 그곳은 위험지역이야….),endline
 ,event,show portrait_player,left,endline
-,l,미나,…미안해. 리타.,endline
+,l,미나,…리타.,endline
+,l,미나,부모라는 말을 알고 있어?,endline
 ,event,show portrait_player_gray,left,endline
-,l,통신기,(미나…?),endline
+,l,통신기,(부모라니?),endline
+,l,통신기,(들어본 적 없는 말인데.),endline
+,event,show portrait_player,left,endline
+,l,미나,…고마워. 리타.,endline
+,l,미나,역시 다시 만나러 가봐야 겠어.,endline
+,event,show portrait_player_gray,left,endline
+,l,통신기,(미나? 미나!),endline
 ,event,play_se,Beep_out,endline
 ,event,show portrait_player,left,endline
-,l,미나,…다시 가보는 수밖에 없어.,endline
+,l,미나,…….,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story03Mid,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,여기는 왜 왔어?,endline
+,l,레이나,손님이 왔네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…….,endline
@@ -299,76 +335,84 @@ Story03Mid,event,show portrait_fire,left,endline
 ,l,레이나,말도 없이 왜 그렇게 노려보니?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,리안 병원에서 봤다는 진실이 뭔지….,endline
-,l,미나,알려 줘요.,endline
+,l,미나,부모가 대체 뭐죠?,endline
+,l,미나,리안 병원에서 봤다는 진실이 뭔지….;알려 줘요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…….,endline
 ,l,레이나,그들이 보낸 거니?,endline
-,l,레이나,진실을 입막음 하기 위해서?,endline
+,l,레이나,나를 입막음 하기 위해서?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…순순히 말해줄 생각은 없다는 거군요.,endline
+,l,미나,"…왜, 왜 우리가 싸워야 하는 거냐고요.",endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story03Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,쥬김 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,자. 이야기해요.,endline
-,l,미나,리안 병원에서 봤다는 진실이 뭔지….,endline
+,l,미나,말해줘요.,endline
+,l,미나,리안 병원에서 봤다는 진실이 대체 뭔지….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,난….;'그것'이 만들어지는 걸 봤어.,endline
-,l,레이나,특별한 아이들….,endline
-,event,show portrait_fire_gray,left,endline
-,event,show portrait_player,right,endline
-,l,미나,네?,endline
-,event,show portrait_fire,left,endline
-,event,show portrait_player_gray,right,endline
-,l,레이나,더 이상 태어나지 않는 인류.,endline
-,l,레이나,종족 보존을 위해 만들어지는 '특별한 아이들'.,endline
-,l,레이나,그게…. 우리의 정체였어.,endline
+,l,레이나,너는…. 궁금한 적이 없니?,endline
+,l,레이나,우리가 어디서 온 것인지.,endline
+,l,레이나,학교에서 태어나 졸업만을 목표로 사는.,endline
+,l,레이나,특별한 아이들이 대체 무엇인지….;궁금한 적이 없니?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,그게 대체 무슨 말이에요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
+,l,레이나,본래 인간이란 건 부모로부터 태어나는 것이야.,endline
+,l,레이나,엄마와 아빠라는 존재 사이에서 말이지.,endline
+,l,레이나,하지만 우리는….,endline
+,l,레이나,우리는 태어나지 않는단다.;그들의 손에서 만들어지지.,endline
+,l,레이나,우리는 '특별하니까'.,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,…우리가 만들어진다고요?,endline
+,event,show portrait_fire,left,endline
+,event,show portrait_player_gray,right,endline
+,l,레이나,그래….;우습지 않니?,endline
 ,l,레이나,대체 그런 게 어디가 특별하다고 할 수 있는 걸까?,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story03Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,살림 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,자. 이야기해요.,endline
-,l,미나,리안 병원에서 봤다는 진실이 뭔지….,endline
+,l,미나,말해줘요.,endline
+,l,미나,리안 병원에서 봤다는 진실이 대체 뭔지….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,난….;'그것'이 만들어지는 걸 봤어.,endline
-,l,레이나,특별한 아이들….,endline
-,event,show portrait_fire_gray,left,endline
-,event,show portrait_player,right,endline
-,l,미나,네?,endline
-,event,show portrait_fire,left,endline
-,event,show portrait_player_gray,right,endline
-,l,레이나,더 이상 태어나지 않는 인류.,endline
-,l,레이나,종족 보존을 위해 만들어지는 '특별한 아이들'.,endline
-,l,레이나,그게…. 우리의 정체였어.,endline
+,l,레이나,너는…. 궁금한 적이 없니?,endline
+,l,레이나,우리가 어디서 온 것인지.,endline
+,l,레이나,학교에서 태어나 졸업만을 목표로 사는.,endline
+,l,레이나,특별한 아이들이 대체 무엇인지….;궁금한 적이 없니?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,그게 대체 무슨 말이에요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
+,l,레이나,본래 인간이란 건 부모로부터 태어나는 것이야.,endline
+,l,레이나,엄마와 아빠라는 존재 사이에서 말이지.,endline
+,l,레이나,하지만 우리는….,endline
+,l,레이나,우리는 태어나지 않는단다.;그들의 손에서 만들어지지.,endline
+,l,레이나,우리는 '특별하니까'.,endline
+,event,show portrait_fire_gray,left,endline
+,event,show portrait_player,right,endline
+,l,미나,…우리가 만들어진다고요?,endline
+,event,show portrait_fire,left,endline
+,event,show portrait_player_gray,right,endline
+,l,레이나,그래….;우습지 않니?,endline
 ,l,레이나,대체 그런 게 어디가 특별하다고 할 수 있는 걸까?,endline
-,l,,(어디선가 기계적인 멜로디가가 들렸다.),endline
+,l,,"(그 순간, 둔탁한 기계음이 울렸다.)",endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
@@ -387,20 +431,22 @@ Story04Start,event,show portrait_player,left,endline
 ,event,end,,endline
 Story04Mid,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,여기는 왜 왔어?,endline
+,l,레이나,손님이 왔네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,진정해요.;레이나 선배.,endline
+,l,미나,진정해요.,endline
+,l,미나,저는 당신과 대화가 하고 싶을 뿐이에요.,endline
 ,l,미나,우리 대화를 해요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
+,l,레이나,무슨 속셈인지 알 수 없네….,endline
 ,l,레이나,그들이 보낸 거니?,endline
 ,l,레이나,진실을 입막음 하기 위해서?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,아니요.,endline
 ,l,미나,저는 알고 싶을 뿐이에요.,endline
-,l,미나,선배가 왜….;리안 병원을 공격했는지….,endline
+,l,미나,당신이 왜….;리안 병원을 공격했는지….,endline
 ,l,미나,왜…. 미사가 죽었는지….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -411,40 +457,44 @@ Story04Mid,event,show portrait_fire,left,endline
 ,l,레이나,죽어 마땅한 존재야.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…….,endline
+,l,미나,…결국 이렇게 되는 군요.,endline
 ,event,end,,endline
 Story04Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,쥬김 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,왜…. 죽으려고 하는 거죠.,endline
+,l,미나,왜 당신은…. 죽으려고 하는 거죠.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 병원에서는….,endline
-,l,레이나,특별한 아이들이 만들어지고 있었어.,endline
+,l,레이나,그 병원은….,endline
+,l,레이나,지옥이었어.,endline
+,l,레이나,내가 갔을 때 그곳은 이미….,endline
+,l,레이나,이미 지옥이었어….,endline
+,l,레이나,그곳에서는 특별한 아이들이 만들어지고 있었어.,endline
 ,l,레이나,특별한 실험을 통해서….,endline
 ,l,레이나,재생산이 가능한 인간을….,endline
 ,l,레이나,만들고 있었어….,endline
-,l,레이나,내가 갔을 때 그곳은 이미….,endline
-,l,레이나,이미 지옥이었어….,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,나는….,endline
+,l,레이나,그때의 나는….,endline
 ,l,레이나,모든 진실을 불태워 버리고 싶다고 생각했어.,endline
 ,l,레이나,…….,endline
 ,l,레이나,눈에 보이는 모든 것을 불태우고 나서야.,endline
 ,l,레이나,정신이 들었지.,endline
-,l,레이나,난…. 모두를 죽인 죄인이야.,endline
+,l,레이나,내가 바라던대로 모든 게 불타고 있었어.,endline
+,l,레이나,실험에 사용되는 기계도….,endline
+,l,레이나,실험에 동원되던 아이들도….,endline
+,l,레이나,병원을 관리하던 '그들'도….,endline
+,l,레이나,…가능한 모든 것을 불태웠어.,endline
 ,l,레이나,그게…. 사건의 전말.,endline
 ,l,,(레이나가 어디선가 작은 기계 장치를 꺼내든다.),endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,그건?,endline
+,l,미나,잠깐만요!,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,미안하게 됐어.,endline
@@ -454,31 +504,35 @@ Story04Boss0,event,show portrait_fire,left,endline
 ,event,end,,endline
 Story04Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,디버그,살림 루트,endline
-,l,레이나,대단한…. 능력이네.,endline
+,l,레이나,대단한…. 능력을 가졌네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,왜…. 죽으려고 하는 거죠.,endline
+,l,미나,왜 당신은…. 죽으려고 하는 거죠.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 병원에서는….,endline
-,l,레이나,특별한 아이들이 만들어지고 있었어.,endline
+,l,레이나,그 병원은….,endline
+,l,레이나,지옥이었어.,endline
+,l,레이나,내가 갔을 때 그곳은 이미….,endline
+,l,레이나,이미 지옥이었어….,endline
+,l,레이나,그곳에서는 특별한 아이들이 만들어지고 있었어.,endline
 ,l,레이나,특별한 실험을 통해서….,endline
 ,l,레이나,재생산이 가능한 인간을….,endline
 ,l,레이나,만들고 있었어….,endline
-,l,레이나,내가 갔을 때 그곳은 이미….,endline
-,l,레이나,이미 지옥이었어….,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…….,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,나는….,endline
+,l,레이나,그때의 나는….,endline
 ,l,레이나,모든 진실을 불태워 버리고 싶다고 생각했어.,endline
 ,l,레이나,…….,endline
 ,l,레이나,눈에 보이는 모든 것을 불태우고 나서야.,endline
 ,l,레이나,정신이 들었지.,endline
-,l,레이나,난…. 모두를 죽인 죄인이야.,endline
+,l,레이나,내가 바라던대로 모든 게 불타고 있었어.,endline
+,l,레이나,실험에 사용되는 기계도….,endline
+,l,레이나,실험에 동원되던 아이들도….,endline
+,l,레이나,병원을 관리하던 '그들'도….,endline
+,l,레이나,…가능한 모든 것을 불태웠어.,endline
 ,l,레이나,그게…. 사건의 전말.,endline
 ,l,,(레이나가 무언가를 꺼내들 준비를 한다.),endline
 ,event,show portrait_fire_gray,left,endline
@@ -491,6 +545,7 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…다시 한번 말할게요.;누르지 마요.,endline
 ,l,미나,그걸 누르면 폭발하는 거죠?,endline
+,l,미나,스스로 목숨을….;끊으려는 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…알고 있었어?,endline
@@ -499,12 +554,14 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…네.,endline
 ,l,미나,말했잖아요.,endline
-,l,미나,진정해요.;레이나 선배.,endline
-,l,미나,우리 대화를 해요.,endline
+,l,미나,대화를 하고 싶을 뿐이라고.,endline
+,l,미나,…우리 대화를 해요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…….,endline
 ,l,레이나,….,endline
+,l,레이나,만약 그렇다면….,endline
+,l,레이나,정말 그렇다면….,endline
 ,l,레이나,내 이야기를….,endline
 ,l,레이나,들어주겠니?,endline
 ,event,nextStage,10,endline
