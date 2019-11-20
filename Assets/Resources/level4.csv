@@ -1,4 +1,4 @@
-1,load id=Story04End,,,,,,,,,
+0,load id=Story04End,,,,,,,,,
 0,boss=Boss1|destroy,,,,,,,,,
 2,load id=Story04Boss,,,,,,,,,
 0,boss=Boss1|activated,,,,,,,,,
