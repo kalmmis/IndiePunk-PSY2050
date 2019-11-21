@@ -118,7 +118,7 @@ public class Enemy_Boss : MonoBehaviour
             Invoke("BossPattern1Add", 10f);
             while (!isDestroyedVal && true)
             {
-                if (health < 30 || (Time.time - bossInitTime > 90))
+                if (health < 30 || (Time.time - bossInitTime > 80))
                 {
                     break;
                 }
@@ -130,6 +130,7 @@ public class Enemy_Boss : MonoBehaviour
             {
                 Destroy(obj);
             }
+            isDestroyedVal = true;
         }
     }
     //method of getting damage for the 'Enemy'

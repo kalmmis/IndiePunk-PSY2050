@@ -1273,9 +1273,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 571598790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ac4accfd830be4781719b9df8eeef6, type: 3}
+  m_Script: {fileID: 11500000, guid: 327e919329d81e04aa8dd63c4769f5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlacementId: rewardedVideo
 --- !u!1 &637846356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527409757f669974e9146f59e1b1cec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPlacementId: rewardedVideo
 --- !u!114 &839889519
 MonoBehaviour:
   m_ObjectHideFlags: 0

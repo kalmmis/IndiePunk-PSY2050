@@ -157,7 +157,7 @@ MonoBehaviour:
   - {fileID: 588071189681846106, guid: 25b1b14e078658c42995ef3f8ff0e829, type: 3}
   - {fileID: 1661317585406152123, guid: bae2be1aae6a8e54f8d1f6dcf17fc684, type: 3}
   - {fileID: 1629712638, guid: 6d0ce2e4146abbb4eb6a465547b921d9, type: 3}
-  destructionVFX: {fileID: 4927065586229045827, guid: df2c60ad8607332468298014a7107191,
+  destructionVFX: {fileID: 4927065586229045827, guid: 8f36f3246d2ac47449aa852894f7af72,
     type: 3}
   hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
   shotChance: 0

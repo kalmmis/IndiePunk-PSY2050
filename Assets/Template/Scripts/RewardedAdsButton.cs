@@ -11,7 +11,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 #elif UNITY_ANDROID
     private string gameId = "3346606";
 #endif
-    private string gameId = "3346606";
     LevelController lc;
     public static Player instance;
     
