@@ -49,14 +49,14 @@ Story01Mid02,event,show portrait_fire,left,endline
 ,l,레이나,너도 아니마에게 선택받은 '특별한 아이'라는 말이겠지?,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,저는 그런 이야기를 하러 온 게 아니예요.,endline
+,l,미나,저는 그런 이야기를 하러 온 게 아니에요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,그러니?;아쉽네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,얼마 전….;제 동생이 있던 병원에서 폭발 사고가 있었어요.,endline
-,l,미나,당신이 그런건가요?,endline
+,l,미나,당신이 그런 건가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…리안 병원의 폭발 사고 말이구나.,endline
@@ -82,14 +82,14 @@ Story01Mid02,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,네 특별한 능력을 내게 보여주지 않으련?,endline
 ,l,레이나,난….;기다리고 있었거든.,endline
-,l,레이나,누군가 나를….;죽여주기를 말이야.,endline
+,l,레이나,누군가가 나를….;죽여주기를 말이야.,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story01Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,왜….;대체 왜 그런 짓을 한 거죠?,endline
@@ -109,7 +109,7 @@ Story01Boss0,event,show portrait_fire,left,endline
 ,l,미나,대답해요.;왜 그런 짓을 한 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 날….;나는 깨달아 버렸거든.,endline
+,l,레이나,그날….;나는 깨달아 버렸거든.,endline
 ,l,레이나,모든 게 다….;거짓이라는 걸.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
@@ -125,7 +125,7 @@ Story01Boss0,event,show portrait_fire,left,endline
 Story01Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,왜….;대체 왜 그런 짓을 한 거죠?,endline
@@ -145,7 +145,7 @@ Story01Boss1,event,show portrait_fire,left,endline
 ,l,미나,대답해요.;왜 그런 짓을 한 거죠?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
-,l,레이나,그 날….;나는 깨달아 버렸거든.,endline
+,l,레이나,그날….;나는 깨달아 버렸거든.,endline
 ,l,레이나,모든 게 다….;거짓이라는 걸.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
@@ -172,7 +172,7 @@ Story02Start,event,show portrait_player,left,endline
 ,l,통신기,(지금 그 지역에 아니마가 발생한 모양이네.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,…리타?,endline
-,l,미나,통신기는 꺼두었을텐데….,endline
+,l,미나,통신기는 꺼두었을 텐데….,endline
 ,event,show portrait_player_gray,left,endline
 ,event,play_se,Beep_in,endline
 ,l,통신기,(미나. 듣고 있어?),endline
@@ -184,7 +184,7 @@ Story02Start,event,show portrait_player,left,endline
 ,l,통신기,(미나!),endline
 ,event,show portrait_player,left,endline
 ,l,미나,미안해. 리타.,endline
-,l,미나,…다시 만나러 가봐야 겠어.,endline
+,l,미나,…다시 만나러 가봐야겠어.,endline
 ,event,play_se,Beep_out,endline
 ,l,통신기,ㅡ!,endline
 ,event,show empty,left,endline
@@ -195,14 +195,14 @@ Story02Mid,event,show portrait_fire,left,endline
 ,l,레이나,어머$ 손님이 왔네.;안녕.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,당신이 그런건가요?,endline
+,l,미나,당신이 그런 건가요?,endline
 ,l,미나,저를 아니마의 영역 바깥으로 밀어낸 게 당신인가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,그게 무슨 말이니?;나는 잘 모르겠는데.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,그러고보니….;그 폭발을 겪고도 상처 하나 없군요.,endline
+,l,미나,그러고 보니….;그 폭발을 겪고도 상처 하나 없군요.,endline
 ,l,미나,당신도….;저도….,endline
 ,event,play_se,outer_space_twinkle_lp_01,endline
 ,l,미나,윽….;머리가….,endline
@@ -225,14 +225,14 @@ Story02Mid,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,부디 네 특별한 능력을 내게 보여주지 않으련?,endline
 ,l,레이나,난….;기다리고 있었거든.,endline
-,l,레이나,누군가 나를….;죽여주기를 말이야.,endline
+,l,레이나,누군가가 나를….;죽여주기를 말이야.,endline
 ,event,show empty,left,endline
 ,event,show empty,right,endline
 ,event,end,,endline
 Story02Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,말해요.;병원에서 무슨 일이 있었던 건지.,endline
@@ -242,7 +242,7 @@ Story02Boss0,event,show portrait_fire,left,endline
 ,l,레이나,날…. 죽이지 않을 거니.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,왜 그렇게 죽고 싶어하는 거죠?,endline
+,l,미나,왜 그렇게 죽고 싶어 하는 거죠?,endline
 ,l,미나,이제 와서 죄책감이라도 든 건가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -266,7 +266,7 @@ Story02Boss0,event,show portrait_fire,left,endline
 Story02Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,말해요.;병원에서 무슨 일이 있었던 건지.,endline
@@ -276,7 +276,7 @@ Story02Boss1,event,show portrait_fire,left,endline
 ,l,레이나,날…. 죽이지 않을 거니.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,왜 그렇게 죽고 싶어하는 거죠?,endline
+,l,미나,왜 그렇게 죽고 싶어 하는 거죠?,endline
 ,l,미나,이제 와서 죄책감이라도 든 건가요?,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -301,7 +301,7 @@ Story02End,event,nextStage,3,endline
 ,event,end,,endline
 Story03Start,event,show portrait_player,left,endline
 ,event,play_se,outer_space_twinkle_lp_01,endline
-,l,미나,또야….;또 폭발과 함께 되돌아 왔어.,endline
+,l,미나,또 야….;또 폭발과 함께 되돌아왔어.,endline
 ,l,미나,부모….,endline
 ,l,미나,엄마와 아빠?,endline
 ,event,show portrait_player_gray,left,endline
@@ -322,7 +322,7 @@ Story03Start,event,show portrait_player,left,endline
 ,l,통신기,(어서 기지로 돌아와.),endline
 ,event,show portrait_player,left,endline
 ,l,미나,…미안해. 리타.,endline
-,l,미나,나 다시 만나러 가봐야 겠어.,endline
+,l,미나,나 다시 만나러 가봐야겠어.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나?),endline
 ,event,play_se,Beep_out,endline
@@ -361,7 +361,7 @@ Story03Mid,event,show portrait_fire,left,endline
 Story03Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,말해줘요.,endline
@@ -396,7 +396,7 @@ Story03Boss0,event,show portrait_fire,left,endline
 Story03Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,말해줘요.,endline
@@ -432,7 +432,7 @@ Story03End,event,nextStage,4,endline
 ,event,end,,endline
 Story04Start,event,show portrait_player,left,endline
 ,event,play_se,outer_space_twinkle_lp_01,endline
-,l,미나,…또야.,endline
+,l,미나,…또 야.,endline
 ,event,show portrait_player_gray,left,endline
 ,l,통신기,(미나? 들려?),endline
 ,event,play_se,Beep_out,endline
@@ -458,12 +458,12 @@ Story04Mid,event,show portrait_fire,left,endline
 ,l,레이나,네가 날 죽여준다면….;얼마든지 대화해줄게.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…결국 이렇게 되는 군요.,endline
+,l,미나,…결국 이렇게 되는군요.,endline
 ,event,end,,endline
 Story04Boss0,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,왜 당신은…. 죽으려고 하는 거죠.,endline
@@ -487,7 +487,7 @@ Story04Boss0,event,show portrait_fire,left,endline
 ,l,레이나,…….,endline
 ,l,레이나,눈에 보이는 모든 것을 불태우고 나서야.,endline
 ,l,레이나,정신이 들었지.,endline
-,l,레이나,내가 바라던대로 모든 게 불타고 있었어.,endline
+,l,레이나,내가 바라던 대로 모든 게 불타고 있었어.,endline
 ,l,레이나,실험에 사용되는 기계도….,endline
 ,l,레이나,실험에 동원되던 아이들도….,endline
 ,l,레이나,병원을 관리하던 '그들'도….,endline
@@ -507,7 +507,7 @@ Story04Boss0,event,show portrait_fire,left,endline
 Story04Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,큭.,endline
-,l,레이나,너.;제법 대단한…. 능력을 가졌네.,endline
+,l,레이나,너.;제법 대단한…. 능력을 갖췄네.,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,왜 당신은…. 죽으려고 하는 거죠.,endline
@@ -531,7 +531,7 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,l,레이나,…….,endline
 ,l,레이나,눈에 보이는 모든 것을 불태우고 나서야.,endline
 ,l,레이나,정신이 들었지.,endline
-,l,레이나,내가 바라던대로 모든 게 불타고 있었어.,endline
+,l,레이나,내가 바라던 대로 모든 게 불타고 있었어.,endline
 ,l,레이나,실험에 사용되는 기계도….,endline
 ,l,레이나,실험에 동원되던 아이들도….,endline
 ,l,레이나,병원을 관리하던 '그들'도….,endline
@@ -540,13 +540,13 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,l,,(레이나가 무언가를 꺼내들 준비를 한다.),endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…누르지 마요.,endline
+,l,미나,…누르지 말아요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
 ,l,레이나,…….,endline
 ,event,show portrait_fire_gray,left,endline
 ,event,show portrait_player,right,endline
-,l,미나,…다시 한번 말할게요.;누르지 마요.,endline
+,l,미나,…다시 한번 말할게요.;누르지 말아요.,endline
 ,l,미나,그걸 누르면 폭발하는 거죠?,endline
 ,l,미나,스스로 목숨을….;끊으려는 거죠?,endline
 ,event,show portrait_fire,left,endline
@@ -557,7 +557,7 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,event,show portrait_player,right,endline
 ,l,미나,…네.,endline
 ,l,미나,말했잖아요.,endline
-,l,미나,대화를 하고 싶을 뿐이라고.,endline
+,l,미나,대화하고 싶을 뿐이라고.,endline
 ,l,미나,…우리 대화를 해요.,endline
 ,event,show portrait_fire,left,endline
 ,event,show portrait_player_gray,right,endline
@@ -573,8 +573,17 @@ Story04Boss1,event,show portrait_fire,left,endline
 ,event,end,,endline
 Story04End,event,nextStage,4,endline
 ,event,end,,endline
-StoryEnd,l,,이야기,endline
-,l,,후기,endline
-,l,,끝,endline
+StoryEnd,event,show portrait_time,left,endline
+,l,,(멀리서 누군가 미나와 레이나의 모습을 지켜보는 소녀가 있다.),endline
+,l,?,하아….;겨우 레이나가 죽지 않는 미래에 도착했네.,endline
+,l,?,너무 오래 걸렸잖아.;미나.,endline
+,l,?,대체 널 위해 몇 번이나 시간을 되돌려줘야 하는 거야.,endline
+,l,?,우리가 해야 할 일이 얼마나 많은 줄 알아?,endline
+,l,?,미사와도 다시 재회해야 하고….,endline
+,l,?,소마랑도 만나야 하고….,endline
+,l,?,나랑도….;만나야 하는데 말이야.,endline
+,l,?,아. 물론….,endline
+,l,?,넌 아직 날 모르겠지만.,endline
+,l,?,다시 또 친구가 될 수 있으면 좋겠네.,endline
 ,event,nextStage,999,endline
 ,event,end,,endline
