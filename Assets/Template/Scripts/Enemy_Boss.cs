@@ -115,7 +115,7 @@ public class Enemy_Boss : MonoBehaviour
                 yield return null;
             }
             Vector3 p = gameObject.transform.position;
-            Invoke("BossPattern1Add", 20f);
+            Invoke("BossPattern1Add", 10f);
             while (!isDestroyedVal && true)
             {
                 if (health < 10 || (Time.time - bossInitTime > 90))
@@ -147,7 +147,7 @@ public class Enemy_Boss : MonoBehaviour
      }
     public void GetDamage(int damage)
     {
-        damage = 30;
+        //damage = 30;
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
             isDestroyedVal = true;
