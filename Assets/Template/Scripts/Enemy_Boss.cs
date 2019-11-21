@@ -52,7 +52,7 @@ public class Enemy_Boss : MonoBehaviour
             yield return null;
         }
         ////move
-        health = 300;
+        health = 600;
         //Showing UI
 
         //swing
@@ -65,10 +65,10 @@ public class Enemy_Boss : MonoBehaviour
         onDestroyExecutionList.Add(left.gameObject);
         onDestroyExecutionList.Add(right.gameObject);
         //1-2간격
-        //20초가 지나거나 health 가 200이 되거나!
+        //20초가 지나거나 health 가 100이 되거나!
         yield return new WaitUntil(() =>
         {
-            return health < 200 || (Time.time - bossInitTime > 30);
+            return health < 400 || (Time.time - bossInitTime > 30);
         });
         
 
@@ -80,7 +80,7 @@ public class Enemy_Boss : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(3);
-        health = 200;
+        health = 400;
         if (!isDestroyedVal)
         {
             GameObject[] windmill = {
@@ -95,7 +95,7 @@ public class Enemy_Boss : MonoBehaviour
             }
             yield return new WaitUntil(() =>
             {
-                return (health < 100 || (Time.time - bossInitTime > 60));
+                return (health < 200 || (Time.time - bossInitTime > 60));
             });
             foreach (GameObject go in windmill)
             {
@@ -108,7 +108,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             Debug.Log("Pattern3");
             Debug.Log("isDestroyedVal "+ isDestroyedVal);
-            health = 100;
+            health = 200;
             while (Vector3.Distance(transform.position, new Vector3(0, 20)) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20), 5f * Time.deltaTime);
@@ -118,7 +118,7 @@ public class Enemy_Boss : MonoBehaviour
             Invoke("BossPattern1Add", 10f);
             while (!isDestroyedVal && true)
             {
-                if (health < 10 || (Time.time - bossInitTime > 90))
+                if (health < 30 || (Time.time - bossInitTime > 90))
                 {
                     break;
                 }
