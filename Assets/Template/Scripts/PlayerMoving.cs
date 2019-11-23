@@ -46,7 +46,7 @@ public class PlayerMoving : MonoBehaviour {
     {
         if (controlIsActive)
         {
-#if UNITY_STANDALONE || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
+#if UNITY_WEBGL || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
 
             if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) //if mouse button was pressed       
             {

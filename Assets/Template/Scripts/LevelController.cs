@@ -172,7 +172,7 @@ public class LevelController : MonoBehaviour {
     IEnumerator StringParser(int currentInt,string levelStr, string dialogs, System.Action<bool, int> callback) {
         ShowStageUI(currentInt);
 
-        char[] splitter = { '\n' };
+        char[] splitter = { '#' };
         string[] levelRows = levelStr.Split(splitter);
         string[] dialogRows = dialogs.Split(splitter);
         int nextStage = 999;

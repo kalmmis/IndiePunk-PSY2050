@@ -21,6 +21,15 @@ public class AdManager : MonoBehaviour
         lc = GameObject.FindObjectOfType<LevelController>();
         lc.HideAdsDialogUI();
     }
+    public void Revive()
+    {
+        Debug.Log("OnUnityAdsDidFinish : showResult Skept");
+        // Reward the user for watching the ad to completion.
+        lc = FindObjectOfType<LevelController>();
+        lc.StartPlayer();
+        lc.HideAdsUI();
+        Time.timeScale = 1f;
+    }
     public void goToTitle()
     {
         Time.timeScale = 1f;

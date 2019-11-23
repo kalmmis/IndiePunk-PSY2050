@@ -6,13 +6,14 @@ using System.Threading;
 public class Logo : MonoBehaviour
 {
 
-    [SerializeField] private float fadePerSecond = 0.0000000000000001f;
+    private float fadePerSecond = 1f;
     GameObject go;
     RawImage logo;
     byte i;
-    bool fadeIn = true;
+    bool fadeIn;
     void Start()
     {
+        fadeIn = true;
         Time.timeScale = 1f;
         go = GameObject.FindGameObjectWithTag("logo");
         logo = go.GetComponent<RawImage>();
@@ -32,13 +33,16 @@ public class Logo : MonoBehaviour
         {
             SceneManager.LoadScene("StartMenu");
         }
+        Debug.Log(logo.color);
+        Debug.Log(fadeIn);
+        
         if (fadeIn)
         {
-            logo.color = new Color(logo.color.r, logo.color.g, logo.color.b, logo.color.a + (fadePerSecond*Time.fixedDeltaTime)*0.18f);
+            logo.color = new Color(logo.color.r, logo.color.g, logo.color.b, logo.color.a + fadePerSecond*Time.fixedDeltaTime);
         }
         else
         {
-            logo.color = new Color(logo.color.r, logo.color.g, logo.color.b, logo.color.a - (fadePerSecond * Time.fixedDeltaTime) * 0.18f);
+            logo.color = new Color(logo.color.r, logo.color.g, logo.color.b, logo.color.a - fadePerSecond * Time.fixedDeltaTime);
         }
 
     }

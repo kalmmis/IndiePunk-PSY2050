@@ -61,39 +61,12 @@ public class Player : MonoBehaviour
     void PlayerRevive()
     {
         Destroy(gameObject);
-        if (lc.playerLife > 0)
-        {
-            lc.playerLife--;
-            lc.ShowAdsUI();
-            Time.timeScale = 0.05f;
-            timer = 5;
-            //for(int i = 1; i < 6; i++)
-            //{
-            //    Debug.Log(i);
-            //    Invoke("CountDownTimer", i * Time.timeScale);
-            //}
-        }
-        else
-        {
-            Debug.Log("Game Over");
-            lc.Invoke("GotoStartMenu", 4);
-            lc.Invoke("ShowGameOverUI", 2);
-            
-        }
-        
+           
+        lc.ShowAdsUI();
+        Time.timeScale = 0.05f;
     }
     
-    void CountDownTimer()
-    {
-        GameObject go = GameObject.FindGameObjectWithTag("Timer");
-        Debug.Log(go);
-        if(null != go) {
-            Debug.Log(timer);
-            go.GetComponent<Text>().text = "" + timer;
-            timer--;
-        }else { 
-        }
-    }
+
     void GameOver()
     {
 
