@@ -1,4 +1,4 @@
-[Ll]ibrary/
+﻿[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -34,7 +34,6 @@ ExportedObj/
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
-*.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
