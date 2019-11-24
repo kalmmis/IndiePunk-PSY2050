@@ -6,11 +6,6 @@ using UnityEngine.Advertisements;
 public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
 {
 
-#if UNITY_IOS
-    private string gameId = "3346606";
-#elif UNITY_ANDROID
-    private string gameId = "3346606";
-#endif
     LevelController lc;
     private string gameId = "3346606";
 
