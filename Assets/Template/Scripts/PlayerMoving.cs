@@ -48,7 +48,7 @@ public class PlayerMoving : MonoBehaviour {
         {
 #if UNITY_WEBGL || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
 
-            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) //if mouse button was pressed       
+            if (Input.touchCount > 0 || Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) //if mouse button was pressed       
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
@@ -59,7 +59,7 @@ public class PlayerMoving : MonoBehaviour {
                 if(playerShootingScript.startAttackTimestamp == 0) playerShootingScript.startAttackTimestamp = Time.frameCount;
                 animator.SetTrigger("TrigPlayerAttack");
             }
-            if (Input.GetMouseButtonUp(0))
+            if (Input.touchCount > 0 || Input.GetMouseButtonUp(0))
             {
                 playerScript.isAttackMode = false;
                 playerShootingScript.startAttackTimestamp = 0;

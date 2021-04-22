@@ -304,7 +304,7 @@ public class LevelController : MonoBehaviour {
                             UI.transform.Find("MainDialogue").Find("Text").GetComponent<Text>().text = row[3].Replace('$', ',').Replace(';', '\n');
 
                             yield return new WaitForSeconds(1);
-                            yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
+                            yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject());
                         }
                         else if (row[1].Contains("select"))
                         {
