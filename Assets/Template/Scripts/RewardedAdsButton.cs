@@ -12,7 +12,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     private string gameId = "3346606";
 #endif
     LevelController lc;
-    private string gameId = "3346606";
+    //private string gameId = "3346606";
 
     public static Player instance;
     
