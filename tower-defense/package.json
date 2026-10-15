@@ -1,0 +1,11 @@
+{
+  "name": "psy2050-last-signal", "version": "1.0.0", "private": true, "type": "module",
+  "description": "PSY2050: LAST SIGNAL — independent offline character tower defense",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "package": "python3 tools/package.py",
+    "serve": "python3 -m http.server 8082 --directory ../build/tower-defense",
+    "test": "node --test tools/engine.test.mjs",
+    "test:browser": "node tools/browser.test.mjs"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "dialogue_commands": 589,
+  "dialogue_pages": 286,
+  "glyphs": 297,
+  "font_pages": 2,
+  "max_dialogue_lines": 3,
+  "stage_rows": 138,
+  "enemy_spawns": 258,
+  "source_sha256": "706c554e6757fac167dfa6dfd0e1a68b3436eb08c66107c24b3e87d2f417ee4a"
+}

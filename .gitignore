@@ -44,3 +44,15 @@ sysinfo.txt
 
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
+
+# Keep standalone web games and console ports; other Unity builds remain ignored.
+!/build/
+/build/*
+!/build/wasm/
+!/build/fps/
+!/build/snes/
+!/build/ps1/
+!/build/tower-defense/
+
+# macOS Finder metadata
+.DS_Store

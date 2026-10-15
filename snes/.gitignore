@@ -1,0 +1,15 @@
+.tools/
+.venv/
+.generated/
+*.obj
+*.asm
+!src/render.asm
+src/data.c
+*.ps
+*.sfc
+*.msu
+*.pcm
+*.sym*
+*.log
+linkfile
+__pycache__/

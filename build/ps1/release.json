@@ -1,0 +1,8 @@
+{
+  "format": "PS1 MIPS-I EXE + Mode2/2352 data track + CD-DA music",
+  "files_sha256": {
+    "PSY2050.bin": "880c79127450556cb9d0d3cff641817f038ded1f2b572536a4d2b19c2bcbfb91",
+    "PSY2050.cue": "925731bcd639814607b1ae938d82ce96e9adc5c08f789e143e85765a099fc2a5",
+    "PSY2050.EXE": "5672a5ea841e40922a6f1c0f15967709b8459903e40c5f1ac03001d81f2e9708"
+  }
+}

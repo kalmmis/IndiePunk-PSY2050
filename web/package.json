@@ -1,0 +1,16 @@
+{
+  "name": "psy2050-wasm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A standalone WebAssembly and HTML port of the PSY2050 Unity project",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "serve": "python3 -m http.server 8080 --directory ../build/wasm",
+    "test": "node --test tools/game.test.mjs tools/art.test.mjs",
+    "test:browser": "node tools/browser.test.cjs",
+    "package": "python3 tools/package_release.py"
+  },
+  "devDependencies": {
+    "assemblyscript": "0.28.20"
+  }
+}

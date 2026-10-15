@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#03070c">
+<title>PSY 2050 · Original</title>
+<style>/*__STYLES__*/</style>
+</head>
+<body>
+<main id="viewport" aria-label="PSY 2050 게임">
+ <div id="frame"><div id="game">
+  <canvas id="canvas" width="480" height="800" aria-label="게임 화면"></canvas>
+  <div id="loading" class="layer"><span class="loading-title">PSY 2050</span><p id="load-status">WebAssembly 로딩 중…</p></div>
+  <div id="splash" class="layer" hidden><img id="splash-logo" alt="IndiePunk"><small>클릭하여 계속</small></div>
+  <section id="menu" class="layer" aria-label="메인 메뉴" hidden>
+   <h1>PSY 2050</h1>
+   <nav class="menu-buttons">
+    <button id="new-game" class="sf">New Game</button>
+    <button id="credits-button" class="sf">Credit</button>
+    <button id="quit-button" class="sf">Quit</button>
+   </nav>
+   <button id="settings-button" class="text-button menu-settings">설정 / 조작법</button>
+   <button id="continue-button" class="text-button continue" hidden>이어하기 · Stage 1</button>
+  </section>
+  <div id="hud" hidden>
+   <span id="stage-label">Stage 1</span>
+   <div class="hud-actions"><button id="sound-button" class="icon" aria-label="소리 끄기" title="소리 켜기/끄기">♪</button><button id="pause-button" class="icon" aria-label="일시정지" title="일시정지 (Esc)">Ⅱ</button></div>
+   <div id="boss-hud" hidden><span>레이나</span><span id="phase-label"></span><div class="health-track"><div id="boss-health"></div></div></div>
+   <div id="time-hud" hidden>TIME <span id="time-scale">100%</span><div class="time-track"><i id="time-meter"></i></div></div>
+   <div id="stage-announcement"></div>
+  </div>
+  <section id="dialogue" class="layer" aria-label="대화" hidden>
+   <img id="portrait-left" class="portrait left" alt="">
+   <img id="portrait-right" class="portrait right" alt="">
+   <div id="choices"></div>
+   <button id="dialogue-next" aria-label="다음 대사">
+    <span id="speaker"></span><span id="dialogue-text"></span><span class="next-mark">▼</span>
+   </button>
+   <button id="skip-dialogue" class="text-button">대화 건너뛰기 ≫</button>
+  </section>
+  <section id="pause" class="layer dim" aria-label="일시정지" hidden>
+   <div class="window"><h2>일시정지</h2><button id="resume-button" class="sf">계속하기</button><button id="pause-settings" class="sf">설정 / 조작법</button><button id="restart-button" class="sf">스테이지 재시작</button><button id="title-button" class="sf">타이틀로</button></div>
+  </section>
+  <section id="death" class="layer dim" aria-label="부활" hidden>
+   <div class="window"><h2>부활하시겠습니까?</h2><button id="revive-button" class="sf">부활하기</button><button id="death-title" class="sf">타이틀로</button><p class="small">웹 버전에서는 광고 없이 부활합니다.</p></div>
+  </section>
+  <section id="settings" class="layer dim" aria-label="설정과 조작법" hidden>
+   <div class="window settings-window"><h2>설정 / 조작법</h2>
+    <label>음악 <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.45"></label>
+    <label>효과음 <input id="effects-volume" type="range" min="0" max="1" step="0.05" value="0.6"></label>
+    <p>마우스 또는 터치를 누른 채 움직이면<br>이동하며 공격합니다.</p><p>5초마다 공격 단계가 올라가며<br>시간이 최대 70%까지 느려집니다.<br>손을 떼면 시간이 돌아옵니다.</p>
+    <p class="small">이동: 방향키 / WASD<br>공격: Space / Z　 대화: Enter / Space<br>일시정지: Esc / P　 음소거: M<br>진행 상황은 스테이지마다 자동 저장됩니다.</p>
+    <button id="close-settings" class="sf">닫기</button>
+   </div>
+  </section>
+  <section id="credits" class="layer" aria-label="크레딧" hidden><div id="credits-scroll"><img id="credits-image" alt="PSY2050 원본 제작진: 프로그래밍 Hhan87, 기획 kalmis와 roue, 아트 kalmis. Thanks for playing."></div><button id="credits-back" class="text-button">타이틀로</button></section>
+  <section id="confirm" class="layer dim" aria-label="확인" hidden><div class="window"><h2 id="confirm-message"></h2><button id="confirm-yes" class="sf">예</button><button id="confirm-no" class="sf">아니오</button></div></section>
+ </div></div>
+</main>
+<script id="embedded-assets" type="application/json">/*__ASSETS__*/</script>
+<script id="embedded-data" type="application/json">/*__DATA__*/</script>
+<script>const WASM_BASE64="/*__WASM__*/";const GAME_EDITION="/*__EDITION__*/";</script>
+<script>/*__APP__*/</script>
+</body>
+</html>

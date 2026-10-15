@@ -1,0 +1,16 @@
+{
+  "project": "PSY2050: LAST SIGNAL",
+  "simulation": "deterministic JavaScript / fixed-step",
+  "mina": "Assets/ArtRemaster/portraits/portrait_player.png",
+  "reina": "Assets/ArtRemaster/portraits/portrait_fire.png",
+  "time": "Assets/ArtRemaster/portraits/portrait_time.png",
+  "city": "Assets/ArtRemaster/backgrounds/web_background.png",
+  "player": "Assets/ArtRemaster/sprites/player4.png",
+  "boss": "Assets/ArtRemaster/sprites/boss0.png",
+  "enemyA": "Assets/ArtRemaster/sprites/enemyA.png",
+  "enemyB": "Assets/ArtRemaster/sprites/enemyB.png",
+  "enemyC": "Assets/ArtRemaster/sprites/enemyC.png",
+  "enemyD": "Assets/ArtRemaster/sprites/enemyD.png",
+  "music": "Assets/Resources/bgm_Chrono_Storm_loopable.wav",
+  "portraits": "New operator and boss portraits: locally authored SVG; see tower-defense/assets/*.svg"
+}

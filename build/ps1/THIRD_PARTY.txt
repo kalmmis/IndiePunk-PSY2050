@@ -1,0 +1,22 @@
+PSY2050 PS1 port — third-party components
+
+PSn00bSDK 0.24 / libpsn00b
+Copyright Lameguy64, spicyjpeg and contributors.
+Library license: Mozilla Public License 2.0.
+Source and license: https://github.com/Lameguy64/PSn00bSDK/tree/v0.24
+Included license: PSn00bSDK-LICENSE.md
+SDK library program code is unmodified. ELF debugging/local-symbol metadata is
+normalized with LLVM objcopy for compatibility with LLD. No proprietary Sony
+SDK, BIOS, emulator binary or disc license data is included.
+
+Build tools (not distributed in this archive):
+Zig 0.14.1 / LLVM Clang and LLD: https://ziglang.org/download/0.14.1/
+mkpsxiso 2.30: https://github.com/Lameguy64/mkpsxiso/releases/tag/v2.30
+Pillow: https://python-pillow.org/
+
+Validation emulator (not distributed):
+PCSX ReARMed, libretro source revision c881679, MIPS interpreter and open HLE BIOS.
+https://github.com/libretro/pcsx_rearmed/tree/c881679
+
+Game artwork, fonts, dialogue, stage data and sounds are derived from the
+existing IndiePunk PSY2050 project and its ArtRemaster assets.

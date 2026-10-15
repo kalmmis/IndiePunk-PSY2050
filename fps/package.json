@@ -1,0 +1,15 @@
+{
+  "name": "psy2050-fps-wasm",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PSY2050: ANIMA — standalone first-person WebAssembly game",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "package": "npm run build && python3 tools/package.py",
+    "serve": "python3 -m http.server 8081 --directory ../build/fps",
+    "test": "node --test tools/engine.test.mjs tools/input.test.mjs tools/model.test.mjs",
+    "test:browser": "node tools/browser.test.mjs"
+  },
+  "devDependencies": { "assemblyscript": "0.28.20" }
+}

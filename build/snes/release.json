@@ -1,0 +1,10 @@
+{
+  "format": "SNES LoROM FastROM",
+  "rom_bytes": 4194304,
+  "sdk": "PVSnesLib 4.6.0",
+  "files_sha256": {
+    "PSY2050.sfc": "51b448926caf5957b346e0f1462957f8952a5e19647467ae9bdb3a63e28ce049",
+    "PSY2050.msu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PSY2050-1.pcm": "c27189de7c153347192d781c702aefbf0d8bc498de6461fc472a72684fcd126b"
+  }
+}

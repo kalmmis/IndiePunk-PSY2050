@@ -1,0 +1,17 @@
+{
+  "project": "PSY2050 ANIMA / FPS",
+  "renderer": "WebGL 2 — procedural 3D geometry",
+  "simulation": "AssemblyScript / WebAssembly",
+  "wasmSha256": "20b1103ae6cf69da75cb8ce78391dbb99aa951bed51f441dde3f79bc07cbbada",
+  "sources": {
+    "mina": "Assets/ArtRemaster/portraits/portrait_player.png",
+    "reina": "Assets/ArtRemaster/portraits/portrait_fire.png",
+    "time": "Assets/ArtRemaster/portraits/portrait_time.png",
+    "font": "Assets/Fonts/OpenSans-Regular.ttf",
+    "korean": "Assets/Fonts/BMDOHYEON_ttf.ttf",
+    "music": "Assets/Resources/bgm_Chrono_Storm_loopable.wav",
+    "hit": "Assets/Resources/Hit_03.wav",
+    "hurt": "Assets/Resources/Hit_02.wav",
+    "teleport": "Assets/Resources/teleport_rnd_01.wav"
+  }
+}

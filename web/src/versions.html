@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSY2050 · 버전 선택</title>
+<style>
+:root{color-scheme:dark;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;background:#080e1c;color:#e3eaf5}*{box-sizing:border-box}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:30px 22px;background:radial-gradient(ellipse at 20% 10%,#17344966,transparent 55%),radial-gradient(ellipse at 90% 90%,#38295755,transparent 55%)}main{width:min(830px,100%)}.eyebrow{color:#83ccd4;letter-spacing:4px;font-size:10px;margin-bottom:20px}h1{font-size:clamp(42px,8vw,70px);font-weight:800;letter-spacing:-3px;line-height:1;margin:0 0 16px}header>p:last-child{color:#9cadc2;font-size:14px;line-height:1.8}.versions{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:36px}.card{display:flex;flex-direction:column;padding:29px;border:1px solid #42536c;background:linear-gradient(140deg,#17263a,#101a2a);text-decoration:none;color:inherit;min-height:230px;transition:border-color .15s,transform .15s}.card:hover{border-color:#8de0df;transform:translateY(-3px)}.card:focus-visible{outline:2px solid #a4f1ed;outline-offset:4px}.tag{color:#92cdd7;font-size:10px;letter-spacing:2px}h2{font-size:26px;font-weight:600;margin:22px 0 10px;letter-spacing:-.7px}.card p{color:#9eb0c7;font-size:13px;line-height:1.9;margin:0 0 26px}.open{margin-top:auto;font-size:13px;color:#c6f0f2}.open b{float:right;font-size:20px;font-weight:400}.remaster{background:linear-gradient(140deg,#232540,#121b30);border-color:#625d86}.remaster .tag{color:#b4a9e4}footer{margin-top:26px;font-size:11px;color:#8296ad;line-height:1.9}footer code{color:#a9c8d8}@media(max-width:600px){.versions{grid-template-columns:1fr}.card{min-height:210px;padding:25px}}
+</style>
+</head>
+<body>
+<main>
+<header><p class="eyebrow">INDIEPUNK / PSY2050</p><h1>어느 버전으로 할까요?</h1><p>같은 이야기와 게임을 두 가지 그래픽으로 즐길 수 있습니다.</p></header>
+<nav class="versions" aria-label="게임 버전 선택">
+<a class="card" id="original-version" href="original.html"><span class="tag">ORIGINAL</span><h2>기존 그래픽 버전</h2><p>원본 캐릭터, SF 메뉴, 배경과 크레딧을<br>사용하는 리마스터 이전 스타일입니다.</p><span class="open">기존 버전 실행 <b>↗</b></span></a>
+<a class="card remaster" id="remastered-version" href="index.html"><span class="tag">ART REMASTER</span><h2>리마스터 버전</h2><p>새 캐릭터 원화와 야간 도시 배경,<br>스프라이트·이펙트·UI를 적용했습니다.</p><span class="open">리마스터 실행 <b>↗</b></span></a>
+</nav>
+<footer>각 버전은 WASM과 모든 리소스를 내장한 HTML 한 파일로 오프라인 실행됩니다.<br>진행 상황과 소리 설정은 버전별로 저장됩니다. 이 선택 페이지를 함께 옮길 때는 <code>original.html</code>과 <code>index.html</code>도 같은 폴더에 두세요.</footer>
+</main>
+</body>
+</html>

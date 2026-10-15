@@ -1,0 +1,82 @@
+{
+  "name": "Reina — Anima flame caster",
+  "reference": "Assets/ArtRemaster/portraits/portrait_fire.png",
+  "vertices": 110445,
+  "triangles": 36815,
+  "joints": [
+    {
+      "name": "Root",
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Head",
+      "pivot": [
+        0,
+        1.77,
+        0
+      ]
+    },
+    {
+      "name": "LongHair",
+      "pivot": [
+        0,
+        2.1,
+        -0.06
+      ]
+    },
+    {
+      "name": "LeftSleeve",
+      "pivot": [
+        -0.24,
+        1.56,
+        0
+      ]
+    },
+    {
+      "name": "RightCastingArm",
+      "pivot": [
+        0.24,
+        1.56,
+        0
+      ]
+    },
+    {
+      "name": "PleatedDress",
+      "pivot": [
+        0,
+        1.1,
+        0
+      ]
+    },
+    {
+      "name": "RightHand",
+      "pivot": [
+        0.57,
+        1.54,
+        0.18
+      ]
+    },
+    {
+      "name": "LeftLeg",
+      "pivot": [
+        -0.12,
+        0.9,
+        0
+      ]
+    },
+    {
+      "name": "RightLeg",
+      "pivot": [
+        0.12,
+        0.9,
+        0
+      ]
+    }
+  ],
+  "format": "glTF 2.0 binary",
+  "file": "reina-model.glb"
+}

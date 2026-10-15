@@ -1,0 +1,38 @@
+{
+  "rom_sha256": "51b448926caf5957b346e0f1462957f8952a5e19647467ae9bdb3a63e28ce049",
+  "emulator": "Snes9x 1.63 libretro, normal CPU speed",
+  "checks": [
+    "4 MiB LoROM header and checksum",
+    "ROM boot to title",
+    "MSU-1 original music detected and audible",
+    "chapter 1 Korean dialogue",
+    "skip executes dialogue events",
+    "controller movement and playfield bounds",
+    "pause freezes simulation",
+    "held fire charges power and slows world",
+    "release restores power",
+    "boss phase 1: pattern and player damage",
+    "boss phase 2: pattern and player damage",
+    "boss phase 3: pattern and player damage",
+    "boss performance at least 24 updates/sec in tested scenes",
+    "boss timeout outcome",
+    "boss defeated outcome",
+    "projectile collision kills player",
+    "retry grants temporary invulnerability",
+    "ROM boot to title",
+    "chapter 1 Korean dialogue",
+    "skip executes dialogue events",
+    "chapters 1–4 -> epilogue -> credits, including defeated-boss story branches",
+    "ROM boot to title",
+    "plain SFC works without MSU-1",
+    "chapter 1 Korean dialogue",
+    "skip executes dialogue events",
+    "native SPC700 shooting effect is audible without music files"
+  ],
+  "boss_updates_per_second": [
+    29.2,
+    28.4,
+    28.6
+  ],
+  "notes": "Stage-flow checks accelerate waits and force boss outcomes through emulator RAM. No physical console test."
+}

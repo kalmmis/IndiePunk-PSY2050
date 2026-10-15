@@ -1,0 +1,8 @@
+{
+  "entry": "0x800199c4",
+  "load_address": "0x80010000",
+  "executable_payload_bytes": 516096,
+  "ram_end": "0x800b02d8",
+  "sdk": "PSn00bSDK 0.24",
+  "compiler": "Zig 0.14.1 Clang / MIPS-I o32, soft-float, branch delay filler disabled"
+}

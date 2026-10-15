@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101719"><meta name="description" content="PSY2050: LAST SIGNAL. 미나와 동료들의 아니마 잔상으로 마지막 구조 신호를 지키는 3개 스테이지 타워디펜스."><title>PSY2050 · LAST SIGNAL</title><style>/*__STYLES__*/</style></head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <a class="brand" href="#" id="home" aria-label="타이틀로"><span class="brand-mark">✳</span><span>PSY<span class="brand-year">2050</span><small>LAST SIGNAL</small></span></a>
+    <div class="top-title"><i></i> ANIMA DEFENSE <span>/</span> 마지막 신호를 지켜라</div>
+    <div class="top-actions"><button id="guide" class="icon-button" aria-label="게임 가이드">?</button><button id="sound" class="icon-button" aria-label="소리 켜기" aria-pressed="false">♫</button><button id="pause" class="icon-button" aria-label="일시정지">Ⅱ</button></div>
+  </header>
+  <main id="game-layout">
+    <aside class="mission-rail">
+      <div class="eyebrow">OPERATION / 작전</div>
+      <h1>마지막<br><span>신호.</span></h1>
+      <p class="rail-intro">우리가 기억하는 한,<br>이 도시는 끝나지 않아.</p>
+      <nav id="stage-list" aria-label="스테이지 선택"></nav>
+      <div class="rail-bottom"><span class="live-dot"></span> RITA / 연결됨<p>2050. 11. 07<br>격리 구역 · 04:32 AM</p><button id="archive" class="text-button">인물 기록 ↗</button></div>
+    </aside>
+    <section class="battle-column" aria-label="전장">
+      <div class="mission-heading"><div><div class="eyebrow" id="stage-kicker">SECTOR 01 / THE EMBER DISTRICT</div><h2 id="stage-title">재가 내리는 거리</h2><p id="location">리안 병원 · 동쪽 대피로</p></div><div class="mission-badge"><span>방어 작전</span><strong id="stage-index">01 <em>/ 03</em></strong></div></div>
+      <div class="statusbar">
+        <div><span class="stat-icon life">♡</span><span><small>신호탑 내구도</small><b id="life">20 <em>/ 20</em></b></span></div>
+        <div><span class="stat-icon ether">◈</span><span><small>에테르</small><b id="money">440</b></span></div>
+        <div><span class="stat-icon wave">≋</span><span><small>웨이브</small><b id="wave-count">0 <em>/ 6</em></b></span></div>
+        <div class="kill-stat"><span class="stat-icon">⌖</span><span><small>저지한 적</small><b id="kill-count">000</b></span></div>
+      </div>
+      <div class="map-shell">
+        <div class="map-topline"><span><i class="live-dot"></i> LIVE TACTICAL VIEW</span><span id="map-state">배치 준비</span></div>
+        <canvas id="battlefield" width="864" height="576" tabindex="0" aria-label="전술 지도. 캐릭터 선택 후 빛나는 배치 지점을 클릭하세요. 키보드는 방향키로 지점을 선택하고 Enter로 배치합니다."></canvas>
+        <div id="boss-bar" hidden><div><span id="boss-name"></span><small id="boss-ability"></small><b id="boss-hp"></b></div><div class="boss-track"><i id="boss-fill"></i></div></div>
+        <div class="map-bottomline"><span><i class="legend-path"></i> 적 이동 경로 <i class="legend-pad"></i> 배치 지점</span><span id="map-coordinates">RIAN / GRID 18 × 12</span></div>
+        <div id="toast" role="status" aria-live="polite"></div>
+      </div>
+      <div class="combat-controls">
+        <button id="rift" class="rift-button"><span class="rift-icon">◷</span><span><b>시간 균열 <kbd>Q</kbd></b><small id="rift-label">4초간 적 전체 감속</small></span><span id="rift-time">READY</span></button>
+        <div class="time-controls"><button id="speed" aria-label="게임 속도 변경">1×</button><button id="auto" aria-pressed="false">자동 <i></i></button></div>
+        <button id="start-wave" class="primary-button"><span>웨이브 시작</span><kbd>SPACE</kbd><b>→</b></button>
+      </div>
+      <div class="intel-strip"><span class="intel-label">NEXT WAVE</span><p id="wave-intel"></p><button id="boss-info" class="text-button">보스 정보 ↗</button></div>
+      <div class="radio"><span class="radio-mark">⌁</span><b id="radio-name">리타</b><p id="radio-text">캐릭터를 선택한 뒤 빛나는 거점에 잔상을 배치해. 준비되면 웨이브를 시작하자.</p></div>
+    </section>
+    <aside class="roster-panel">
+      <div class="panel-heading"><div><div class="eyebrow">YOUR OPERATORS</div><h2>아니마 잔상</h2></div><span>06</span></div>
+      <p class="panel-hint">인물을 선택하고, 거점에 배치하세요.</p>
+      <div id="roster" aria-label="배치할 캐릭터"></div>
+      <div id="operator-detail"></div>
+      <div class="deployment-note"><span>⌖</span><p>잔상은 배치한 거점에 고정됩니다.<br>같은 인물의 잔상을 여러 곳에 배치할 수 있습니다.</p></div>
+    </aside>
+  </main>
+  <footer class="app-footer"><span>INDIEPUNK <b>×</b> PSY2050</span><span>ANIMA : LAST SIGNAL <i>독립 타워디펜스 외전</i></span><span class="footer-keys">1–6 선택 · U 강화 · Q 시간 균열 · P 일시정지</span></footer>
+</div>
+<div id="title-screen" class="title-screen">
+  <div class="title-art"></div><div class="title-vignette"></div><div class="title-grid"></div>
+  <div class="title-top"><span>INDIEPUNK / PSY2050</span><span>AN ALTERNATE TIMELINE</span></div>
+  <div class="title-copy"><div class="eyebrow"><i class="live-dot"></i> ANIMA TOWER DEFENSE</div><p class="title-series">PSY<span>2050</span></p><h1>LAST<br><span>SIGNAL</span><em>마지막 신호</em></h1><p class="title-description">불꽃이 삼킨 도시. 아직 꺼지지 않은 신호.<br>미나와 동료들의 잔상으로 마지막 탈출로를 지켜라.</p><button id="play" class="primary-button">작전 시작 <b>↗</b></button><button id="continue" class="continue-button" hidden>저장한 작전 이어하기 →</button><div class="title-meta"><span>03 <small>SECTORS</small></span><span>06 <small>OPERATORS</small></span><span>18 <small>WAVES</small></span></div></div>
+  <div class="title-character"><img id="title-mina" alt="공간 능력자 미나"><div><span>OPERATOR / 01</span><b>미나</b><small>“이번에는, 내가 지킬게.”</small></div></div>
+  <div class="title-bottom"><span>친구는, 우리가 선택한 가족.</span><button id="title-guide" class="text-button">플레이 가이드 ↗</button><span>OFFLINE READY / v1.0</span></div>
+</div>
+<div id="modal" class="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="modal-close" class="modal-x" aria-label="닫기">×</button><div id="modal-content"></div></section></div>
+<script>/*__BUNDLE__*/</script>
+</body></html>

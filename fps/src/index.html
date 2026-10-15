@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071319"><meta name="description" content="PSY2050 ANIMA — WebAssembly로 움직이는 1인칭 사이킥 슈팅 게임">
+  <title>PSY2050 · ANIMA / FPS</title>
+  <style>/*__STYLES__*/</style>
+</head>
+<body>
+  <canvas id="world" aria-label="PSY2050 3D 전장"></canvas>
+  <div class="vignette"></div><div id="time-tint"></div><div id="damage-tint"></div><div id="blink-tint"></div>
+  <div id="loading" class="screen"><div class="loader-mark">P<span>2050</span></div><p id="loading-label">시공간 동기화 중<span class="loading-dots">...</span></p><div class="loading-line"></div></div>
+  <main id="menu" class="screen" hidden>
+    <header class="masthead"><a class="brand" href="#" aria-label="PSY2050 타이틀"><span class="brand-icon">P<span>↗</span></span>INDIEPUNK<span class="brand-slash">/</span><span class="muted">PSY2050</span></a><div class="status"><i></i> WASM ENGINE <span class="muted">/ FIRST PERSON</span></div></header>
+    <div class="menu-copy"><div class="eyebrow"><span class="line"></span> A FRACTURE IN TIME</div><h1>PSY<span>2050</span></h1><div class="anima">A N I M A <span>FIRST PERSON</span></div><h2>멈춘 도시.<br>깨어난 감각.</h2><p class="intro">시간이 멈춘 2050년의 도시.<br>미나의 시선으로, 아니마의 불꽃을 마주하세요.</p>
+      <button id="play" class="primary"><span><small>START OPERATION</small>작전 시작</span><span class="arrow">↗</span></button>
+      <div class="menu-actions"><button id="continue" hidden>이어하기 <span>→</span></button><button id="menu-settings">설정 <span>↗</span></button><button id="credits-open">크레딧 <span>↗</span></button><button id="character-open">레이나 모델 <span>↗</span></button></div>
+    </div>
+    <div class="scene-tag"><span class="tag-cross">+</span><div>동부 지구 · 07번 옥상<small>37° 33′ N &nbsp; 126° 58′ E &nbsp; / &nbsp; 02:05 AM</small></div></div>
+    <div class="menu-bottom"><span><i class="tiny-dot"></i> CHRONO LINK ESTABLISHED</span><span>3 SECTORS <b>·</b> ONE TIMELINE</span><span>WASD 이동 <b>·</b> 마우스 조준 <b>·</b> E 텔레포트 <b>·</b> Q 시간 감속</span></div>
+    <div class="edition">01 <span>/ FPS EDITION</span></div>
+  </main>
+  <div id="hud" hidden>
+    <div class="mission hud-panel"><div class="eyebrow">OPERATION ANIMA <span id="sector-number">01 / 03</span></div><h3 id="sector-name"></h3><p id="objective"></p><div class="wave-dots" id="wave-dots"><i></i><i></i><i></i></div><span id="wave-label">진입 중</span></div>
+    <div class="compass"><div class="compass-line">· &nbsp; | &nbsp; · &nbsp; | &nbsp; · &nbsp; <b id="heading">N</b> &nbsp; · &nbsp; | &nbsp; · &nbsp; | &nbsp; ·</div><span>▼</span></div>
+    <div class="hud-top-right"><span id="score">000000</span><small>SCORE</small><button id="pause-open" aria-label="일시정지">Ⅱ <kbd>ESC</kbd></button></div>
+    <div id="boss-hud" hidden><div><span>REINA <b>/ FLAME ANIMA</b></span><span id="boss-phase">PHASE 01</span></div><div class="boss-track"><i id="boss-fill"></i></div></div>
+    <div id="crosshair"><i></i><i></i><i></i><i></i><b></b><span id="hitmarker">×</span></div>
+    <div id="target-label"></div><div id="notification" role="status"></div><div id="channel-label" hidden></div>
+    <div class="player hud-panel"><img id="hud-portrait" alt="미나"><div class="player-info"><div class="eyebrow">MINA <span>ANIMA OPERATOR</span></div><div class="vital"><span class="health-symbol">+</span><strong id="health">100</strong><small>HP</small><span class="shield-symbol">◇</span><strong id="shield">50</strong><small>SHIELD</small></div><div class="health-track"><i id="health-fill"></i></div><div class="shield-track"><i id="shield-fill"></i></div></div></div>
+    <div class="abilities"><div id="slow-card"><kbd>Q</kbd><div><span>TIME DILATION</span><small id="energy-label">100% · 시간 감속</small><div class="energy-track"><i id="energy-fill"></i></div></div></div><div id="teleport-card"><kbd>E</kbd><div><span>TELEPORT</span><small id="teleport-label">누르고 조준 → 놓기</small></div></div></div>
+    <div class="weapon hud-panel"><div class="eyebrow">ANIMA <span>사이킥 광탄</span></div><div class="ammo"><strong id="mana">100</strong><span>MP</span></div><div class="mana-track"><i id="mana-fill"></i></div><small><kbd>R 유지</kbd> 마력 회복 <span>·</span> <kbd>우클릭 유지</kbd> 공명탄</small></div>
+    <div id="tutorial"> <kbd>W A S D</kbd> 이동 <span>·</span> <kbd>SHIFT</kbd> 달리기 <span>·</span> <kbd>SPACE</kbd> 점프 <span>·</span> <kbd>클릭</kbd> 마법 <span>·</span> <kbd>Q</kbd> 시간 감속 <span>·</span> <kbd>E 누른 뒤 놓기</kbd> 텔레포트</div>
+    <div id="free-look-help" hidden><span id="input-mode">창 모드 조준</span> · 마우스 이동으로 조준 · 가장자리에서 회전 · E 지면 조준 후 놓아 텔레포트</div>
+    <div class="engine-tag">WASM SIMULATION <i></i> <span id="fps">60</span> FPS</div>
+  </div>
+  <div id="briefing" class="screen overlay" hidden><section class="briefing-card"><div class="briefing-art"><img id="briefing-portrait" alt="작전 브리핑 인물"><span id="briefing-person"></span></div><div class="briefing-copy"><div class="eyebrow">MISSION BRIEFING <span id="briefing-index"></span></div><h2 id="briefing-title"></h2><p class="location" id="briefing-location"></p><p class="dialogue" id="briefing-text"></p><div class="briefing-tip"><kbd>Q / E</kbd><span>Q 유지: 적과 탄막의 시간을 늦춥니다.<br>E 누르고 지면 조준 → 놓기: 텔레포트<br>좌클릭: 광탄 · 우클릭 유지 후 놓기: 공명탄</span></div><button id="deploy" class="primary"><span><small>ENTER THE FRACTURE</small>전장 진입</span><span class="arrow">→</span></button><p class="capture-note">마우스 고정이 제한되면 창 모드 조준으로 자동 전환됩니다. ESC로 일시정지합니다.</p></div></section></div>
+  <div id="pause" class="screen overlay" hidden><section class="modal"><div class="eyebrow">CHRONO LINK / STANDBY</div><h2>작전 일시정지</h2><p>다시 전장으로 돌아갈 준비가 되었나요?</p><button id="resume" class="primary">계속하기 <span>→</span></button><button id="pause-settings" class="secondary">설정</button><button id="restart" class="secondary">현재 구역 다시 시작</button><button id="return-title" class="text-button">타이틀로 돌아가기</button></section></div>
+  <div id="settings" class="screen overlay" hidden><section class="modal settings-card"><div class="eyebrow">OPERATOR PREFERENCES</div><h2>감각 조정</h2><label for="sensitivity">마우스 감도 <output id="sensitivity-out"></output></label><input id="sensitivity" type="range" min="0.3" max="2" step="0.1"><label for="fov">시야각 <output id="fov-out"></output></label><input id="fov" type="range" min="65" max="105" step="1"><label for="volume">음량 <output id="volume-out"></output></label><input id="volume" type="range" min="0" max="1" step="0.05"><label class="toggle-label" for="rain">비 효과 <input id="rain" type="checkbox"></label><button id="settings-close" class="primary">적용하고 돌아가기 <span>→</span></button><p class="capture-note">설정은 이 브라우저에 자동으로 저장됩니다.</p></section></div>
+  <div id="result" class="screen overlay" hidden><section class="modal result-card"><div class="eyebrow" id="result-kicker"></div><h2 id="result-title"></h2><p id="result-text"></p><div class="result-stats"><div><small>SCORE</small><strong id="result-score"></strong></div><div><small>ELIMINATIONS</small><strong id="result-kills"></strong></div><div><small>ACCURACY</small><strong id="result-accuracy"></strong></div></div><button id="result-next" class="primary"></button><button id="result-title-button" class="text-button">타이틀로 돌아가기</button></section></div>
+  <div id="credits" class="screen overlay" hidden><section class="modal credits-card"><div class="eyebrow">INDIEPUNK / PSY2050</div><h2>함께 만든 시간</h2><p>원작 PSY2050 · IndiePunk</p><p>미나, 레이나, 시간의 소녀와 아니마의 세계관,<br>원작 음악 및 리마스터 초상화를 사용했습니다.</p><div id="original-credits"></div><p>FPS 재구성 · WebGL 2 / AssemblyScript WebAssembly<br>리마스터 일러스트 · AI 보조 제작</p><button id="credits-close" class="primary">돌아가기 <span>→</span></button></section></div>
+  <div id="character-view" class="screen" hidden>
+    <div class="model-copy"><div class="eyebrow">CHARACTER STUDY / 01</div><h2>레이나</h2><p class="model-subtitle">아니마의 불꽃</p><p>긴 갈색 머리 · 호박색 눈<br>붉은 금장 드레스 · 흰 소매<br>남색 크라바트 · 화염 마법</p><small id="model-stats"></small><p>드래그로 회전 · 스크롤로 확대</p><a href="reina-model.glb" download>3D 모델 내려받기 · GLB ↗</a></div>
+    <div class="model-reference"><span>ILLUSTRATION REFERENCE</span><img id="model-reference" alt="레이나 모델의 기준 일러스트"></div>
+    <div class="model-controls"><button id="model-front">정면</button><button id="model-side">측면</button><button id="model-back">후면</button><button id="character-close">타이틀로 돌아가기</button></div>
+  </div>
+  <div id="error" class="screen overlay" hidden><section class="modal"><div class="eyebrow">CONNECTION INTERRUPTED</div><h2>연결을 확인해 주세요</h2><p id="error-text"></p><button id="error-retry" class="primary">다시 시도</button></section></div>
+  <div id="touch-warning" hidden>이 FPS는 키보드와 마우스가 필요합니다.<br>데스크톱 브라우저에서 플레이해 주세요.</div>
+  <script id="embedded-assets" type="application/json">/*__ASSETS__*/</script>
+  <script id="embedded-worlds" type="application/json">/*__WORLDS__*/</script>
+  <script id="embedded-wasm" type="application/octet-stream">/*__WASM__*/</script>
+  <script>/*__MODELS__*/
+/*__RENDERER__*/
+/*__APP__*/</script>
+</body>
+</html>
